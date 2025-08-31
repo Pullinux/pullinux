@@ -59,7 +59,6 @@ cups
 double-conversion
 gstreamer
 iso-codes
-libgudev
 cairo
 pango
 gst-plugins-base
@@ -69,14 +68,6 @@ libwebp
 muparser
 libfm
 itstool
-editables
-pathspec
-packaging
-setuptools_scm
-pluggy
-trove_classifiers
-hatchling
-pygments
 gtk-doc
 pulseaudio
 lm-sensors

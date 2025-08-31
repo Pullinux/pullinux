@@ -32,7 +32,6 @@ pycairo
 pygobject
 gpm
 slang
-popt
 newt
 network-manager
 kde-frameworks
@@ -89,4 +88,3 @@ smartmontools
 libwacom
 kde-plasma
 sddm
-firefox

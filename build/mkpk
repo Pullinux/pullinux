@@ -1,0 +1,17 @@
+#!/bin/bash
+
+editor=code
+
+. pkshared $1 $2 $3
+
+cat > packages/$pckdir/build.sh << "EOF"
+
+./configure --prefix=/usr 
+
+make
+
+make DESTDIR=$PCKDIR install
+
+EOF
+
+$editor packages/$pckdir/build.sh

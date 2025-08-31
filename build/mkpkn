@@ -1,0 +1,13 @@
+#!/bin/bash
+
+editor=code
+
+. pkshared $1 $2 $3
+
+echo "" > packages/$pckdir/build.sh
+echo "mkdir __build && cd __build" > packages/$pckdir/build.sh
+echo "meson setup --prefix=/usr --buildtype=release .." >> packages/$pckdir/build.sh
+echo "ninja" >> packages/$pckdir/build.sh
+echo 'DESTDIR=$PCKDIR ninja install' >> packages/$pckdir/build.sh
+
+$editor packages/$pckdir/build.sh

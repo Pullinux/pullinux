@@ -1,0 +1,3 @@
+name=cryptsetup
+version=2.7.5
+source=cryptsetup-2.7.5.tar.xz

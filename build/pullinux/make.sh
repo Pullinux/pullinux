@@ -23,3 +23,11 @@ plx_mount_virt
 
 build_packages base-system
 
+build_packages base-dev
+build_packages base-ui
+
+build_packages base-kde
+
+build_packages base-ui-extras
+
+plx_umount_virt

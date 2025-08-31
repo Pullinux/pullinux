@@ -1,0 +1,14 @@
+build_inst_pck dtc
+build_inst_pck libslirp
+build_inst_pck qemu
+build_inst_pck libatasmart
+build_inst_pck json-c
+build_inst_pck libaio
+build_inst_pck lvm2
+build_inst_pck cryptsetup
+build_inst_pck keyutils
+build_inst_pck keyutils
+build_inst_pck libbytesize
+build_inst_pck libnvme
+build_inst_pck libblockdev
+build_inst_pck udisks
