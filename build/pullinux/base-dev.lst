@@ -118,6 +118,7 @@ trove_classifiers
 hatchling
 pygments
 libbytesize
+json-glib
 libblockdev
 libgudev
 udisks

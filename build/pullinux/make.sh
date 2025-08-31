@@ -16,6 +16,41 @@ source .config
 source $SRC_DIR/../shared/utils.sh
 source $SRC_DIR/plx-utils.sh
 
+
+create_user_if_none() {
+    user=$(awk -F: '$3 == 1000 {print $1, $3}' $PLX/etc/passwd)
+
+    if [ "$user" == "" ]; then
+        echo "Setting root password..."
+
+        sudo chroot "$PLX" /usr/bin/env -i   \
+            HOME=/root                  \
+            PS1='(lfs chroot) \u:\w\$ ' \
+            PATH=/usr/bin:/usr/sbin     \
+            MAKEFLAGS="-j$(nproc)"      \
+            TESTSUITEFLAGS="-j$(nproc)" \
+            /bin/bash --login -e -c "passwd root"
+
+        echo "Creating admin user..."
+
+        read -rp "Enter the new username: " username
+
+        if [[ -z "$username" ]]; then
+            echo "No username entered, aborting." >&2
+            exit -1
+        fi
+
+        sudo chroot "$PLX" /usr/bin/env -i   \
+            HOME=/root                  \
+            PS1='(lfs chroot) \u:\w\$ ' \
+            PATH=/usr/bin:/usr/sbin     \
+            MAKEFLAGS="-j$(nproc)"      \
+            TESTSUITEFLAGS="-j$(nproc)" \
+            /bin/bash --login -e -c "useradd -m -G wheel $username; usermod -aG netdev $username || true; passwd $username"
+
+    fi
+}
+
 #unmount virtual stuff if already mounted, just to be safe...
 plx_umount_virt
 
@@ -29,5 +64,7 @@ build_packages base-ui
 build_packages base-kde
 
 build_packages base-ui-extras
+
+create_user_if_none
 
 plx_umount_virt

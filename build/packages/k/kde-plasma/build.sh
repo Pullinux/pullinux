@@ -1,8 +1,4 @@
 
-pushd $PCKBASE/files
-tar -xf kde-plasma-6.11.0.txz
-popd
-
 while read -r line; do
 
     # Get the file name, ignoring comments and blank lines
@@ -12,7 +8,7 @@ while read -r line; do
     pkg=$(echo $file|sed 's|^.*/||')           # Remove directory
     packagedir=$(echo $pkg |sed 's|\.tar.*||') # Source directory
 
-    tar -xf $PCKBASE/files/$file
+    tar -xf $file
     pushd $packagedir
 
        mkdir build
@@ -33,4 +29,4 @@ while read -r line; do
     rm -rf $packagedir
     /sbin/ldconfig
 
-done < $PCKBASE/files/plasma-6.3.2.md5
+done < plasma-6.3.2.md5

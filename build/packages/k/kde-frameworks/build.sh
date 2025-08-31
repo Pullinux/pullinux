@@ -1,7 +1,7 @@
 
-pushd $PCKBASE/files/
-tar -xf kde-frameworks-6.11.0.txz
-popd
+echo "KDEFW: $PWD"
+
+ls -ls
 
 while read -r line; do
 
@@ -14,7 +14,7 @@ while read -r line; do
 
     name=$(echo $pkg|sed 's|-6.*$||') # Isolate package name
 
-    tar -xf $PCKBASE/files/$file
+    tar -xf $file
     pushd $packagedir
       mkdir build
       cd    build
@@ -34,4 +34,4 @@ while read -r line; do
   rm -rf $packagedir
   /sbin/ldconfig
 
-done < $PCKBASE/files/frameworks-6.11.0.md5
+done < frameworks-6.11.0.md5
