@@ -7,6 +7,8 @@ SCRIPT_PATH="$(realpath "${BASH_SOURCE[0]}")"
 SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PCK_ROOT="$SRC_DIR/../packages"
 
+LOCAL_INSTALL="no"
+
 pck_installed() {
 	sudo touch "$PLX$PLX_INSTALLED"
 	grep -Fqx -- "$1" "$PLX$PLX_INSTALLED"
@@ -208,3 +210,61 @@ build_packages() {
     done;
 }
 
+local_install_pck() {
+	pck=$1
+	version=$2
+
+	sudo rm -rf /.install
+
+	PLX_BUILD_FILE=$PLX_ROOT/bin/$pck-$version-plx-1.0.txz
+
+	echo "Installing $PLX_BUILD_FILE"
+
+	cd /
+	sudo tar -xhf $PLX_BUILD_FILE
+
+	if [ -f /.install/install.sh ]; then
+		echo "Running installer..."
+
+		cd /.install
+		sudo bash -e install.sh
+		sudo rm -rf /.install
+	fi
+
+	echo "$pck" | sudo tee -a $PLX_INSTALLED > /dev/null
+
+	echo "Done installing $pck $version"
+}
+
+find_install_pck() {
+	pck=$1
+	pck_path=$PCK_ROOT/${pck:0:1}/$pck
+
+	if [ ! -d $pck_path ]; then
+		echo "package not found: $pck ($pck_path)"
+		exit -1
+	fi
+
+	if $(pck_installed $pck) ; then
+		echo "Package $pck already installed."
+		return 0
+	fi
+
+	version=$(pck_get_version $pck)
+
+	if [ ! -f $PLX_ROOT/bin/$pck-$version-plx-1.0.txz ]; then
+		echo "Package not build $pck"
+		exit -1
+	fi
+
+    local_install_pck $pck $version
+}
+
+install_packages() {
+	LOCAL_INSTALL="yes"
+	
+    for pck in $(cat $SRC_DIR/$1.lst)
+    do
+        find_install_pck $pck
+    done;
+}
