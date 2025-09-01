@@ -203,8 +203,31 @@ build_inst_pck() {
 	install_pck $pck $version
 }
 
-build_packages() {
+lpt() {
+	echo "$SRC_DIR/$1.lst"
+	cat $SRC_DIR/$1.lst
+}
+
+load_package_list() {
+	pcks=()
+
     for pck in $(cat $SRC_DIR/$1.lst)
+    do
+        if [[ $pck =~ ^\! ]]; then
+			for incpck in $(load_package_list "${pck:1}")
+			do
+				pcks+=("$incpck")
+			done;
+		else
+			pcks+=("$pck")
+        fi
+    done;
+
+    printf '%s\n' "${pcks[@]}"
+}
+
+build_packages() {
+    for pck in $(load_package_list $1)
     do
         build_inst_pck $pck
     done;
@@ -261,9 +284,7 @@ find_install_pck() {
 }
 
 install_packages() {
-	LOCAL_INSTALL="yes"
-	
-    for pck in $(cat $SRC_DIR/$1.lst)
+    for pck in $(load_package_list $1)
     do
         find_install_pck $pck
     done;

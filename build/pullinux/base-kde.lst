@@ -1,3 +1,4 @@
+!base-ui
 qt6
 extra-cmake-modules
 breeze-icons
