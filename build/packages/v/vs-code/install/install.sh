@@ -1,0 +1,1 @@
+ln -s /opt/vs-code/bin/code /usr/bin/code
