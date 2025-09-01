@@ -17,3 +17,4 @@ build_inst_pck vs-code
 build_inst_pck kate
 build_inst_pck kcalc
 build_inst_pck kclock
+build_inst_pck cpio

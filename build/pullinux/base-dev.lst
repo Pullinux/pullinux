@@ -122,3 +122,4 @@ json-glib
 libblockdev
 libgudev
 udisks
+cpio
