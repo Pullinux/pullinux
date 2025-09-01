@@ -14,3 +14,5 @@ build_inst_pck libblockdev
 build_inst_pck udisks
 build_inst_pck json-glib
 build_inst_pck vs-code
+build_inst_pck kate
+build_inst_pck kcalc
