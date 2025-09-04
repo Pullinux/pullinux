@@ -11,4 +11,4 @@ done
 
 mkdir -p $PCKDIR/usr/share/doc/
 
-ln -sv ../vim/vim91/doc $PCKDIR/usr/share/doc/vim-9.1.1166
+ln -sv ../vim/vim91/doc $PCKDIR/usr/share/doc/vim-9.1.1629

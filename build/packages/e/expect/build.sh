@@ -1,5 +1,5 @@
 
-patch -Np1 -i $PCKBASE/files/expect-5.45.4-gcc14-1.patch
+patch -Np1 -i $PCKBASE/files/expect-5.45.4-gcc15-1.patch
 
 ./configure --prefix=/usr           \
             --with-tcl=/usr/lib     \

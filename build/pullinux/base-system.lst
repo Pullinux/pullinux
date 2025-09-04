@@ -48,6 +48,7 @@ elfutils
 libffi
 python
 flit_core
+packaging
 wheel
 setuptools
 ninja

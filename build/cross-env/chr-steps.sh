@@ -110,12 +110,12 @@ build_perl() {
              -D prefix=/usr                               \
              -D vendorprefix=/usr                         \
              -D useshrplib                                \
-             -D privlib=/usr/lib/perl5/5.40/core_perl     \
-             -D archlib=/usr/lib/perl5/5.40/core_perl     \
-             -D sitelib=/usr/lib/perl5/5.40/site_perl     \
-             -D sitearch=/usr/lib/perl5/5.40/site_perl    \
-             -D vendorlib=/usr/lib/perl5/5.40/vendor_perl \
-             -D vendorarch=/usr/lib/perl5/5.40/vendor_perl
+             -D privlib=/usr/lib/perl5/5.42/core_perl     \
+             -D archlib=/usr/lib/perl5/5.42/core_perl     \
+             -D sitelib=/usr/lib/perl5/5.42/site_perl     \
+             -D sitearch=/usr/lib/perl5/5.42/site_perl    \
+             -D vendorlib=/usr/lib/perl5/5.42/vendor_perl \
+             -D vendorarch=/usr/lib/perl5/5.42/vendor_perl
 
 	make
 	make install
@@ -124,7 +124,7 @@ build_perl() {
 build_python() {
 	./configure --prefix=/usr   \
             --enable-shared \
-            --without-ensurepip
+            --without-ensurepip  --without-static-libpython
 	make
 	make install
 }
@@ -150,7 +150,7 @@ build_utillinux() {
             --disable-liblastlog2 \
             --without-python      \
             ADJTIME_PATH=/var/lib/hwclock/adjtime \
-            --docdir=/usr/share/doc/util-linux-2.40.4
+            --docdir=/usr/share/doc/util-linux-2.41.1
 
 	make
 	make install
