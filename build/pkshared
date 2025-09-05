@@ -52,4 +52,4 @@ echo "source=$file" >> packages/$pckdir/pck
 
 echo "build_inst_pck $pckname" >> added
 
-export editor=kate
+export editor=code

@@ -2,8 +2,9 @@
 mkdir build 
 cd    build 
 
-../configure --prefix=/usr --disable-gpg-test 
-make PYTHONS=
+../configure --prefix=/usr       \
+             --disable-static
+make
 
-make DESTDIR=$PCKDIR install PYTHONS=
+make DESTDIR=$PCKDIR install
 

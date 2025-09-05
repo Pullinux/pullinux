@@ -11,7 +11,6 @@ ffmpeg
 vlc
 phonon-backend-vlc
 polkit-qt-1
-plasma-wayland-protocols
 kde-pre-setup
 libcanberra
 qca
@@ -35,6 +34,9 @@ gpm
 slang
 newt
 network-manager
+libsecret
+gpgme
+gpgmepp
 kde-frameworks
 dolphin
 dolphin-plugins
@@ -54,8 +56,12 @@ kdsoap
 doxygen
 kdsoap-ws-discovery-client
 qcoro
+smartypants
+typogrify
+markdown
+gi_docgen
+libproxy
 kio-extras
-gpgme
 poppler
 okular
 libkdcraw

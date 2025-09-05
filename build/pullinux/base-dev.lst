@@ -112,7 +112,6 @@ libnvme
 libatasmart
 editables
 pathspec
-packaging
 setuptools_scm
 pluggy
 trove_classifiers

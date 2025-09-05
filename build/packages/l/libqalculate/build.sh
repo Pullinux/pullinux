@@ -1,7 +1,7 @@
 
 ./configure --prefix=/usr    \
             --disable-static \
-            --docdir=/usr/share/doc/libqalculate-5.5.1
+            --docdir=/usr/share/doc/libqalculate-5.7.0
 make
 
 make DESTDIR=$PCKDIR install

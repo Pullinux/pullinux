@@ -6,7 +6,7 @@ sed -e "s/'elinks'/'lynx'/"                       \
 
 
 mkdir __build && cd __build
-meson setup --prefix=/usr --buildtype=release -D docdir=/usr/share/doc/Linux-PAM-1.7.0 ..
+meson setup --prefix=/usr --buildtype=release -D docdir=/usr/share/doc/Linux-PAM-1.7.1 ..
 ninja
 
 install -v -m755 -d $PCKDIR/etc/pam.d

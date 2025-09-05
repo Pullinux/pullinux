@@ -3,7 +3,7 @@
             --sysconfdir=/etc    \
             --localstatedir=/var \
             --disable-docs       \
-            --docdir=/usr/share/doc/fontconfig-2.16.0
+            --docdir=/usr/share/doc/fontconfig-2.17.1
 
 make
 

@@ -1,3 +1,3 @@
 name=llvm
-version=19.1.7.src
-source=llvm-19.1.7.src.tar.xz
+version=20.1.8.src
+source=llvm-20.1.8.src.tar.xz

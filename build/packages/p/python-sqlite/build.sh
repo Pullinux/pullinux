@@ -3,7 +3,7 @@ CXX="/usr/bin/g++"               \
 ./configure --prefix=/usr        \
             --enable-shared      \
             --with-system-expat  \
-            --enable-optimizations
+            --enable-optimizations --without-static-libpython
 
 make
 

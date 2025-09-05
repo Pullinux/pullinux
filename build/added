@@ -18,3 +18,7 @@ build_inst_pck kate
 build_inst_pck kcalc
 build_inst_pck kclock
 build_inst_pck cpio
+build_inst_pck smartypants
+build_inst_pck typogrify
+build_inst_pck markdown
+build_inst_pck gi_docgen

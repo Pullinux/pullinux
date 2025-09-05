@@ -4,7 +4,7 @@
             --enable-jasper  \
             --enable-lcms    \
             --disable-static \
-            --docdir=/usr/share/doc/libraw-0.21.3
+            --docdir=/usr/share/doc/libraw-0.21.4
 
 make
 

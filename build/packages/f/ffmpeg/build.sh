@@ -1,10 +1,5 @@
 
-patch -Np1 -i $PCKBASE/files/ffmpeg-7.1-chromium_method-1.patch
-
-sed -e 's/X265_BUILD >= 210/(&) \&\& (X265_BUILD < 213)/' \
-    -i libavcodec/libx265.c
-
-patch -Np1 -i $PCKBASE/files/ffmpeg-7.1-texinfo_fix-1.patch
+patch -Np1 -i $PCKBASE/files/ffmpeg-7.1.1-chromium_method-1.patch
 
 ./configure --prefix=/usr        \
             --enable-gpl         \

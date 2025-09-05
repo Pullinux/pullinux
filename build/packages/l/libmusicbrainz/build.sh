@@ -7,7 +7,7 @@ sed -e 's/xmlErrorPtr /const xmlError */'     \
 mkdir build &&
 cd    build &&
 
-cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release ..
+cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_POLICY_VERSION_MINIMUM=3.5 -D CMAKE_BUILD_TYPE=Release ..
 
 make
 

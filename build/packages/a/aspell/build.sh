@@ -1,4 +1,6 @@
-
+sed -e 's/; i.*size)/, e = end(); i != e; ++i, ++size_)/' \
+    -i modules/speller/default/vector_hash-t.hpp
+    
 ./configure --prefix=/usr 
 
 make
