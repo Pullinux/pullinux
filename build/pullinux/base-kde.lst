@@ -93,6 +93,7 @@ sentry_sdk
 accountsservice
 smartmontools
 libwacom
+xf86-input-wacom
 kde-plasma
 sddm
 kate

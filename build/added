@@ -22,3 +22,4 @@ build_inst_pck smartypants
 build_inst_pck typogrify
 build_inst_pck markdown
 build_inst_pck gi_docgen
+build_inst_pck xf86-input-wacom
