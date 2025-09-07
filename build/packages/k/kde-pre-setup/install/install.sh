@@ -71,5 +71,10 @@ install -v -dm755           $KF6_PREFIX/{etc,share}
 install -v -dm755           $KF6_PREFIX/lib         
 #ln -sfv /usr/lib/systemd    $KF6_PREFIX/lib
 
+mkdir -p $KF6_PREFIX/etc/dbus-1/
+mkdir -p $KF6_PREFIX/usr/share/dbus-1 
+mkdir -p $KF6_PREFIX/usr/share/polkit-1
+mkdir -p $KF6_PREFIX/usr/share/systemd
+
 install -v -dm755                $KF6_PREFIX/share/icons
 ln -sfv /usr/share/icons/hicolor $KF6_PREFIX/share/icons

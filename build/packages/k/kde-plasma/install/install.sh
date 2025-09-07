@@ -67,3 +67,30 @@ account include system-account
 
 # End /etc/pam.d/kscreensaver
 EOF
+
+
+mkdir -p /etc/dbus-1/
+mkdir -p /usr/share/dbus-1/
+mkdir -p /usr/share/polkit-1/
+
+mv /opt/kf6/etc/dbus-1/* /etc/dbus-1/ || true
+mv /opt/kf6/etc/dbus-1/.* /etc/dbus-1/ || true
+
+mv /opt/kf6/share/dbus-1/* /usr/share/dbus-1/ || true
+mv /opt/kf6/share/dbus-1/.* /usr/share/dbus-1/ || true
+
+mv /opt/kf6/share/polkit-1/* /usr/share/polkit-1/ || true
+mv /opt/kf6/share/polkit-1/.* /usr/share/polkit-1/ || true
+
+mv /opt/kf6/lib/systemd/* /usr/lib/systemd/ || true
+mv /opt/kf6/lib/systemd/.* /usr/lib/systemd/ || true
+
+rm -rf /opt/kf6/etc/dbus-1
+rm -rf /opt/kf6/share/dbus-1
+rm -rf /opt/kf6/share/polkit-1
+rm -rf /opt/kf6/lib/systemd
+
+ln -sfv /etc/dbus-1         /opt/kf6/etc/
+ln -sfv /usr/share/dbus-1   /opt/kf6/share/   
+ln -sfv /usr/share/polkit-1 /opt/kf6/share/   
+ln -sfv /usr/lib/systemd    /opt/kf6/lib/

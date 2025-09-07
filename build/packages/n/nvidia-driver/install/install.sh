@@ -1,1 +1,2 @@
-bash NVIDIA-Linux-x86_64-XXX.XX.run -s --no-x-check --no-opengl-libs --dkms --run-nvidia-xconfig
+export TERM=xterm-256color
+bash NVIDIA-Linux-x86_64-570.172.08.run
