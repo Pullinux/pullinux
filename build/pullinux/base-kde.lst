@@ -34,7 +34,6 @@ gpm
 slang
 newt
 network-manager
-libsecret
 gpgme
 gpgmepp
 kde-frameworks

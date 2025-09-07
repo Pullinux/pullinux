@@ -123,3 +123,4 @@ libblockdev
 libgudev
 udisks
 cpio
+libsecret
