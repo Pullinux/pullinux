@@ -23,3 +23,9 @@ build_inst_pck typogrify
 build_inst_pck markdown
 build_inst_pck gi_docgen
 build_inst_pck xf86-input-wacom
+build_inst_pck nvidia-driver
+build_inst_pck jq
+build_inst_pck kpmcore
+build_inst_pck kpmcore
+build_inst_pck kpmcore
+build_inst_pck partitionmanager

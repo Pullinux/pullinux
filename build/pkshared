@@ -39,7 +39,7 @@ if [ -d "$pckdir" ]; then
     exit -1
 fi
 
-mkdir -p packages/$pckdir/files
+mkdir -p packages/$pckdir/
 
 if [ "$mkinstall" == "yes" ]; then
         mkdir -p packages/$pckdir/install

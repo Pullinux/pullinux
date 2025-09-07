@@ -63,12 +63,13 @@ cat >> /etc/ld.so.conf << "EOF"
 # End KF6 addition
 EOF
 
+#for now comment out...
 install -v -dm755           $KF6_PREFIX/{etc,share} 
-ln -sfv /etc/dbus-1         $KF6_PREFIX/etc         
-ln -sfv /usr/share/dbus-1   $KF6_PREFIX/share       
-ln -sfv /usr/share/polkit-1 $KF6_PREFIX/share       
+#ln -sfv /etc/dbus-1         $KF6_PREFIX/etc         
+#ln -sfv /usr/share/dbus-1   $KF6_PREFIX/share       
+#ln -sfv /usr/share/polkit-1 $KF6_PREFIX/share       
 install -v -dm755           $KF6_PREFIX/lib         
-ln -sfv /usr/lib/systemd    $KF6_PREFIX/lib
+#ln -sfv /usr/lib/systemd    $KF6_PREFIX/lib
 
 install -v -dm755                $KF6_PREFIX/share/icons
 ln -sfv /usr/share/icons/hicolor $KF6_PREFIX/share/icons

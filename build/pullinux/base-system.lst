@@ -78,5 +78,7 @@ man-db
 procps-ng
 util-linux
 e2fsprogs
+jq
 init-config
 linux
+nvidia-driver
