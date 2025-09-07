@@ -78,3 +78,8 @@ mkdir -p $KF6_PREFIX/usr/share/systemd
 
 install -v -dm755                $KF6_PREFIX/share/icons
 ln -sfv /usr/share/icons/hicolor $KF6_PREFIX/share/icons
+
+rm -rf /etc/skel/.config
+mkdir -p /etc/skel/.config
+
+cp -r config/* /etc/skel/.config/
