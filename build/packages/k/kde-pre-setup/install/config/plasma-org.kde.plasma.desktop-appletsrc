@@ -5,38 +5,6 @@ RightButton;NoModifier=org.kde.contextmenu
 [ActionPlugins][1]
 RightButton;NoModifier=org.kde.contextmenu
 
-[Containments][53]
-ItemGeometries-2648x1490=
-ItemGeometriesHorizontal=
-activityId=a69518c2-cc7c-4bd1-b3f7-f3c20761b0f9
-formfactor=0
-immutability=1
-lastScreen=0
-location=0
-plugin=org.kde.plasma.folder
-wallpaperplugin=org.kde.image
-
-[Containments][53][General]
-positions={"2648x1490":[]}
-
-[Containments][53][Wallpaper][org.kde.image][General]
-Image=/opt/kf6-6.17.0/share/wallpapers/DarkestHour/
-SlidePaths=/opt/kf6/share/wallpapers/
-
-[Containments][54]
-ItemGeometries-1024x768=
-ItemGeometriesHorizontal=
-activityId=a69518c2-cc7c-4bd1-b3f7-f3c20761b0f9
-formfactor=0
-immutability=1
-lastScreen=1
-location=0
-plugin=org.kde.plasma.folder
-wallpaperplugin=org.kde.image
-
-[Containments][54][General]
-positions={"1024x768":[]}
-
 [Containments][55]
 activityId=
 formfactor=2
@@ -67,7 +35,7 @@ immutability=1
 plugin=org.kde.plasma.icontasks
 
 [Containments][55][Applets][58][Configuration][General]
-launchers=applications:systemsettings.desktop,preferred://filemanager,applications:org.kde.kcalc.desktop,applications:org.kde.kate.desktop,applications:org.kde.konsole.desktop,preferred://browser
+launchers=applications:systemsettings.desktop,preferred://filemanager,applications:org.kde.kcalc.desktop,applications:org.kde.kate.desktop,applications:org.kde.konsole.desktop,applications:firefox.desktop
 
 [Containments][55][Applets][59]
 immutability=1
@@ -140,14 +108,14 @@ immutability=1
 plugin=org.kde.plasma.battery
 
 [Containments][55][Applets][60][Applets][75][Configuration]
-PreloadWeight=42
+PreloadWeight=0
 
 [Containments][55][Applets][60][Applets][76]
 immutability=1
 plugin=org.kde.plasma.brightness
 
 [Containments][55][Applets][60][Applets][76][Configuration]
-PreloadWeight=42
+PreloadWeight=0
 
 [Containments][55][Applets][60][Applets][77]
 immutability=1
@@ -158,7 +126,7 @@ immutability=1
 plugin=org.kde.plasma.bluetooth
 
 [Containments][55][Applets][60][Applets][78][Configuration]
-PreloadWeight=42
+PreloadWeight=18
 
 [Containments][55][Applets][60][General]
 extraItems=org.kde.plasma.bluetooth,org.kde.plasma.clipboard,org.kde.plasma.notifications,org.kde.plasma.devicenotifier,org.kde.plasma.kclock_1x2,org.kde.plasma.printmanager,org.kde.plasma.manage-inputmethod,org.kde.plasma.vault,org.kde.plasma.keyboardindicator,org.kde.plasma.battery,org.kde.plasma.brightness,org.kde.plasma.keyboardlayout,org.kde.plasma.cameraindicator,org.kde.plasma.weather,org.kde.plasma.networkmanagement,org.kde.kscreen,org.kde.plasma.mediacontroller,org.kde.plasma.volume
@@ -178,6 +146,92 @@ plugin=org.kde.plasma.showdesktop
 
 [Containments][55][General]
 AppletOrder=56;57;58;59;60;73;74
+
+[Containments][75]
+ItemGeometries-2648x1490=Applet-81:2400,208,240,176,0;Applet-80:2400,32,240,176,0;
+ItemGeometriesHorizontal=Applet-81:2400,208,240,176,0;Applet-80:2400,32,240,176,0;
+activityId=4fffcbd5-a90e-4b3d-bb61-cf977208b468
+formfactor=0
+immutability=1
+lastScreen=0
+location=0
+plugin=org.kde.plasma.folder
+wallpaperplugin=org.kde.image
+
+[Containments][75][Applets][80]
+immutability=1
+plugin=org.kde.plasma.systemmonitor
+
+[Containments][75][Applets][80][Configuration]
+CurrentPreset=org.kde.plasma.systemmonitor
+
+[Containments][75][Applets][80][Configuration][Appearance]
+Title=CPU
+chartFace=org.kde.ksysguard.linechart
+
+[Containments][75][Applets][80][Configuration][FaceGrid][Appearance]
+chartFace=org.kde.ksysguard.linechart
+showTitle=false
+
+[Containments][75][Applets][80][Configuration][FaceGrid][SensorColors]
+cpu/all/usage=61,174,233
+
+[Containments][75][Applets][80][Configuration][FaceGrid][Sensors]
+highPrioritySensorIds=["cpu/all/usage"]
+
+[Containments][75][Applets][80][Configuration][SensorColors]
+cpu/all/usage=61,174,233
+
+[Containments][75][Applets][80][Configuration][Sensors]
+highPrioritySensorIds=["cpu/all/usage"]
+totalSensors=["cpu/all/usage"]
+
+[Containments][75][Applets][80][Configuration][org.kde.ksysguard.piechart][General]
+showLegend=false
+
+[Containments][75][Applets][81]
+immutability=1
+plugin=org.kde.plasma.systemmonitor
+
+[Containments][75][Applets][81][Configuration]
+CurrentPreset=org.kde.plasma.systemmonitor
+
+[Containments][75][Applets][81][Configuration][Appearance]
+Title=Memory
+chartFace=org.kde.ksysguard.linechart
+
+[Containments][75][Applets][81][Configuration][ConfigDialog]
+DialogHeight=540
+DialogWidth=720
+
+[Containments][75][Applets][81][Configuration][SensorColors]
+memory/physical/used=61,174,233
+
+[Containments][75][Applets][81][Configuration][Sensors]
+highPrioritySensorIds=["memory/physical/used"]
+totalSensors=["memory/physical/used","memory/physical/total"]
+
+[Containments][75][Applets][81][Configuration][org.kde.ksysguard.piechart][General]
+showLegend=false
+
+[Containments][75][General]
+positions={"2648x1490":[]}
+
+[Containments][75][Wallpaper][org.kde.image][General]
+Image=/opt/kf6-6.17.0/share/wallpapers/DarkestHour/
+SlidePaths=/opt/kf6/share/wallpapers/
+
+[Containments][76]
+activityId=4fffcbd5-a90e-4b3d-bb61-cf977208b468
+formfactor=0
+immutability=1
+lastScreen=1
+location=0
+plugin=org.kde.plasma.folder
+wallpaperplugin=org.kde.image
+
+[Containments][76][General]
+positions={"1024x768":[]}
 
 [ScreenMapping]
 itemsOnDisabledScreens=

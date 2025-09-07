@@ -22,3 +22,8 @@ make
 
 make DESTDIR=$PCKDIR install
 
+mkdir -p $PCKDIR/usr/share/sddm/themes/
+
+cd $PCKDIR/usr/share/sddm/themes/
+
+tar -xf $PCKBASE/files/Noir-SDDM-6.tar.gz

@@ -63,6 +63,14 @@ cat >> /etc/ld.so.conf << "EOF"
 # End KF6 addition
 EOF
 
+mkdir -p /etc/skel
+
+cat > /etc/skel/.gitconfig << EOF
+[credential]
+    helper = store
+EOF
+
+
 #for now comment out...
 install -v -dm755           $KF6_PREFIX/{etc,share} 
 #ln -sfv /etc/dbus-1         $KF6_PREFIX/etc         

@@ -5,9 +5,73 @@ useradd  -c "sddm Daemon" \
          -s /bin/false sddm || true
 
 install -v -dm755 -o sddm -g sddm /var/lib/sddm
-/usr/bin/sddm --example-config > /etc/sddm.conf
 
-sed -i 's/qtvirtualkeyboard//' /etc/sddm.conf
+mkdir -p /etc/sddm.conf.d
+
+cat > /etc/sddm.conf.d/kde_settings.conf << EOF
+[Autologin]
+Relogin=false
+Session=
+User=
+
+[General]
+HaltCommand=
+RebootCommand=
+
+[Theme]
+Current=Noir-SDDM-6
+CursorTheme=Oxygen_Zion
+Font=Noto Sans,10,-1,0,400,0,0,0,0,0,0,0,0,0,0,1
+
+[Users]
+MaximumUid=60000
+MinimumUid=1000
+
+EOF
+
+
+cat > /etc/sddm.conf << EOF
+[General]
+DisplayServer=x11
+GreeterEnvironment=QML2_IMPORT_PATH=/opt/kf6/lib/qml:/opt/qt6/qml:/opt/qt6/lib/qml:/opt/qt6/qml,QT_PLUGIN_PATH=/opt/kf6/lib/plugins:/opt/kf6/lib/plugins/kcms:/opt/qt6/lib/plugins:/usr/lib/plugins:/opt/qt6/plugins
+InputMethod=
+Namespaces=
+Numlock=none
+
+[Theme]
+DisableAvatarsThreshold=7
+EnableAvatars=true
+FacesDir=/usr/share/sddm/faces
+ThemeDir=/usr/share/sddm/themes
+
+[Users]
+DefaultPath=/usr/local/bin:/usr/bin:/bin
+HideShells=
+HideUsers=
+RememberLastSession=true
+RememberLastUser=true
+ReuseSession=true
+
+[Wayland]
+CompositorCommand=weston --shell=kiosk
+EnableHiDPI=true
+SessionCommand=/usr/share/sddm/scripts/wayland-session
+SessionDir=/usr/local/share/wayland-sessions,/usr/share/wayland-sessions
+SessionLogFile=.local/share/sddm/wayland-session.log
+
+[X11]
+DisplayCommand=/usr/share/sddm/scripts/Xsetup
+DisplayStopCommand=/usr/share/sddm/scripts/Xstop
+EnableHiDPI=true
+ServerArguments=-nolisten tcp
+ServerPath=/usr/bin/X
+SessionCommand=/usr/share/sddm/scripts/Xsession
+SessionDir=/usr/local/share/xsessions,/usr/share/xsessions
+SessionLogFile=.local/share/sddm/xorg-session.log
+XephyrPath=/usr/bin/Xephyr
+
+EOF
+
 
 systemctl enable sddm
 
