@@ -28,8 +28,6 @@ modem-manager
 zxing-cpp
 libndp
 iptables
-pycairo
-pygobject
 gpm
 slang
 newt

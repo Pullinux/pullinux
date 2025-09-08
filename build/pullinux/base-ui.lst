@@ -61,6 +61,8 @@ double-conversion
 gstreamer
 iso-codes
 cairo
+pycairo
+pygobject
 pango
 gst-plugins-base
 libxkbcommon

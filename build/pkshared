@@ -2,6 +2,12 @@
 
 file=$(basename $1)
 
+if [ ! -f sources/$file ]; then
+        if [[ "$1" == https* ]]; then
+                wget $1 -P sources/
+        fi
+fi
+
 generate_name() {
     pckname=$1
     arr=(${pckname//-/ })
@@ -50,6 +56,6 @@ echo "name=$pckname" > packages/$pckdir/pck
 echo "version=$version" >> packages/$pckdir/pck
 echo "source=$file" >> packages/$pckdir/pck
 
-echo "build_inst_pck $pckname" >> added
+echo "$pckname" >> added
 
 export editor=code
