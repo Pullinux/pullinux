@@ -1,4 +1,4 @@
-chmod -v 0755 /usr/libexec/file-roller/isoinfo.shc
+chmod -v 0755 /usr/libexec/file-roller/isoinfo.sh
 
 glib-compile-schemas /usr/share/glib-2.0/schemas
 
