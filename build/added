@@ -1,3 +1,7 @@
-gst-plugins-good
-gst-plugins-bad
-gtk4
+
+gnome-weather
+seahorse
+gst-plugins-rs-gstreamer
+snapshot
+gdm
+file-roller

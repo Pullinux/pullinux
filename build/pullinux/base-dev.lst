@@ -124,15 +124,7 @@ libgudev
 udisks
 cpio
 libsecret
-rest
-totem-pl-parser
-glslc
 soundtouch
-libdvdread
-libdvdnav
-glib-networking
-libsoup
-rest
-totem-pl-parser
-libsecret
 graphene
+fast_float
+libseccomp

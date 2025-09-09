@@ -56,7 +56,8 @@ plx_umount_virt
 
 plx_mount_virt
 
-build_packages kde-system
+#build_packages kde-system
+build_packages gnome-system
 
 create_user_if_none
 
