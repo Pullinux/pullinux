@@ -1,1 +1,1 @@
-git config --global credential.helper store
+git config --system credential.helper store
