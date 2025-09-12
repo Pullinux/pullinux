@@ -8,16 +8,22 @@ useradd  -c "sddm Daemon" \
 mkdir -v __build 
 cd       __build 
 
-cmake -D CMAKE_INSTALL_PREFIX=/usr \
-      -D CMAKE_BUILD_TYPE=Release  \
-      -D RUNTIME_DIR=/run/sddm     \
-      -D BUILD_MAN_PAGES=ON        \
-      -D BUILD_WITH_QT6=ON         \
+cmake -D CMAKE_INSTALL_PREFIX=/usr        \
+      -D CMAKE_BUILD_TYPE=Release         \
+      -D CMAKE_POLICY_VERSION_MINIMUM=3.5 \
+      -D RUNTIME_DIR=/run/sddm            \
+      -D BUILD_MAN_PAGES=ON               \
+      -D BUILD_WITH_QT6=ON                \
       -D DATA_INSTALL_DIR=/usr/share/sddm \
       -D DBUS_CONFIG_FILENAME=sddm_org.freedesktop.DisplayManager.conf \
-      ..
+      .. 
 
 make
 
 make DESTDIR=$PCKDIR install
 
+mkdir -p $PCKDIR/usr/share/sddm/themes/
+
+cd $PCKDIR/usr/share/sddm/themes/
+
+tar -xf $PCKBASE/files/Noir-SDDM-6.tar.gz

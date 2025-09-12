@@ -1,5 +1,5 @@
 
-curl -LO https://github.com/lu-zero/cargo-c/releases/download/v0.10.11/Cargo.lock
+curl -LO https://github.com/lu-zero/cargo-c/releases/download/v0.10.15/Cargo.lock
 
 [ ! -e /usr/include/libssh2.h ] || export LIBSSH2_SYS_USE_PKG_CONFIG=1    &&
 [ ! -e /usr/include/sqlite3.h ] || export LIBSQLITE3_SYS_USE_PKG_CONFIG=1 &&

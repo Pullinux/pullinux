@@ -1,0 +1,3 @@
+name=samba
+version=4.22.4
+source=samba-4.22.4.tar.gz

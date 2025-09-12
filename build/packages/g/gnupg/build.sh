@@ -5,7 +5,7 @@ cd    build
 ../configure --prefix=/usr           \
              --localstatedir=/var    \
              --sysconfdir=/etc       \
-             --docdir=/usr/share/doc/gnupg-2.4.7 
+             --docdir=/usr/share/doc/gnupg-2.4.8 
 
 make
 

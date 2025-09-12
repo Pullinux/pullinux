@@ -1,5 +1,5 @@
 ./configure --prefix=/usr                         \
-            --docdir=/usr/share/doc/man-db-2.13.0 \
+            --docdir=/usr/share/doc/man-db-2.13.1 \
             --sysconfdir=/etc                     \
             --disable-setuid                      \
             --enable-cache-owner=bin              \

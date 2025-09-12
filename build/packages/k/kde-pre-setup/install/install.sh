@@ -63,12 +63,31 @@ cat >> /etc/ld.so.conf << "EOF"
 # End KF6 addition
 EOF
 
+mkdir -p /etc/skel
+
+cat > /etc/skel/.gitconfig << EOF
+[credential]
+    helper = store
+EOF
+
+
+#for now comment out...
 install -v -dm755           $KF6_PREFIX/{etc,share} 
-ln -sfv /etc/dbus-1         $KF6_PREFIX/etc         
-ln -sfv /usr/share/dbus-1   $KF6_PREFIX/share       
-ln -sfv /usr/share/polkit-1 $KF6_PREFIX/share       
+#ln -sfv /etc/dbus-1         $KF6_PREFIX/etc         
+#ln -sfv /usr/share/dbus-1   $KF6_PREFIX/share       
+#ln -sfv /usr/share/polkit-1 $KF6_PREFIX/share       
 install -v -dm755           $KF6_PREFIX/lib         
-ln -sfv /usr/lib/systemd    $KF6_PREFIX/lib
+#ln -sfv /usr/lib/systemd    $KF6_PREFIX/lib
+
+mkdir -p $KF6_PREFIX/etc/dbus-1/
+mkdir -p $KF6_PREFIX/usr/share/dbus-1 
+mkdir -p $KF6_PREFIX/usr/share/polkit-1
+mkdir -p $KF6_PREFIX/usr/share/systemd
 
 install -v -dm755                $KF6_PREFIX/share/icons
 ln -sfv /usr/share/icons/hicolor $KF6_PREFIX/share/icons
+
+rm -rf /etc/skel/.config
+mkdir -p /etc/skel/.config
+
+cp -r config/* /etc/skel/.config/

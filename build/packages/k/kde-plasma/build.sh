@@ -29,4 +29,4 @@ while read -r line; do
     rm -rf $packagedir
     /sbin/ldconfig
 
-done < plasma-6.3.2.md5
+done < plasma-6.4.4.md5

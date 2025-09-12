@@ -1,5 +1,6 @@
 
-patch -Np1 -i $PCKBASE/files/gpm-1.20.7-consolidated-1.patch                
+patch -Np1 -i $PCKBASE/files/gpm-1.20.7-consolidated-1.patch              
+patch -Np1 -i $PCKBASE/files/gpm-1.20.7-gcc15_fixes-1.patch  
 ./autogen.sh                                                    
 ./configure --prefix=/usr --sysconfdir=/etc ac_cv_path_emacs=no 
 

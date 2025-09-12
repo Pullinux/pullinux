@@ -21,7 +21,7 @@ rpc: files
 # End /etc/nsswitch.conf
 EOF
 
-tar -xf tzdata2025a.tar.gz
+tar -xf tzdata2025b.tar.gz
 
 ZONEINFO=/usr/share/zoneinfo
 mkdir -pv $ZONEINFO/{posix,right}

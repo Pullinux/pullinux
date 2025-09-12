@@ -14,7 +14,9 @@ ac_add_options --disable-necko-wifi
 # location service will not function properly.
 ac_add_options --with-google-location-service-api-keyfile=$PWD/google-key
 
-# startup-notification is required since firefox-78
+# If you wish to use libproxy to determine proxy server information, you will
+# need to install the libproxy package and then uncomment the option below:
+#ac_add_options --enable-libproxy
 
 # Uncomment the following option if you have not installed PulseAudio and
 # want to use alsa instead
@@ -84,13 +86,14 @@ ac_add_options --without-wasm-sandboxed-libraries
 unset MOZ_TELEMETRY_REPORTING
 
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/firefox-build-dir
+
+# By default firefox will attempt to use the window class firefox-default on
+# launch. This makes the icon not work properly because wayland does not
+# support the X11 property  class header. Change the remoting name to fix this.
+# This is also reflected in the .desktop file where StartupWMClass is set to
+# firefox.
+MOZ_APP_REMOTINGNAME=firefox
 EOF
-
-for i in {43..47}; do
-   sed -i '/ZWJ/s/}/,CLASS_CHARACTER&/' intl/lwbrk/LineBreaker.cpp 
-done
-
-sed -i 's/icu-i18n/icu-uc &/' js/moz.configure
 
 echo "AIzaSyDxKL42zsPjbke5O8_rPVpVrLrJ8aeE9rQ" > google-key
 

@@ -7,7 +7,7 @@ cmake -D CMAKE_INSTALL_PREFIX=/usr    \
       -D CMAKE_SKIP_INSTALL_RPATH=ON  \
       -D JAS_ENABLE_DOC=NO            \
       -D ALLOW_IN_SOURCE_BUILD=YES    \
-      -D CMAKE_INSTALL_DOCDIR=/usr/share/doc/jasper-4.2.4 \
+      -D CMAKE_INSTALL_DOCDIR=/usr/share/doc/jasper-4.2.8 \
       ..
 
 make

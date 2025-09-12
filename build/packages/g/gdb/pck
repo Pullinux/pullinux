@@ -1,3 +1,3 @@
 name=gdb
-version=16.2
-source=gdb-16.2.tar.xz
+version=16.3
+source=gdb-16.3.tar.xz

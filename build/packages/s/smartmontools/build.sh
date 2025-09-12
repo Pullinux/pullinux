@@ -1,7 +1,7 @@
 
 ./configure --prefix=/usr           \
             --sysconfdir=/etc       \
-            --docdir=/usr/share/doc/smartmontools-7.4
+            --docdir=/usr/share/doc/smartmontools-7.5
             
 make
 

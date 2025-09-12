@@ -1,6 +1,6 @@
 ./configure --prefix=/usr              \
             --disable-static           \
-            --docdir=/usr/share/doc/pkgconf-2.3.0
+            --docdir=/usr/share/doc/pkgconf-2.5.1
 make
 make DESTDIR=$PCKDIR install
 

@@ -23,14 +23,14 @@ meson setup ..                \
       -D nobody-group=nogroup \
       -D sysupdate=disabled   \
       -D ukify=disabled       \
-      -D docdir=/usr/share/doc/systemd-257.3
+      -D docdir=/usr/share/doc/systemd-257.8
 
 ninja 
 DESTDIR=$PCKDIR ninja install
 
 mkdir -p $PCKDIR/usr/share/man
 
-tar -xf $PCKBASE/files/systemd-man-pages-257.3.tar.xz \
+tar -xf $PCKBASE/files/systemd-man-pages-257.8.tar.xz \
     --no-same-owner --strip-components=1   \
     -C $PCKDIR/usr/share/man
 

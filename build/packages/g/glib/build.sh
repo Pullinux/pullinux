@@ -15,9 +15,9 @@ DESTDIR=$PCKDIR ninja install
 
 ninja install
 
-tar xf $PCKBASE/files/gobject-introspection-1.82.0.tar.xz 
+tar xf $PCKBASE/files/gobject-introspection-1.84.0.tar.xz 
 
-meson setup gobject-introspection-1.82.0 gi-build \
+meson setup gobject-introspection-1.84.0 gi-build \
             --prefix=/usr --buildtype=release     
 ninja -C gi-build
 

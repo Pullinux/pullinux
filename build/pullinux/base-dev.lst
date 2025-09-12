@@ -112,7 +112,6 @@ libnvme
 libatasmart
 editables
 pathspec
-packaging
 setuptools_scm
 pluggy
 trove_classifiers
@@ -124,3 +123,8 @@ libblockdev
 libgudev
 udisks
 cpio
+libsecret
+soundtouch
+graphene
+fast_float
+libseccomp

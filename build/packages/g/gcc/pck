@@ -1,3 +1,3 @@
 name=gcc
-version=14.2.0
-source=gcc-14.2.0.tar.xz
+version=15.2.0
+source=gcc-15.2.0.tar.xz

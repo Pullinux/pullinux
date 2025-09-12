@@ -1,16 +1,16 @@
 
-tar -xf $PCKBASE/files/llvm-cmake-19.1.7.src.tar.xz                              
-tar -xf $PCKBASE/files/llvm-third-party-19.1.7.src.tar.xz                        
-sed '/LLVM_COMMON_CMAKE_UTILS/s@../cmake@cmake-19.1.7.src@'          \
+tar -xf $PCKBASE/files/llvm-cmake-20.1.8.src.tar.xz                              
+tar -xf $PCKBASE/files/llvm-third-party-20.1.8.src.tar.xz                        
+sed '/LLVM_COMMON_CMAKE_UTILS/s@../cmake@cmake-20.1.8.src@'          \
     -i CMakeLists.txt                                                
-sed '/LLVM_THIRD_PARTY_DIR/s@../third-party@third-party-19.1.7.src@' \
+sed '/LLVM_THIRD_PARTY_DIR/s@../third-party@third-party-20.1.8.src@' \
     -i cmake/modules/HandleLLVMOptions.cmake
 
-tar -xf $PCKBASE/files/clang-19.1.7.src.tar.xz -C tools &&
-mv tools/clang-19.1.7.src tools/clang
+tar -xf $PCKBASE/files/clang-20.1.8.src.tar.xz -C tools &&
+mv tools/clang-20.1.8.src tools/clang
 
-tar -xf $PCKBASE/files/compiler-rt-19.1.7.src.tar.xz -C projects    &&
-mv projects/compiler-rt-19.1.7.src projects/compiler-rt
+tar -xf $PCKBASE/files/compiler-rt-20.1.8.src.tar.xz -C projects    &&
+mv projects/compiler-rt-20.1.8.src projects/compiler-rt
 
 grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'
 sed 's/utility/tool/' -i utils/FileCheck/CMakeLists.txt

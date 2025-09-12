@@ -1,0 +1,3 @@
+name=libseccomp
+version=2.6.0
+source=libseccomp-2.6.0.tar.gz

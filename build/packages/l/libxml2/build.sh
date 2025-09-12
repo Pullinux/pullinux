@@ -4,7 +4,7 @@
             --with-history          \
             --with-icu              \
             PYTHON=/usr/bin/python3 \
-            --docdir=/usr/share/doc/libxml2-2.13.6
+            --docdir=/usr/share/doc/libxml2-2.14.5
 make
 make DESTDIR=$PCKDIR install
 

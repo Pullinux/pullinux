@@ -81,7 +81,7 @@ prep_build() {
 }
 
 build_cross_binutils_p1() {
-    prep_build binutils-2.44.tar.xz
+    prep_build binutils-2.45.tar.xz
     pushd $CUR_BUILD_PATH
 
     mkdir -v build
@@ -103,15 +103,15 @@ build_cross_binutils_p1() {
 
 build_cross_gcc_p1() {
 
-    prep_build gcc-14.2.0.tar.xz
+    prep_build gcc-15.2.0.tar.xz
     pushd $CUR_BUILD_PATH
 
-    plx_download_source mpfr-4.2.1.tar.xz $SOURCES_DIR
+    plx_download_source mpfr-4.2.2.tar.xz $SOURCES_DIR
     plx_download_source gmp-6.3.0.tar.xz $SOURCES_DIR
     plx_download_source mpc-1.3.1.tar.gz $SOURCES_DIR
 
-    tar -xf $SOURCES_DIR/mpfr-4.2.1.tar.xz
-    mv -v mpfr-4.2.1 mpfr
+    tar -xf $SOURCES_DIR/mpfr-4.2.2.tar.xz
+    mv -v mpfr-4.2.2 mpfr
     tar -xf $SOURCES_DIR/gmp-6.3.0.tar.xz
     mv -v gmp-6.3.0 gmp
     tar -xf $SOURCES_DIR/mpc-1.3.1.tar.gz
@@ -154,7 +154,7 @@ build_cross_gcc_p1() {
 }
 
 build_cross_linux_headers() {
-    prep_build linux-6.13.4.tar.xz
+    prep_build linux-6.16.1.tar.xz
     pushd $CUR_BUILD_PATH
 
 	make mrproper
@@ -172,7 +172,7 @@ build_cross_destdir() {
 }
 
 build_cross_glibc() {
-    prep_build glibc-2.41.tar.xz 
+    prep_build glibc-2.42.tar.xz 
     pushd $CUR_BUILD_PATH
 
     plx_download_source glibc-2.41-fhs-1.patch $SOURCES_DIR
@@ -191,7 +191,6 @@ build_cross_glibc() {
       		--host=$PLX_TGT                    \
       		--build=$(../scripts/config.guess) \
       		--enable-kernel=5.4                \
-      		--with-headers=$PLX/usr/include    \
       		--disable-nscd                     \
       		libc_cv_slibdir=/usr/lib
 
@@ -203,7 +202,7 @@ build_cross_glibc() {
 }
 
 build_cross_libstdcpp() {
-    prep_build gcc-14.2.0.tar.xz
+    prep_build gcc-15.2.0.tar.xz
     pushd $CUR_BUILD_PATH
 
 	mkdir build
@@ -216,7 +215,7 @@ build_cross_libstdcpp() {
     		--disable-multilib              \
     		--disable-nls                   \
     		--disable-libstdcxx-pch         \
-    		--with-gxx-include-dir=/tools/$PLX_TGT/include/c++/14.2.0
+    		--with-gxx-include-dir=/tools/$PLX_TGT/include/c++/15.2.0
 
 	build_cross_destdir
 
@@ -226,7 +225,7 @@ build_cross_libstdcpp() {
 }
 
 build_cross_m4() {
-    prep_build m4-1.4.19.tar.xz
+    prep_build m4-1.4.20.tar.xz
     pushd $CUR_BUILD_PATH
 
 	autoreconf --force
@@ -234,24 +233,21 @@ build_cross_m4() {
             --host=$PLX_TGT \
             --build=$(build-aux/config.guess)
 
-	echo "MAKING WITHOUT HELP2MAN"
-
-	sed 's/^HELP2MAN/HELP2MAN=echo #/' -i doc/Makefile
-	make
-	make DESTDIR=$PLX install
+	build_cross_destdir
 
 	popd
 }
 
 build_cross_ncurses() {
-    prep_build  ncurses-6.5.tar.gz 
+    prep_build  ncurses-6.5-20250809.tgz
     pushd $CUR_BUILD_PATH
 
 	mkdir build
 	pushd build
-	  ../configure AWK=gawk
+	  ../configure --prefix=$PLX/tools AWK=gawk
 	  make -C include
 	  make -C progs tic
+      install progs/tic $PLX/tools/bin
 	popd
 
 	./configure --prefix=/usr                \
@@ -267,8 +263,8 @@ build_cross_ncurses() {
             --disable-stripping          \
             AWK=gawk
 
-	make
-	make DESTDIR=$PLX TIC_PATH=$(pwd)/build/progs/tic install
+	build_cross_destdir
+
 	ln -sv libncursesw.so $PLX/usr/lib/libncurses.so
 	
 	sed -e 's/^#if.*XOPEN.*$/#if 1/' \
@@ -278,7 +274,7 @@ build_cross_ncurses() {
 }
 
 build_cross_bash() {
-    prep_build bash-5.2.37.tar.gz 
+    prep_build bash-5.3.tar.gz 
     pushd $CUR_BUILD_PATH
 
 	./configure --prefix=/usr                      \
@@ -294,7 +290,7 @@ build_cross_bash() {
 }
 
 build_cross_coreutils() {
-    prep_build coreutils-9.6.tar.xz 
+    prep_build coreutils-9.7.tar.xz 
     pushd $CUR_BUILD_PATH
 
 	autoreconf --force
@@ -315,11 +311,12 @@ build_cross_coreutils() {
 }
 
 build_cross_diffutils() {
-    prep_build diffutils-3.11.tar.xz 
+    prep_build diffutils-3.12.tar.xz 
     pushd $CUR_BUILD_PATH
 
 	./configure --prefix=/usr   \
             --host=$PLX_TGT \
+            gl_cv_func_strcasecmp_works=y \
             --build=$(./build-aux/config.guess)
 
 	build_cross_destdir
@@ -342,10 +339,8 @@ build_cross_file() {
 	  make
 	popd
 
-	echo "CONFIGURE"
 	./configure --prefix=/usr --host=$PLX_TGT --build=$(./config.guess)
 
-	echo "MAKE"
 	make FILE_COMPILE=$(pwd)/build/src/file
 
 	make DESTDIR=$PLX install
@@ -372,7 +367,7 @@ build_cross_findutils() {
 }
 
 build_cross_gawk() {
-    prep_build gawk-5.3.1.tar.xz 
+    prep_build gawk-5.3.2.tar.xz 
     pushd $CUR_BUILD_PATH
 
 	sed -i 's/extras//' Makefile.in
@@ -387,7 +382,7 @@ build_cross_gawk() {
 }
 
 build_cross_grep() {
-    prep_build grep-3.11.tar.xz 
+    prep_build grep-3.12.tar.xz 
     pushd $CUR_BUILD_PATH
 
 	./configure --prefix=/usr   \
@@ -401,7 +396,7 @@ build_cross_grep() {
 
 
 build_cross_gzip() {
-    prep_build gzip-1.13.tar.xz 
+    prep_build gzip-1.14.tar.xz 
     pushd $CUR_BUILD_PATH
 
 	./configure --prefix=/usr --host=$PLX_TGT
@@ -426,7 +421,7 @@ build_cross_make() {
 }
 
 build_cross_patch() {
-    prep_build patch-2.7.6.tar.xz 
+    prep_build patch-2.8.tar.xz 
     pushd $CUR_BUILD_PATH
 
     ./configure --prefix=/usr   \
@@ -465,12 +460,12 @@ build_cross_tar() {
 }
 
 build_cross_xz() {
-    prep_build xz-5.6.4.tar.xz 
+    prep_build xz-5.8.1.tar.xz 
     pushd $CUR_BUILD_PATH
 
     ./configure --prefix=/usr   \
         --host=$PLX_TGT \
-    --disable-static --docdir=/usr/share/doc/xz-5.6.4 \
+    --disable-static --docdir=/usr/share/doc/xz-5.8.1 \
         --build=$(build-aux/config.guess)
 
     build_cross_destdir
@@ -481,7 +476,7 @@ build_cross_xz() {
 }
 
 build_cross_binutils_p2() {
-    prep_build binutils-2.44.tar.xz 
+    prep_build binutils-2.45.tar.xz 
     pushd $CUR_BUILD_PATH
 
 	rm -rf build
@@ -509,11 +504,11 @@ build_cross_binutils_p2() {
 }
 
 build_cross_gcc_p2() {
-    prep_build gcc-14.2.0.tar.xz 
+    prep_build gcc-15.2.0.tar.xz 
     pushd $CUR_BUILD_PATH
 
-	tar -xf $SOURCES_DIR/mpfr-4.2.1.tar.xz
-	mv -v mpfr-4.2.1 mpfr
+	tar -xf $SOURCES_DIR/mpfr-4.2.2.tar.xz
+	mv -v mpfr-4.2.2 mpfr
 	tar -xf $SOURCES_DIR/gmp-6.3.0.tar.xz
 	mv -v gmp-6.3.0 gmp
 	tar -xf $SOURCES_DIR/mpc-1.3.1.tar.gz
@@ -620,7 +615,7 @@ plx_create_init_config() {
 }
 
 plx_build_gettext() {
-	plx_prep_release_build "gettext-0.24.tar.xz"
+	plx_prep_release_build "gettext-0.26.tar.xz"
 	run_in_chroot chr-steps.sh "build_gettext"
 }
 
@@ -630,12 +625,12 @@ plx_build_bison() {
 }
 
 plx_build_perl() {
-	plx_prep_release_build perl-5.40.1.tar.xz
+	plx_prep_release_build perl-5.42.0.tar.xz
     run_in_chroot chr-steps.sh build_perl
 }
 
 plx_build_python() {
-    plx_prep_release_build Python-3.13.2.tar.xz
+    plx_prep_release_build Python-3.13.7.tar.xz
     run_in_chroot chr-steps.sh build_python
 }
 
@@ -645,7 +640,7 @@ plx_build_texinfo() {
 }
 
 plx_build_utillinux() {
-    plx_prep_release_build util-linux-2.40.4.tar.xz
+    plx_prep_release_build util-linux-2.41.1.tar.xz
     run_in_chroot chr-steps.sh build_utillinux
 }
 

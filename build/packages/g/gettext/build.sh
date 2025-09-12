@@ -1,6 +1,6 @@
 ./configure --prefix=/usr    \
             --disable-static \
-            --docdir=/usr/share/doc/gettext-0.24
+            --docdir=/usr/share/doc/gettext-0.26
 make
 make DESTDIR=$PCKDIR install
 

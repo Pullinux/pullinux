@@ -9,11 +9,13 @@ meson setup ..                    \
       -D nmtui=true               \
       -D ovs=false                \
       -D ppp=false                \
+      -D nbft=false               \
       -D selinux=false            \
       -D qt=false                 \
       -D session_tracking=systemd \
-      -D modem_manager=false 
+      -D nm_cloud_setup=false     \
+      -D modem_manager=false  
 ninja
 DESTDIR=$PCKDIR ninja install
 
-mv -v $PCKDIR/usr/share/doc/NetworkManager{,-1.50.0}
+mv -v $PCKDIR/usr/share/doc/NetworkManager{,-1.54.0}

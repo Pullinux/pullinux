@@ -1,3 +1,6 @@
+patch -Np1 -i $PCKBASE/files/cyrus-sasl-2.1.28-gcc15_fixes-1.patch
+autoreconf -fiv
+
 sed '/saslint/a #include <time.h>'       -i lib/saslutil.c 
 sed '/plugin_common/a #include <time.h>' -i plugins/cram.c
 

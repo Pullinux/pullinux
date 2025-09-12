@@ -2,7 +2,13 @@
 mkdir -p $PCKDIR/etc
 mkdir -p $PCKDIR/etc/ld.so.conf.d
 
-patch -Np1 -i $PCKBASE/files/glibc-2.41-fhs-1.patch
+patch -Np1 -i $PCKBASE/files/glibc-2.42-fhs-1.patch
+
+sed -e '/unistd.h/i #include <string.h>' \
+    -e '/libc_rwlock_init/c\
+  __libc_rwlock_define_initialized (, reset_lock);\
+  memcpy (&lock, &reset_lock, sizeof (lock));' \
+    -i stdlib/abort.c 
 
 mkdir build
 cd build

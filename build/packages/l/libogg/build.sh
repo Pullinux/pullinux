@@ -1,7 +1,7 @@
 
 ./configure --prefix=/usr    \
             --disable-static \
-            --docdir=/usr/share/doc/libogg-1.3.5
+            --docdir=/usr/share/doc/libogg-1.3.6
 
 make
 

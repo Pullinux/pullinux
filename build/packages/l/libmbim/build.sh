@@ -1,7 +1,13 @@
+mkdir build 
+cd    build 
 
-./configure --prefix=/usr --disable-static
+meson setup ..                 \
+      --prefix=/usr            \
+      --buildtype=release      \
+      -D bash_completion=false \
+      -D man=false             
 
-make
+ninja
 
-make DESTDIR=$PCKDIR install
+DESTDIR=$PCKDIR ninja install
 

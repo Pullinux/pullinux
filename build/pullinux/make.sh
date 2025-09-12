@@ -46,7 +46,7 @@ create_user_if_none() {
             PATH=/usr/bin:/usr/sbin     \
             MAKEFLAGS="-j$(nproc)"      \
             TESTSUITEFLAGS="-j$(nproc)" \
-            /bin/bash --login -e -c "useradd -m -G wheel $username; usermod -aG netdev $username || true; passwd $username"
+            /bin/bash --login -e -c "useradd -m -G wheel $username; usermod -aG netdev $username || true; passwd $username; /usr/sbin/ldconfig"
 
     fi
 }
@@ -56,7 +56,8 @@ plx_umount_virt
 
 plx_mount_virt
 
-build_packages kde-system
+#build_packages kde-system
+build_packages base-nodev
 
 create_user_if_none
 

@@ -22,7 +22,7 @@ meson setup ..                 \
       -D nobody-group=nogroup  \
       -D sysupdate=disabled    \
       -D ukify=disabled        \
-      -D docdir=/usr/share/doc/systemd-257.3
+      -D docdir=/usr/share/doc/systemd-257.8
 
 ninja
 DESTDIR=$PCKDIR ninja install

@@ -1,4 +1,5 @@
 patch -Np1 -i $PCKBASE/files/xine-lib-1.2.13-upstream_fixes-1.patch
+patch -Np1 -i $PCKBASE/files/xine-lib-1.2.13-gcc15_fixes-1.patch
 
 ./configure --prefix=/usr          \
             --disable-vcd          \

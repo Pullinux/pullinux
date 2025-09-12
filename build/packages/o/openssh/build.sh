@@ -26,9 +26,9 @@ install -v -m755    contrib/ssh-copy-id $PCKDIR/usr/bin     &&
 
 install -v -m644    contrib/ssh-copy-id.1 \
                     /usr/share/man/man1              &&
-install -v -m755 -d /usr/share/doc/openssh-9.9p2     &&
+install -v -m755 -d /usr/share/doc/openssh-10.0p1     &&
 install -v -m644    INSTALL LICENCE OVERVIEW README* \
-                    /usr/share/doc/openssh-9.9p2
+                    /usr/share/doc/openssh-10.0p1
 
 echo "PermitRootLogin no" >> $PCKDIR/etc/ssh/sshd_config
 

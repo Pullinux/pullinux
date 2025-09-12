@@ -1,13 +1,12 @@
 
-./configure --prefix=/usr                 \
-            --sysconfdir=/etc             \
-            --localstatedir=/var          \
-            --disable-static              \
-            --disable-maintainer-mode     \
-            --with-systemd-journal        \
-            --with-systemd-suspend-resume
+mkdir build 
+cd    build 
 
-make
-
-make DESTDIR=$PCKDIR install
+meson setup ..                 \
+      --prefix=/usr            \
+      --buildtype=release      \
+      -D bash_completion=false \
+      -D qrtr=false            
+ninja
+DESTDIR=$PCKDIR ninja install
 

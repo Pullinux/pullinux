@@ -1,7 +1,4 @@
 
-echo "KDEFW: $PWD"
-
-ls -ls
 
 while read -r line; do
 
@@ -25,6 +22,7 @@ while read -r line; do
             -D CMAKE_SKIP_INSTALL_RPATH=ON      \
             -D CMAKE_BUILD_TYPE=Release         \
             -D BUILD_TESTING=OFF                \
+            -D BUILD_PYTHON_BINDINGS=OFF        \
             -W no-dev ..
       make
       make DESTDIR=$PCKDIR install
@@ -34,4 +32,4 @@ while read -r line; do
   rm -rf $packagedir
   /sbin/ldconfig
 
-done < frameworks-6.11.0.md5
+done < frameworks-6.17.0.md5
