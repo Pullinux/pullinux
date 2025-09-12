@@ -4,7 +4,7 @@ BUILD_TMP=$BUILD_DIR/build_tmp
 SOURCES_DIR=$BUILD_DIR/sources
 STATUS_FILE=$BUILD_DIR/.status
 
-SOURCE_RELEASE=https://github.com/Pullinux/pullinux/releases/download/1.0
+SOURCE_RELEASE=https://github.com/Pullinux/pullinux/releases/download/1.1
 
 plx_download_source() {
     package=$1

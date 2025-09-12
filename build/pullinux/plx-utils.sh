@@ -41,7 +41,7 @@ chroot_build() {
 
 	sudo chroot "$PLX" /usr/bin/env -i   \
 	    HOME=/root                  \
-	    PS1='(lfs chroot) \u:\w\$ ' \
+	    PS1='(plx chroot) \u:\w\$ ' \
 	    PATH=/usr/bin:/usr/sbin     \
 	    MAKEFLAGS="-j$(nproc)"      \
 	    TESTSUITEFLAGS="-j$(nproc)" \
@@ -144,20 +144,8 @@ install_pck() {
 
 	echo "Installing $PLX_BUILD_FILE"
 
-	sudo cp $PLX_BUILD_FILE $PLX$PLX_BUILD_FILE
-	
-	sudo chroot "$PLX" /usr/bin/env -i   \
-		HOME=/root                  \
-		PS1='(plx chroot) \u:\w\$ ' \
-		PATH=/usr/bin:/usr/sbin     \
-		MAKEFLAGS="-j$(nproc)"      \
-		TESTSUITEFLAGS="-j$(nproc)" \
-		/bin/bash --login -e -c "cd / && tar -xhf $PLX_BUILD_FILE"
-		
-	sudo rm $PLX$PLX_BUILD_FILE
-
-	if [ -f $PLX/.install/install.sh ]; then
-		echo "Running installer..."
+	if [ "$PLX" != "/" ]; then
+		sudo cp $PLX_BUILD_FILE $PLX$PLX_BUILD_FILE
 
 		sudo chroot "$PLX" /usr/bin/env -i   \
 			HOME=/root                  \
@@ -165,7 +153,27 @@ install_pck() {
 			PATH=/usr/bin:/usr/sbin     \
 			MAKEFLAGS="-j$(nproc)"      \
 			TESTSUITEFLAGS="-j$(nproc)" \
-			/bin/bash --login -e -c "cd /.install && bash -e install.sh"
+			/bin/bash --login -e -c "cd / && tar -xhf $PLX_BUILD_FILE"
+
+		sudo rm $PLX$PLX_BUILD_FILE
+	else
+		sudo /bin/bash --login -e -c "cd / && tar -xhf $PLX_BUILD_FILE"
+	fi
+
+	if [ -f $PLX/.install/install.sh ]; then
+		echo "Running installer..."
+
+		if [ "$PLX" != "/" ]; then
+			sudo chroot "$PLX" /usr/bin/env -i   \
+				HOME=/root                  \
+				PS1='(plx chroot) \u:\w\$ ' \
+				PATH=/usr/bin:/usr/sbin     \
+				MAKEFLAGS="-j$(nproc)"      \
+				TESTSUITEFLAGS="-j$(nproc)" \
+				/bin/bash --login -e -c "cd /.install && bash -e install.sh"
+		else
+			sudo /bin/bash --login -e -c "cd /.install && bash -e install.sh"
+		fi
 
 		sudo rm -rf $PLX/.install
 	fi
