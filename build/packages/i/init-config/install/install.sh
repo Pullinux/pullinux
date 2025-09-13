@@ -320,3 +320,84 @@ cp ~/.bashrc /etc/skel/
 cp ~/.profile /etc/skel/
 cp ~/.bash_logout /etc/skel/
 
+
+#32bit stuffs...
+
+mkdir -pv /usr/share/pkgconfig/personality.d &&
+
+cat > /usr/share/pkgconfig/personality.d/x86_64-pc-linux-gnu.personality << "EOF" &&
+Triplet: x86_64-pc-linux-gnu
+SysrootDir: /
+DefaultSearchPaths: /usr/lib/pkgconfig:/usr/share/pkgconfig
+SystemIncludePaths: /usr/include
+SystemLibraryPaths: /usr/lib
+EOF
+
+cat > /usr/share/pkgconfig/personality.d/i686-pc-linux-gnu.personality << "EOF"
+Triplet: i686-pc-linux-gnu
+SysrootDir: /
+DefaultSearchPaths: /usr/lib32/pkgconfig:/usr/share/pkgconfig
+SystemIncludePaths: /usr/include
+SystemLibraryPaths: /usr/lib32
+EOF
+
+ln -sv pkgconf /usr/bin/x86_64-pc-linux-gnu-pkg-config
+ln -sv pkgconf /usr/bin/i686-pc-linux-gnu-pkg-config
+
+x86_64-pc-linux-gnu-pkg-config --dump-personality
+i686-pc-linux-gnu-pkg-config --dump-personality
+
+mkdir -pv /usr/share/meson/cross &&
+
+cat > /usr/share/meson/cross/lib32 << "EOF"
+[binaries]
+c = ['gcc', '-m32']
+cpp = ['g++', '-m32']
+rust = ['rustc', '--target', 'i686-unknown-linux-gnu']
+pkg-config = 'i686-pc-linux-gnu-pkg-config'
+ar = '/usr/bin/ar'
+strip = '/usr/bin/strip'
+cups-config = 'cups-config'
+llvm-config = 'llvm-config'
+exe_wrapper = ''
+
+[properties]
+sizeof_void* = 4
+sizeof_long = 4
+
+[host_machine]
+system = 'linux'
+subsystem = 'linux'
+kernel = 'linux'
+cpu_family = 'x86'
+cpu = 'i686'
+endian = 'little'
+EOF
+
+mkdir -pv /usr/share/meson/native &&
+
+cat > /usr/share/meson/native/x86 << "EOF"
+[binaries]
+c = ['gcc', '-m32']
+cpp = ['g++', '-m32']
+rust = ['rustc', '--target', 'i686-unknown-linux-gnu']
+pkg-config = 'i686-pc-linux-gnu-pkg-config'
+ar = '/usr/bin/ar'
+strip = '/usr/bin/strip'
+cups-config = 'cups-config'
+llvm-config = 'llvm-config'
+exe_wrapper = ''
+
+[properties]
+sizeof_void* = 4
+sizeof_long = 4
+
+[host_machine]
+system = 'linux'
+subsystem = 'linux'
+kernel = 'linux'
+cpu_family = 'x86'
+cpu = 'i686'
+endian = 'little'
+EOF
+

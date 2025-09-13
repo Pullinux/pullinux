@@ -30,8 +30,7 @@ DESTDIR=$PCKDIR ninja install
 #32bit
 mkdir -p $PCKDIR/usr/lib32/pkgconfig
 rm -rf *
-LANG=en_US.UTF-8                     \
-meson setup --cross-file lib32       \
+LANG=en_US.UTF-8 meson setup --cross-file lib32       \
             --prefix=/usr            \
             --libdir=/usr/lib32      \
             --buildtype=release      \

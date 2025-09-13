@@ -6,6 +6,7 @@ meson setup ..              \
       --prefix=$XORG_PREFIX \
       --localstatedir=/var  \
       -D glamor=true        \
+      -D secure-rpc=false   \
       -D xkb_output_dir=/var/lib/xkb
 ninja
 DESTDIR=$PCKDIR ninja install

@@ -26,8 +26,8 @@ meson setup --cross-file=lib32  \
             -D tests=false      \
             .. 
 
-make
-make DESTDIR=$PWD/DESTDIR install
+ninja
+DESTDIR=$PWD/DESTDIR ninja install
 cp -Rv DESTDIR/usr/lib32/* $PCKDIR/usr/lib32
 rm -rf DESTDIR
 ldconfig

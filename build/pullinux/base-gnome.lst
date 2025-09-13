@@ -38,7 +38,7 @@ enchant
 unifdef
 ruby
 webkitgtk
-poppler
+poppler-noqt
 evolution-data-server
 tinysparql
 libgxps

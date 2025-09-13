@@ -2,3 +2,6 @@ isl
 alsa-plugins
 alsa-utils
 dbus-x
+libunwind
+libglvnd
+steam_1.0.0.83

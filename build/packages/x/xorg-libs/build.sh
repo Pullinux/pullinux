@@ -85,6 +85,7 @@ do
     ;;
   
     libpciaccess* )
+      rm -rf build
       mkdir build
       cd    build
         CC="gcc -m32" CXX="g++ -m32" PKG_CONFIG_PATH=/usr/lib32/pkgconfig \

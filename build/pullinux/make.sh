@@ -57,7 +57,8 @@ plx_umount_virt
 plx_mount_virt
 
 #build_packages kde-system
-build_packages base-system
+build_packages base-ui-ml
+build_packages gnome-system
 
 create_user_if_none
 
