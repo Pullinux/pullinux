@@ -1,18 +1,25 @@
 
-sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
+sed -e '/m64=/s/lib64/lib/' \
+    -e '/m32=/s/m32=.*/m32=..\/lib32$(call if_multiarch,:i386-linux-gnu)/' \
+    -i.orig gcc/config/i386/t-linux64
+
+sed '/STACK_REALIGN_DEFAULT/s/0/(!TARGET_64BIT \&\& TARGET_SSE)/' \
+      -i gcc/config/i386/i386.h
 
 mkdir -v build
 cd       build
 
-../configure --prefix=/usr            \
-             LD=ld                    \
-             --enable-languages=c,c++ \
-             --enable-default-pie     \
-             --enable-default-ssp     \
-             --enable-host-pie        \
-             --disable-multilib       \
-             --disable-bootstrap      \
-             --disable-fixincludes    \
+mlist=m64,m32
+../configure --prefix=/usr               \
+             LD=ld                       \
+             --enable-languages=c,c++    \
+             --enable-default-pie        \
+             --enable-default-ssp        \
+             --enable-host-pie           \
+             --enable-multilib           \
+             --with-multilib-list=$mlist \
+             --disable-bootstrap         \
+             --disable-fixincludes       \
              --with-system-zlib
 
 make

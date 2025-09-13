@@ -1,0 +1,10 @@
+
+./configure --disable-alsaconf \
+            --disable-bat      \
+            --disable-xmlto    \
+            --with-curses=ncursesw 
+
+make
+
+make DESTDIR=$PCKDIR install
+

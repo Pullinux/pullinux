@@ -1,9 +1,3 @@
-sed -e "s/'elinks'/'lynx'/"                       \
-    -e "s/'-no-numbering', '-no-references'/      \
-          '-force-html', '-nonumbers', '-stdin'/" \
-    -i meson.build
-
-
 
 mkdir __build && cd __build
 meson setup --prefix=/usr --buildtype=release -D docdir=/usr/share/doc/Linux-PAM-1.7.1 ..
@@ -14,6 +8,25 @@ install -v -m755 -d $PCKDIR/etc/pam.d
 DESTDIR=$PCKDIR ninja install
 
 chmod -v 4755 $PCKDIR/usr/sbin/unix_chkpwd
+
+#32bit
+mkdir -p $PCKDIR/usr/lib32
+
+rm -rf * 
+CC="gcc -m32" CXX="g++ -m32"           \
+PKG_CONFIG_PATH="/usr/lib32/pkgconfig" \
+meson setup ..                         \
+  --prefix=/usr                        \
+  --libdir=/usr/lib32                  \
+  --buildtype=release                  \
+  -D docs=disabled 
+
+ninja
+DESTDIR=$PWD/DESTDIR ninja install  
+cp -Rv DESTDIR/usr/lib32/* $PCKDIR/usr/lib32
+rm -rf DESTDIR
+ldconfig
+
 
 cat > $PCKDIR/etc/pam.d/system-account << "EOF" &&
 # Begin /etc/pam.d/system-account

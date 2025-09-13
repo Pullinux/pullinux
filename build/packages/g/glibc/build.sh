@@ -31,3 +31,29 @@ make DESTDIR=$PCKDIR install
 
 sed '/RTLDLIST=/s@/usr@@g' -i $PCKDIR/usr/bin/ldd
 
+#32bit
+rm -rf ./*
+find .. -name "*.a" -delete
+
+CC="gcc -m32" CXX="g++ -m32" \
+../configure                             \
+      --prefix=/usr                      \
+      --host=i686-pc-linux-gnu           \
+      --build=$(../scripts/config.guess) \
+      --libdir=/usr/lib32                \
+      --libexecdir=/usr/lib32            \
+      --disable-werror                   \
+      --disable-nscd                     \
+      libc_cv_slibdir=/usr/lib32         \
+      --enable-stack-protector=strong    \
+      --enable-kernel=5.4
+
+make
+make DESTDIR=$PWD/DESTDIR install
+
+mkdir -p $PCKDIR/usr/lib32
+mkdir -p $PCKDIR/usr/include/gnu/
+
+cp -a DESTDIR/usr/lib32/* /usr/lib32/
+install -vm644 DESTDIR/usr/include/gnu/{lib-names,stubs}-32.h \
+               $PCKDIR/usr/include/gnu/

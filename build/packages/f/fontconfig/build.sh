@@ -1,11 +1,22 @@
+mkdir build &&
+cd    build &&
 
-./configure --prefix=/usr         \
-            --sysconfdir=/etc    \
-            --localstatedir=/var \
-            --disable-docs       \
-            --docdir=/usr/share/doc/fontconfig-2.17.1
+meson setup --prefix=/usr --buildtype=release ..
 
-make
+ninja
+DESTDIR=$PCKDIR ninja install
 
-make DESTDIR=$PCKDIR install
 
+#32bit
+mkdir -p $PCKDIR/usr/lib32
+rm -rf * &&
+meson setup --prefix=/usr       \
+            --libdir=/usr/lib32 \
+            --cross-file=lib32  \
+            --buildtype=release \
+            ..
+ninja
+DESTDIR=$PWD/DESTDIR ninja install
+cp -Rv DESTDIR/usr/lib32/* $PCKDIR/usr/lib32
+rm -rf DESTDIR
+ldconfig

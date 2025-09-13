@@ -54,6 +54,12 @@ plx_init() {
     done
 
     sudo chown -v $BUILD_USER $PLX/{usr{,/*},var,etc,tools,lib64}
+
+    #multilib extension:
+    sudo mkdir -pv $PLX/usr/lib32
+    sudo ln -sv usr/lib32 $PLX/lib32
+
+    sudo chown -v $BUILD_USER $PLX/usr/lib32
 }
 
 CUR_BUILD_PATH=
@@ -117,30 +123,38 @@ build_cross_gcc_p1() {
     tar -xf $SOURCES_DIR/mpc-1.3.1.tar.gz
     mv -v mpc-1.3.1 mpc
 
-    sed -e '/m64=/s/lib64/lib/' -i.orig gcc/config/i386/t-linux64
+    sed -e '/m64=/s/lib64/lib/' \
+        -e '/m32=/s/m32=.*/m32=..\/lib32$(call if_multiarch,:i386-linux-gnu)/' \
+        -i.orig gcc/config/i386/t-linux64
+
+    sed '/STACK_REALIGN_DEFAULT/s/0/(!TARGET_64BIT \&\& TARGET_SSE)/' \
+      -i gcc/config/i386/i386.h
 
     mkdir -v build
     cd       build
 
+    mlist=m64,m32
     ../configure                  \
-        --target=$PLX_TGT         \
-        --prefix=$PLX/tools       \
-        --with-glibc-version=2.41 \
-        --with-sysroot=$PLX       \
-        --with-newlib             \
-        --without-headers         \
-        --enable-default-pie      \
-        --enable-default-ssp      \
-        --disable-nls             \
-        --disable-shared          \
-        --disable-multilib        \
-        --disable-threads         \
-        --disable-libatomic       \
-        --disable-libgomp         \
-        --disable-libquadmath     \
-        --disable-libssp          \
-        --disable-libvtv          \
-        --disable-libstdcxx       \
+        --target=$PLX_TGT                              \
+        --prefix=$PLX/tools                            \
+        --with-glibc-version=2.42                      \
+        --with-sysroot=$PLX                            \
+        --with-newlib                                  \
+        --without-headers                              \
+        --enable-default-pie                           \
+        --enable-default-ssp                           \
+        --enable-initfini-array                        \
+        --disable-nls                                  \
+        --disable-shared                               \
+        --enable-multilib --with-multilib-list=$mlist  \
+        --disable-decimal-float                        \
+        --disable-threads                              \
+        --disable-libatomic                            \
+        --disable-libgomp                              \
+        --disable-libquadmath                          \
+        --disable-libssp                               \
+        --disable-libvtv                               \
+        --disable-libstdcxx                            \
         --enable-languages=c,c++
 
     make
@@ -176,10 +190,11 @@ build_cross_glibc() {
     pushd $CUR_BUILD_PATH
 
     plx_download_source glibc-2.41-fhs-1.patch $SOURCES_DIR
+
     patch -Np1 -i $SOURCES_DIR/glibc-2.41-fhs-1.patch
 
 	ln -sfv ../lib/ld-linux-x86-64.so.2 $PLX/lib64/
-        ln -sfv ../lib/ld-linux-x86-64.so.2 $PLX/lib64/ld-lsb-x86-64.so.3
+    ln -sfv ../lib/ld-linux-x86-64.so.2 $PLX/lib64/ld-lsb-x86-64.so.3
 
 	mkdir build
 	cd build
@@ -198,6 +213,32 @@ build_cross_glibc() {
 
 	sed '/RTLDLIST=/s@/usr@@g' -i $PLX/usr/bin/ldd
 
+    #build 32 bit...
+
+    make clean
+    find .. -name "*.a" -delete
+
+    CC="$PLX_TGT-gcc -m32" \
+    CXX="$PLX_TGT-g++ -m32" \
+    ../configure                             \
+        --prefix=/usr                      \
+        --host=$PLX_TGT32                  \
+        --build=$(../scripts/config.guess) \
+        --disable-nscd                     \
+        --with-headers=$PLX/usr/include    \
+        --libdir=/usr/lib32                \
+        --libexecdir=/usr/lib32            \
+        libc_cv_slibdir=/usr/lib32         \
+        --enable-kernel=5.4
+
+    make
+    make DESTDIR=$PWD/DESTDIR install
+    
+    cp -a DESTDIR/usr/lib32 $PLX/usr/
+    install -vm644 DESTDIR/usr/include/gnu/{lib-names,stubs}-32.h \
+                $PLX/usr/include/gnu/
+    ln -svf ../lib32/ld-linux.so.2 $PLX/lib/ld-linux.so.2
+        
 	popd
 }
 
@@ -212,7 +253,7 @@ build_cross_libstdcpp() {
     		--host=$PLX_TGT                 \
     		--build=$(../config.guess)      \
     		--prefix=/usr                   \
-    		--disable-multilib              \
+    		--enable-multilib              \
     		--disable-nls                   \
     		--disable-libstdcxx-pch         \
     		--with-gxx-include-dir=/tools/$PLX_TGT/include/c++/15.2.0
@@ -228,7 +269,8 @@ build_cross_m4() {
     prep_build m4-1.4.20.tar.xz
     pushd $CUR_BUILD_PATH
 
-	autoreconf --force
+	sed 's/\[\[__nodiscard__]]//' -i lib/config.hin
+
 	./configure --prefix=/usr   \
             --host=$PLX_TGT \
             --build=$(build-aux/config.guess)
@@ -269,6 +311,29 @@ build_cross_ncurses() {
 	
 	sed -e 's/^#if.*XOPEN.*$/#if 1/' \
 	    -i $PLX/usr/include/curses.h
+
+    #32bit
+
+    make distclean
+
+    CC="$PLX_TGT-gcc -m32"              \
+    CXX="$PLX_TGT-g++ -m32"             \
+    ./configure --prefix=/usr           \
+                --host=$PLX_TGT32       \
+                --build=$(./config.guess)    \
+                --libdir=/usr/lib32     \
+                --mandir=/usr/share/man \
+                --with-shared           \
+                --without-normal        \
+                --with-cxx-shared       \
+                --without-debug         \
+                --without-ada           \
+                --disable-stripping
+    make
+    make DESTDIR=$PWD/DESTDIR TIC_PATH=$(pwd)/build/progs/tic install
+    ln -sv libncursesw.so DESTDIR/usr/lib32/libncurses.so
+    cp -Rv DESTDIR/usr/lib32/* $PLX/usr/lib32
+    rm -rf DESTDIR
 
 	popd
 }
@@ -515,33 +580,37 @@ build_cross_gcc_p2() {
 	mv -v mpc-1.3.1 mpc
 
 	sed -e '/m64=/s/lib64/lib/' \
- 	       -i.orig gcc/config/i386/t-linux64
+        -e '/m32=/s/m32=.*/m32=..\/lib32$(call if_multiarch,:i386-linux-gnu)/' \
+        -i.orig gcc/config/i386/t-linux64
 
-	sed '/thread_header =/s/@.*@/gthr-posix.h/' \
-    		-i libgcc/Makefile.in libstdc++-v3/include/Makefile.in
+    sed '/STACK_REALIGN_DEFAULT/s/0/(!TARGET_64BIT \&\& TARGET_SSE)/' \
+        -i gcc/config/i386/i386.h
 
-	rm -rf build
+    sed '/thread_header =/s/@.*@/gthr-posix.h/' \
+        -i libgcc/Makefile.in libstdc++-v3/include/Makefile.in
+
 
 	mkdir build && cd build
 
-	../configure                                       \
-	    --build=$(../config.guess)                     \
-	    --host=$PLX_TGT                                \
-	    --target=$PLX_TGT                              \
-	    LDFLAGS_FOR_TARGET=-L$PWD/$PLX_TGT/libgcc      \
-	    --prefix=/usr                                  \
-	    --with-build-sysroot=$PLX                      \
-	    --enable-default-pie                           \
-	    --enable-default-ssp                           \
-	    --disable-nls                                  \
-	    --disable-multilib                             \
-	    --disable-libatomic                            \
-	    --disable-libgomp                              \
-	    --disable-libquadmath                          \
-	    --disable-libsanitizer                         \
-	    --disable-libssp                               \
-	    --disable-libvtv                               \
-	    --enable-languages=c,c++
+	mlist=m64,m32
+    ../configure                                       \
+        --build=$(../config.guess)                     \
+        --host=$PLX_TGT                                \
+        --target=$PLX_TGT                              \
+        --prefix=/usr                                  \
+        --with-build-sysroot=$PLX                      \
+        --enable-default-pie                           \
+        --enable-default-ssp                           \
+        --disable-nls                                  \
+        --enable-multilib --with-multilib-list=$mlist  \
+        --disable-libatomic                            \
+        --disable-libgomp                              \
+        --disable-libquadmath                          \
+        --disable-libsanitizer                         \
+        --disable-libssp                               \
+        --disable-libvtv                               \
+        --enable-languages=c,c++                       \
+        LDFLAGS_FOR_TARGET=-L$PWD/$PLX_TGT/libgcc
 
 	build_cross_destdir
 
@@ -552,6 +621,7 @@ build_cross_gcc_p2() {
 
 plx_prep_virt() {
 	sudo chown -R root:root $PLX/{usr,lib,var,etc,bin,sbin,tools,lib64}
+    sudo chown -R root:root $PLX/lib32
 	sudo mkdir -pv $PLX/{dev,proc,sys,run}
 	sudo mkdir -pv $PLX/usr/share/plx/{bin,tmp,src}
 }
@@ -579,7 +649,7 @@ run_in_chroot() {
 	sudo chroot "$PLX" /usr/bin/env -i   \
 	    HOME=/root                  \
 	    TERM="$TERM"                \
-	    PS1='(lfs chroot) \u:\w\$ ' \
+	    PS1='(PLX chroot) \u:\w\$ ' \
 	    PATH=/usr/bin:/usr/sbin     \
 	    MAKEFLAGS="-j$(nproc)"      \
 	    TESTSUITEFLAGS="-j$(nproc)" \
@@ -647,10 +717,11 @@ plx_build_utillinux() {
 plx_cross_cleanup() {
 	sudo rm -rf ${PLX:?}/usr/share/{info,man,doc}/*
 	sudo find $PLX/usr/{lib,libexec} -name \*.la -delete
+    sudo find $PLX/usr/lib32 -name \*.la -delete
 	sudo rm -rf $PLX/tools
 }
 
 plx_cross_backup() {
     mkdir -p $BACKUP_DIR/
-	sudo tar -cJpf $BACKUP_DIR/plx-temp-tools.txz -C ${PLX:?}/ .
+	sudo tar -cJpf $BACKUP_DIR/plx-temp-tools-ml-1.2.txz -C ${PLX:?}/ .
 }

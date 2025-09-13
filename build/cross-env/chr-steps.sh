@@ -154,4 +154,29 @@ build_utillinux() {
 
 	make
 	make install
+
+	make distclean
+
+	CC="gcc -m32" \
+	./configure --host=i686-pc-linux-gnu \
+				--libdir=/usr/lib32      \
+				--runstatedir=/run       \
+				--docdir=/usr/share/doc/util-linux-2.41.1 \
+				--disable-chfn-chsh   \
+				--disable-login       \
+				--disable-nologin     \
+				--disable-su          \
+				--disable-setpriv     \
+				--disable-runuser     \
+				--disable-pylibmount  \
+				--disable-static      \
+				--disable-liblastlog2 \
+				--without-python      \
+				ADJTIME_PATH=/var/lib/hwclock/adjtime
+				
+	make
+	make DESTDIR=$PWD/DESTDIR install
+	cp -Rv DESTDIR/usr/lib32/* /usr/lib32
+	rm -rf DESTDIR
+
 }

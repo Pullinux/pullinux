@@ -43,6 +43,7 @@ cat > /etc/ld.so.conf << "EOF"
 # Begin /etc/ld.so.conf
 /usr/local/lib
 /opt/lib
+/usr/lib32
 include /etc/ld.so.conf.d/*.conf
 EOF
 

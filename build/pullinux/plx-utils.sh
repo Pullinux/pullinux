@@ -7,6 +7,8 @@ SCRIPT_PATH="$(realpath "${BASH_SOURCE[0]}")"
 SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PCK_ROOT="$SRC_DIR/../packages"
 
+VERSION=1.2
+
 LOCAL_INSTALL="no"
 
 pck_installed() {
@@ -116,16 +118,16 @@ build_pck() {
     	echo "No files to package!"
 		exit -1
 	else
-		echo "Creating package $pck-$version-plx-1.1.txz..."
+		echo "Creating package $pck-$version-plx-$VERSION.txz..."
 
 		pushd $PLX$PCKDIR
 		(
 			shopt -s dotglob nullglob
-			sudo tar -cJpf $PLX$PLX_ROOT/bin/$pck-$version-plx-1.1.txz *
+			sudo tar -cJpf $PLX$PLX_ROOT/bin/$pck-$version-plx-$VERSION.txz *
 		)
 		popd
 
-		sudo cp $PLX$PLX_ROOT/bin/$pck-$version-plx-1.1.txz $PLX_ROOT/bin/$pck-$version-plx-1.1.txz
+		sudo cp $PLX$PLX_ROOT/bin/$pck-$version-plx-$VERSION.txz $PLX_ROOT/bin/$pck-$version-plx-$VERSION.txz
 
 		echo "Package build complete for $pck $version"
 	fi
@@ -140,7 +142,7 @@ install_pck() {
 
 	sudo rm -rf $PLX/.install
 
-	PLX_BUILD_FILE=$PLX_ROOT/bin/$pck-$version-plx-1.1.txz
+	PLX_BUILD_FILE=$PLX_ROOT/bin/$pck-$version-plx-$VERSION.txz
 
 	echo "Installing $PLX_BUILD_FILE"
 
@@ -202,10 +204,10 @@ build_inst_pck() {
 
 	version=$(pck_get_version $pck)
 
-	if [ ! -f $PLX_ROOT/bin/$pck-$version-plx-1.1.txz ]; then
+	if [ ! -f $PLX_ROOT/bin/$pck-$version-plx-$VERSION.txz ]; then
 		build_pck $pck $pck_path $version
 	else
-		echo "Using pre-built package $PLX_ROOT/bin/$pck-$version-plx-1.1.txz ..."
+		echo "Using pre-built package $PLX_ROOT/bin/$pck-$version-plx-$VERSION.txz ..."
 	fi
 
 	install_pck $pck $version
@@ -247,7 +249,7 @@ local_install_pck() {
 
 	sudo rm -rf /.install
 
-	PLX_BUILD_FILE=$PLX_ROOT/bin/$pck-$version-plx-1.1.txz
+	PLX_BUILD_FILE=$PLX_ROOT/bin/$pck-$version-plx-$VERSION.txz
 
 	echo "Installing $PLX_BUILD_FILE"
 
@@ -283,7 +285,7 @@ find_install_pck() {
 
 	version=$(pck_get_version $pck)
 
-	if [ ! -f $PLX_ROOT/bin/$pck-$version-plx-1.1.txz ]; then
+	if [ ! -f $PLX_ROOT/bin/$pck-$version-plx-$VERSION.txz ]; then
 		echo "Package not build $pck"
 		exit -1
 	fi

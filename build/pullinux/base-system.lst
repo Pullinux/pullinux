@@ -8,6 +8,7 @@ lz4
 zstd
 file
 readline
+pcre2
 m4
 bc
 flex
@@ -19,6 +20,7 @@ binutils
 gmp
 mpfr
 mpc
+isl
 attr
 acl
 libcap
@@ -46,6 +48,7 @@ automake
 openssl
 elfutils
 libffi
+sqlite
 python
 flit_core
 packaging
