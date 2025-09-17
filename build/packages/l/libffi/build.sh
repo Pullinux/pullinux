@@ -1,6 +1,6 @@
 ./configure --prefix=/usr          \
             --disable-static       \
-            --with-gcc-arch=native
+            --with-gcc-arch=x86-64
             
 make
 make DESTDIR=$PCKDIR install

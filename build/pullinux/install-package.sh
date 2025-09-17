@@ -1,6 +1,5 @@
 #!/bin/bash
 
-PLX="/"
 SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 source $SRC_DIR/plx-utils.sh
