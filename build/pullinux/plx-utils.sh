@@ -127,12 +127,16 @@ build_pck() {
 		)
 		popd
 
-		sudo cp $PLX$PLX_ROOT/bin/$pck-$version-plx-$VERSION.txz $PLX_ROOT/bin/$pck-$version-plx-$VERSION.txz
-
+		if [ ! "$PLX" == "/" ]; then
+			sudo cp $PLX$PLX_ROOT/bin/$pck-$version-plx-$VERSION.txz $PLX_ROOT/bin/$pck-$version-plx-$VERSION.txz
+		fi
+		
 		echo "Package build complete for $pck $version"
 	fi
 
 	#cleanup last
+	#first move out of dir...
+	cd ${PLX:?}${PLX_ROOT:?}/tmp/
 	sudo rm -rf ${PLX:?}${PLX_ROOT:?}/tmp/$pck
 }
 
