@@ -32,9 +32,7 @@ mkdir -pv /usr/share/nvidia
 install -vm644 $PCKBASE/files/manifest-NVIDIA-1       \
                /usr/share/nvidia/manifest
 
-export DESTDIR=$PCKBASE
-DESTDIR=$PCKBASE $PCKDIR/usr/sbin/nvidia-install
-
+$PCKDIR/usr/sbin/nvidia-install --destdir=$PCKDIR
 
 mkdir -pv $PCKDIR/usr/lib/systemd/system             \
           $PCKDIR/usr/lib/systemd/system-sleep       \
