@@ -12,12 +12,6 @@ chown gdm:gdm -R /var/lib/gdm
 
 install -d -m 700 -o gdm -g gdm /run/user/21
 
-
-sudo -u gdm XDG_RUNTIME_DIR=/run/user/21 dbus-run-session --  \
-             gsettings set org.gnome.settings-daemon.plugins.power \
-                           sleep-inactive-ac-type                  \
-                           "nothing"
-
 cat > /etc/pam.d/gdm-launch-environment << EOF
 auth     required  pam_env.so
 auth     required  pam_permit.so

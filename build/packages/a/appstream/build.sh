@@ -1,4 +1,3 @@
-cd AppStream-1.0.6
 
 mkdir -v build 
 cd    build 
