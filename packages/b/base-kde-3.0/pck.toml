@@ -13,7 +13,8 @@ deps = [
     "gwenview 25.08.3",
     "kirigami-addons 1.10.0",
     "pulseaudio-qt 1.7.0",
-    "kde-plasma 6.5.2"
+    "kde-plasma 6.5.2",
+    "firefox 140.8.0"
 ]
 extras = [
     

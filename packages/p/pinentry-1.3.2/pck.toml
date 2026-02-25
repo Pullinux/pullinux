@@ -1,0 +1,9 @@
+name = "pinentry"
+version = "1.3.2"
+source = "https://www.gnupg.org/ftp/gcrypt/pinentry/pinentry-1.3.2.tar.bz2"
+deps = [
+    "libassuan 3.0.2"
+]
+extras = [
+    
+]

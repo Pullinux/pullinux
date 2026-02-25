@@ -1,0 +1,16 @@
+name = "poppler"
+version = "26.02.0"
+source = "https://poppler.freedesktop.org/poppler-26.02.0.tar.xz"
+deps = [
+    "boost 1.90.0",
+    "cairo 1.18.4",
+    "gpgmepp 2.0.0",
+    "lcms 2.18",
+    "libjpeg-turbo 3.1.3",
+    "libtiff 4.7.1",
+    "openjpeg 2.5.4",
+    "qt 6.10.2"
+]
+extras = [
+    "https://poppler.freedesktop.org/poppler-data-0.4.12.tar.gz"
+]

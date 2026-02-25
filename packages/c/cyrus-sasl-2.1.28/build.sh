@@ -1,0 +1,22 @@
+#!/bin/bash
+
+patch -Np1 -i ../cyrus-sasl-2.1.28-gcc15_fixes-1.patch &&
+autoreconf -fiv
+
+sed '/saslint/a #include <time.h>'       -i lib/saslutil.c &&
+sed '/plugin_common/a #include <time.h>' -i plugins/cram.c
+
+./configure --prefix=/usr                       \
+            --sysconfdir=/etc                   \
+            --enable-auth-sasldb                \
+            --with-dblib=lmdb                   \
+            --with-dbpath=/var/lib/sasl/sasldb2 \
+            --with-sphinx-build=no              \
+            --with-saslauthd=/var/run/saslauthd 
+
+make -j1
+make DESTDIR=$PCKDIR install
+
+mkdir -p $PCKDIR/var/lib
+
+install -v -dm700 $PCKDIR/var/lib/sasl

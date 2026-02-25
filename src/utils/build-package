@@ -104,6 +104,7 @@ def build_package(name, version=None):
 
     # 4. Chroot Execution
     print(f"[*] Starting build for {name}-{version}...")
+    print(f"Running in {working_dir_in_chroot}")
     # chroot_script = f"set -e; cd {working_dir_in_chroot} && cp /tmp/build/build.sh . && ./build.sh"
     
     cores = multiprocessing.cpu_count()

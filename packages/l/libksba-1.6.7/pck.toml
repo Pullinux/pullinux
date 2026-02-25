@@ -1,0 +1,9 @@
+name = "libksba"
+version = "1.6.7"
+source = "https://www.gnupg.org/ftp/gcrypt/libksba/libksba-1.6.7.tar.bz2"
+deps = [
+    "libgpg-error 1.59"
+]
+extras = [
+    
+]

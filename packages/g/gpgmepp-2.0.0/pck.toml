@@ -1,0 +1,9 @@
+name = "gpgmepp"
+version = "2.0.0"
+source = "https://www.gnupg.org/ftp/gcrypt/gpgmepp/gpgmepp-2.0.0.tar.xz"
+deps = [
+    "gpgme 2.0.1"
+]
+extras = [
+    
+]

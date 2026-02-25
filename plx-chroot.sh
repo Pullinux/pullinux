@@ -1,6 +1,6 @@
-echo "${LFS:?}"
+echo "${PLX:?}"
 
-chroot "$LFS" /usr/bin/env -i   \
+chroot "$PLX" /usr/bin/env -i   \
     HOME=/root                  \
     TERM="$TERM"                \
     PS1='(lfs chroot) \u:\w\$ ' \
@@ -9,6 +9,6 @@ chroot "$LFS" /usr/bin/env -i   \
     TESTSUITEFLAGS="-j$(nproc)" \
     /bin/bash --login
 
-mountpoint -q $LFS/dev/shm && umount $LFS/dev/shm
-umount $LFS/dev/pts
-umount $LFS/{sys,proc,run,dev}
+mountpoint -q $PLX/dev/shm && umount $PLX/dev/shm
+umount $PLX/dev/pts
+umount $PLX/{sys,proc,run,dev}

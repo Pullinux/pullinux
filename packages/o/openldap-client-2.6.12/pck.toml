@@ -1,0 +1,10 @@
+name = "openldap-client"
+version = "2.6.12"
+source = "https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.12.tgz"
+deps = [
+    "cyrus-sasl 2.1.28",
+    "base-dev 3.0"
+]
+extras = [
+    "https://www.linuxfromscratch.org/patches/blfs/svn/openldap-2.6.12-consolidated-1.patch"
+]

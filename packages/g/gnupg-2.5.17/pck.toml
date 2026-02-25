@@ -1,0 +1,13 @@
+name = "gnupg"
+version = "2.5.17"
+source = "https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-2.5.17.tar.bz2"
+deps = [
+    "libassuan 3.0.2",
+    "libgcrypt 1.12.0",
+    "libksba 1.6.7",
+    "npth 1.8",
+    "openldap-client 2.6.12"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "vscode"
+version = "02252026"
+source = "none"
+deps = [
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

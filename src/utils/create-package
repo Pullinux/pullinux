@@ -53,13 +53,12 @@ def create_scaffold(name, version, source, deps, has_installer, template_name):
         print(f"Package already exists: {pck_dir}")
         exit(1)
 
+    formatted_deps = [f'    "{d} {get_latest_version(d)}"' for d in deps]
+
     print(f"Creating Pullinux Package: {name}-{version} in {pkg_dir}")
     pkg_dir.mkdir(parents=True, exist_ok=True)
 
     pck_file = pkg_dir / "pck.toml"
-
-    
-    formatted_deps = [f'    "{d} {get_latest_version(d)}"' for d in deps]
 
     if formatted_deps:
         deps_str = "[\n" + ",\n".join(formatted_deps) + "\n]"

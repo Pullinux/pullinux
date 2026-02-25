@@ -1,0 +1,9 @@
+name = "gpgme"
+version = "2.0.1"
+source = "https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-2.0.1.tar.bz2"
+deps = [
+    "gnupg 2.5.17"
+]
+extras = [
+    
+]

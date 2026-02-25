@@ -1,0 +1,9 @@
+name = "xdg-user-dirs"
+version = "0.19"
+source = "https://gitlab.freedesktop.org/xdg/xdg-user-dirs/-/archive/v0.19/xdg-user-dirs-v0.19.tar.gz"
+deps = [
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

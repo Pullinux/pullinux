@@ -1,0 +1,22 @@
+name = "firefox"
+version = "140.8.0"
+source = "https://archive.mozilla.org/pub/firefox/releases/140.8.0esr/source/firefox-140.8.0esr.source.tar.xz"
+deps = [
+    "cbindgen 0.29.2",
+    "gtk3 3.24.51",
+    "libnotify 0.8.8",
+    "libarchive 3.8.5",
+    "nodejs 22.22.0",
+    "startup-notification 0.12",
+    "dav1d 1.5.3",
+    "libaom 3.13.1",
+    "libevent 2.1.12",
+    "libvpx 1.16.0",
+    "libwebp 1.6.0",
+    "nasm 3.01"
+]
+extras = [
+    "https://www.linuxfromscratch.org/patches/blfs/svn/firefox-140.8.0esr-ffmpeg-8.0.patch",
+    "https://www.linuxfromscratch.org/patches/blfs/svn/firefox-140.8.0esr-glibc-2.43.patch",
+    "https://www.linuxfromscratch.org/patches/blfs/svn/firefox-140.8.0esr-python_3.14_fixes-1.patch"
+]

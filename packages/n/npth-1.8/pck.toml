@@ -1,0 +1,9 @@
+name = "npth"
+version = "1.8"
+source = "https://www.gnupg.org/ftp/gcrypt/npth/npth-1.8.tar.bz2"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

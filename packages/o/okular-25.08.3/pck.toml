@@ -1,0 +1,14 @@
+name = "okular"
+version = "25.08.3"
+source = "https://download.kde.org/stable/release-service/25.08.3/src/okular-25.08.3.tar.xz"
+deps = [
+    "kde-framework 6.23.0",
+    "plasma-activities 6.5.2",
+    "libkexiv2 25.08.3",
+    "libtiff 4.7.1",
+    "phonon 4.12.0",
+    "poppler 26.02.0"
+]
+extras = [
+    
+]
