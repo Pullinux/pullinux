@@ -1,0 +1,9 @@
+name = "zip"
+version = "3.0"
+source = "https://downloads.sourceforge.net/infozip/zip30.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

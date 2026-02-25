@@ -1,0 +1,9 @@
+name = "bc"
+version = "7.0.3"
+source = "https://github.com/gavinhoward/bc/releases/download/7.0.3/bc-7.0.3.tar.xz"
+deps = [
+    "m4 1.4.21"
+]
+extras = [
+    
+]

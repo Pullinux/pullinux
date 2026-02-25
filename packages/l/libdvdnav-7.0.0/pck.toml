@@ -1,0 +1,9 @@
+name = "libdvdnav"
+version = "7.0.0"
+source = "https://get.videolan.org/libdvdnav/7.0.0/libdvdnav-7.0.0.tar.xz"
+deps = [
+    "libdvdread 7.0.1"
+]
+extras = [
+    
+]

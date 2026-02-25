@@ -1,0 +1,9 @@
+name = "pciutils"
+version = "3.14.0"
+source = "https://mj.ucw.cz/download/linux/pci/pciutils-3.14.0.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

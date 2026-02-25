@@ -1,0 +1,9 @@
+name = "utfcpp"
+version = "4.0.9"
+source = "https://github.com/nemtrif/utfcpp/archive/v4.0.9/utfcpp-4.0.9.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

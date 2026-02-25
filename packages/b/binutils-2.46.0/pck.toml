@@ -1,0 +1,9 @@
+name = "binutils"
+version = "2.46.0"
+source = "https://sourceware.org/pub/binutils/releases/binutils-2.46.0.tar.xz"
+deps = [
+    "pkgconf 2.5.1"
+]
+extras = [
+    
+]

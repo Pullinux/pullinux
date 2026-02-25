@@ -1,0 +1,9 @@
+name = "python"
+version = "3.14.3"
+source = "https://www.python.org/ftp/python/3.14.3/Python-3.14.3.tar.xz"
+deps = [
+    "sqlite 3510200"
+]
+extras = [
+    
+]

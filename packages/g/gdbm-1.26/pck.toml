@@ -1,0 +1,9 @@
+name = "gdbm"
+version = "1.26"
+source = "https://ftpmirror.gnu.org/gdbm/gdbm-1.26.tar.gz"
+deps = [
+    "libtool 2.5.4"
+]
+extras = [
+    
+]

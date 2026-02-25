@@ -1,0 +1,9 @@
+name = "libgbm"
+version = "1.0.4"
+source = "https://github.com/glfs-book/libgbm/archive/1.0.4/libgbm-1.0.4.tar.gz"
+deps = [
+    "libdrm 2.4.131"
+]
+extras = [
+    
+]

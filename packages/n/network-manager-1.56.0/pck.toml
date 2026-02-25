@@ -1,0 +1,15 @@
+name = "network-manager"
+version = "1.56.0"
+source = "https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/releases/1.56.0/downloads/NetworkManager-1.56.0.tar.xz"
+deps = [
+    "libndp 1.9",
+    "iptables 1.8.12",
+    "newt 0.52.25",
+    "pygobject 3.54.5",
+    "vala 0.56.18",
+    "wpa_supplicant 2.11",
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

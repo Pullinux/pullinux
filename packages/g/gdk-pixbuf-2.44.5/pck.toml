@@ -1,0 +1,11 @@
+name = "gdk-pixbuf"
+version = "2.44.5"
+source = "https://download.gnome.org/sources/gdk-pixbuf/2.44/gdk-pixbuf-2.44.5.tar.xz"
+deps = [
+    "shared-mime-info 2.4",
+    "docutils 0.22.4",
+    "glycin 2.0.8"
+]
+extras = [
+    
+]

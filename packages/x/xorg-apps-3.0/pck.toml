@@ -1,0 +1,10 @@
+name = "xorg-apps"
+version = "3.0"
+source = "none"
+deps = [
+    "mesa 25.3.5",
+    "xbitmaps 1.1.3"
+]
+extras = [
+    
+]

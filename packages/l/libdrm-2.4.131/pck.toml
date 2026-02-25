@@ -1,0 +1,10 @@
+name = "libdrm"
+version = "2.4.131"
+source = "https://dri.freedesktop.org/libdrm/libdrm-2.4.131.tar.xz"
+deps = [
+    "libatomic_ops 7.10.0",
+    "xorg-libs 3.0"
+]
+extras = [
+    
+]

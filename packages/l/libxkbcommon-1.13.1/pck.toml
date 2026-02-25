@@ -1,0 +1,9 @@
+name = "libxkbcommon"
+version = "1.13.1"
+source = "https://github.com/lfs-book/libxkbcommon/archive/v1.13.1/libxkbcommon-1.13.1.tar.gz"
+deps = [
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

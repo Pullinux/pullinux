@@ -1,0 +1,9 @@
+name = "libevdev"
+version = "1.13.6"
+source = "https://www.freedesktop.org/software/libevdev/libevdev-1.13.6.tar.xz"
+deps = [
+    "xorg-libs 3.0"
+]
+extras = [
+    
+]

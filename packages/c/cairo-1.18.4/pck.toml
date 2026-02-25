@@ -1,0 +1,9 @@
+name = "cairo"
+version = "1.18.4"
+source = "https://www.cairographics.org/releases/cairo-1.18.4.tar.xz"
+deps = [
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

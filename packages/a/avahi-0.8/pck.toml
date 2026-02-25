@@ -1,0 +1,10 @@
+name = "avahi"
+version = "0.8"
+source = "https://github.com/lathiat/avahi/releases/download/v0.8/avahi-0.8.tar.gz"
+deps = [
+    "libdaemon 0.14",
+    "base-xorg 3.0"
+]
+extras = [
+    "https://www.linuxfromscratch.org/patches/blfs/svn/avahi-0.8-ipv6_race_condition_fix-1.patch"
+]

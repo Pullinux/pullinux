@@ -1,0 +1,9 @@
+name = "xorg-fonts"
+version = "3.0"
+source = "none"
+deps = [
+    "xcursor-themes 1.0.7"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "speexdsp"
+version = "1.2.1"
+source = "https://downloads.xiph.org/releases/speex/speexdsp-1.2.1.tar.gz"
+deps = [
+    "speex 1.2.1"
+]
+extras = [
+    
+]

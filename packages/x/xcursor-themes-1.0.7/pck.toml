@@ -1,0 +1,9 @@
+name = "xcursor-themes"
+version = "1.0.7"
+source = "https://xorg.freedesktop.org/archive/individual/data/xcursor-themes-1.0.7.tar.xz"
+deps = [
+    "xorg-apps 3.0"
+]
+extras = [
+    
+]

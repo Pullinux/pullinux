@@ -1,0 +1,9 @@
+name = "kcolorpicker"
+version = "0.3.1"
+source = "https://github.com/ksnip/kColorPicker/archive/v0.3.1/kColorPicker-0.3.1.tar.gz"
+deps = [
+    "qt 6.10.2"
+]
+extras = [
+    
+]

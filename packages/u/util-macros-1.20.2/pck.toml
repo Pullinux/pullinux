@@ -1,0 +1,9 @@
+name = "util-macros"
+version = "1.20.2"
+source = "https://xorg.freedesktop.org/archive/individual/util/util-macros-1.20.2.tar.xz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

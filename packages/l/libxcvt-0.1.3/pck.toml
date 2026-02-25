@@ -1,0 +1,9 @@
+name = "libxcvt"
+version = "0.1.3"
+source = "https://xorg.freedesktop.org/archive/individual/lib/libxcvt-0.1.3.tar.xz"
+deps = [
+    "xorg-libs 3.0"
+]
+extras = [
+    
+]

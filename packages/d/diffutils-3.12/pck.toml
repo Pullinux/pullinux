@@ -1,0 +1,9 @@
+name = "diffutils"
+version = "3.12"
+source = "https://ftpmirror.gnu.org/diffutils/diffutils-3.12.tar.xz"
+deps = [
+    "coreutils 9.10"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "gettext"
+version = "1.0"
+source = "https://ftpmirror.gnu.org/gettext/gettext-1.0.tar.xz"
+deps = [
+    "psmisc 23.7"
+]
+extras = [
+    
+]

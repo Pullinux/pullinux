@@ -1,0 +1,9 @@
+name = "sqlite"
+version = "3510200"
+source = "https://sqlite.org/2026/sqlite-autoconf-3510200.tar.gz"
+deps = [
+    "libffi 3.5.2"
+]
+extras = [
+    
+]

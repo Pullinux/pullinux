@@ -1,0 +1,20 @@
+name = "base-xorg"
+version = "3.0"
+source = "none"
+deps = [
+    "base-dev 3.0",
+    "pulseaudio 17.0",
+    "mesa 25.3.5",
+    "xwayland 24.1.9",
+    "xf86-input-evdev 2.11.0",
+    "xf86-input-libinput 1.5.0",
+    "xf86-input-synaptics 1.10.0",
+    "xf86-input-wacom 1.2.4",
+    "xinit 1.4.4",
+    "xterm 407",
+    "xclock 1.1.1",
+    "twm 1.0.13.1"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "docutils"
+version = "0.22.4"
+source = "https://files.pythonhosted.org/packages/source/d/docutils/docutils-0.22.4.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

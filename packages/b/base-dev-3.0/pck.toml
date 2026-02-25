@@ -1,0 +1,17 @@
+name = "base-dev"
+version = "3.0"
+source = "none"
+deps = [
+    "base-system 3.0",
+    "shared-mime-info 2.4",
+    "desktop-file-utils 0.28",
+    "polkit 127",
+    "rust 1.93.1",
+    "rust-bindgen 0.72.1",
+    "pyyaml 6.0.3",
+    "ruby 4.0.1",
+    "cbindgen 0.29.2"
+]
+extras = [
+    
+]

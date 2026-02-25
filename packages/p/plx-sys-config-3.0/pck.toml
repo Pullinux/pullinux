@@ -1,0 +1,9 @@
+name = "plx-sys-config"
+version = "3.0"
+source = "none"
+deps = [
+    "e2fsprogs 1.47.3"
+]
+extras = [
+    
+]

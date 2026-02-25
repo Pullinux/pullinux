@@ -1,0 +1,9 @@
+name = "nv-codec-headers"
+version = "13.0.19.0"
+source = "https://github.com/FFmpeg/nv-codec-headers/releases/download/n13.0.19.0/nv-codec-headers-13.0.19.0.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

@@ -1,0 +1,10 @@
+name = "libical"
+version = "3.0.20"
+source = "https://github.com/libical/libical/releases/download/v3.0.20/libical-3.0.20.tar.gz"
+deps = [
+    "libxml2 2.15.1",
+    "vala 0.56.18"
+]
+extras = [
+    
+]

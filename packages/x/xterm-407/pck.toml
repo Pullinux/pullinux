@@ -1,0 +1,10 @@
+name = "xterm"
+version = "407"
+source = "https://invisible-mirror.net/archives/xterm/xterm-407.tgz"
+deps = [
+    "dejavu-fonts 2.37",
+    "luit 20250912"
+]
+extras = [
+    
+]

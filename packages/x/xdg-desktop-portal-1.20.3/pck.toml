@@ -1,0 +1,14 @@
+name = "xdg-desktop-portal"
+version = "1.20.3"
+source = "https://github.com/flatpak/xdg-desktop-portal/releases/download/1.20.3/xdg-desktop-portal-1.20.3.tar.xz"
+deps = [
+    "fuse 3.18.1",
+    "gdk-pixbuf noglycin-2.44.5",
+    "json-glib 1.10.8",
+    "pipewire 1.6.0",
+    "bubblewrap 0.11.0",
+    "docutils 0.22.4"
+]
+extras = [
+    
+]

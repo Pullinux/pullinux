@@ -1,0 +1,9 @@
+name = "7zip"
+version = "26.0"
+source = "https://github.com/ip7z/7zip/archive/26.00/7zip-26.00.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

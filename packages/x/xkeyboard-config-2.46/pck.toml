@@ -1,0 +1,9 @@
+name = "xkeyboard-config"
+version = "2.46"
+source = "https://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/xkeyboard-config-2.46.tar.xz"
+deps = [
+    "xorg-libs 3.0"
+]
+extras = [
+    
+]

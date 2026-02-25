@@ -1,0 +1,11 @@
+name = "newt"
+version = "0.52.25"
+source = "https://releases.pagure.org/newt/newt-0.52.25.tar.gz"
+deps = [
+    "popt 1.19",
+    "slang 2.3.3",
+    "gpm 1.20.7"
+]
+extras = [
+    
+]

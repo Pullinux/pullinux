@@ -1,0 +1,11 @@
+name = "libsoup"
+version = "3.6.6"
+source = "https://download.gnome.org/sources/libsoup/3.6/libsoup-3.6.6.tar.xz"
+deps = [
+    "glib-networking 2.80.1",
+    "nghttp2 1.68.0",
+    "vala 0.56.18"
+]
+extras = [
+    "https://www.linuxfromscratch.org/patches/blfs/svn/libsoup-3.6.6-upstream_fixes-1.patch"
+]

@@ -1,0 +1,11 @@
+name = "power-profiles-daemon"
+version = "0.30"
+source = "https://gitlab.freedesktop.org/upower/power-profiles-daemon/-/archive/0.30/power-profiles-daemon-0.30.tar.gz"
+deps = [
+    "pygobject 3.54.5",
+    "polkit 127",
+    "upower 1.91.1"
+]
+extras = [
+    
+]

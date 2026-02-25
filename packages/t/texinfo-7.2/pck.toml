@@ -1,0 +1,9 @@
+name = "texinfo"
+version = "7.2"
+source = "https://ftpmirror.gnu.org/texinfo/texinfo-7.2.tar.xz"
+deps = [
+    "tar 1.35"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "hwdata"
+version = "0.404"
+source = "https://github.com/vcrhonek/hwdata/archive/v0.404/hwdata-0.404.tar.gz"
+deps = [
+    "pciutils 3.14.0"
+]
+extras = [
+    
+]

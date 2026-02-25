@@ -1,0 +1,9 @@
+name = "pygobject"
+version = "3.54.5"
+source = "https://download.gnome.org/sources/pygobject/3.54/pygobject-3.54.5.tar.gz"
+deps = [
+    "pycairo 1.29.0"
+]
+extras = [
+    
+]

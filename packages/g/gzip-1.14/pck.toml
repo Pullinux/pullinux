@@ -1,0 +1,9 @@
+name = "gzip"
+version = "1.14"
+source = "https://ftpmirror.gnu.org/gzip/gzip-1.14.tar.xz"
+deps = [
+    "grub 2.14"
+]
+extras = [
+    
+]

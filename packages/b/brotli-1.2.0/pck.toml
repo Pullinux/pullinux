@@ -1,0 +1,9 @@
+name = "brotli"
+version = "1.2.0"
+source = "https://github.com/google/brotli/archive/v1.2.0/brotli-1.2.0.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

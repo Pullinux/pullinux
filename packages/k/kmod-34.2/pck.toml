@@ -1,0 +1,9 @@
+name = "kmod"
+version = "34.2"
+source = "https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-34.2.tar.xz"
+deps = [
+    "meson 1.10.1"
+]
+extras = [
+    
+]

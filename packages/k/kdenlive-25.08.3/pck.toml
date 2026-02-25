@@ -1,0 +1,12 @@
+name = "kdenlive"
+version = "25.08.3"
+source = "https://download.kde.org/stable/release-service/25.08.3/src/kdenlive-25.08.3.tar.xz"
+deps = [
+    "git 2.53.0",
+    "kde-framework 6.23.0",
+    "mlt 7.36.1",
+    "v4l-utils 1.32.0"
+]
+extras = [
+    
+]

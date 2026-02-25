@@ -1,0 +1,9 @@
+name = "libidn2"
+version = "2.3.8"
+source = "https://ftpmirror.gnu.org/gnu/libidn/libidn2-2.3.8.tar.gz"
+deps = [
+    "libunistring 1.4.1"
+]
+extras = [
+    
+]

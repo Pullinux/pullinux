@@ -1,0 +1,9 @@
+name = "libdisplay-info"
+version = "0.3.0"
+source = "https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releases/0.3.0/downloads/libdisplay-info-0.3.0.tar.xz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

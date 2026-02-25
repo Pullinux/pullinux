@@ -1,0 +1,9 @@
+name = "expat"
+version = "2.7.4"
+source = "https://github.com/libexpat/libexpat/releases/download/R_2_7_4/expat-2.7.4.tar.xz"
+deps = [
+    "gperf 3.3"
+]
+extras = [
+    
+]

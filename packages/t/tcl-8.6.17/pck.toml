@@ -1,0 +1,9 @@
+name = "tcl"
+version = "8.6.17"
+source = "https://downloads.sourceforge.net/tcl/tcl8.6.17-src.tar.gz"
+deps = [
+    "flex 2.6.4"
+]
+extras = [
+    
+]

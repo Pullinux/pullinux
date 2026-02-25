@@ -1,0 +1,9 @@
+name = "libndp"
+version = "1.9"
+source = "http://libndp.org/files/libndp-1.9.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

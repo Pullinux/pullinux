@@ -1,0 +1,9 @@
+name = "sdl2-compat"
+version = "2.32.64"
+source = "https://www.libsdl.org/release/sdl2-compat-2.32.64.tar.gz"
+deps = [
+    "sdl3 3.4.0"
+]
+extras = [
+    
+]

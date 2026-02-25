@@ -1,0 +1,9 @@
+name = "nvidia-driver"
+version = "590.48.01"
+source = "none"
+deps = [
+    "nvidia-vaapi-driver 0.0.14"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "automake"
+version = "1.18.1"
+source = "https://ftpmirror.gnu.org/automake/automake-1.18.1.tar.xz"
+deps = [
+    "autoconf 2.72"
+]
+extras = [
+    
+]

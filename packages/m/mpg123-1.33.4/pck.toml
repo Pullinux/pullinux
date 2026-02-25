@@ -1,0 +1,9 @@
+name = "mpg123"
+version = "1.33.4"
+source = "https://downloads.sourceforge.net/mpg123/mpg123-1.33.4.tar.bz2"
+deps = [
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

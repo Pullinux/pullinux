@@ -1,0 +1,9 @@
+name = "libssh2"
+version = "1.11.1"
+source = "https://www.libssh2.org/download/libssh2-1.11.1.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

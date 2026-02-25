@@ -1,0 +1,5 @@
+name = "man-pages"
+version = "6.17"
+source = "https://www.kernel.org/pub/linux/docs/man-pages/man-pages-6.17.tar.xz"
+deps = []
+extras = []

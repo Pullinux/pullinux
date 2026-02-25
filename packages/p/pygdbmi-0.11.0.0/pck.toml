@@ -1,0 +1,9 @@
+name = "pygdbmi"
+version = "0.11.0.0"
+source = "https://files.pythonhosted.org/packages/source/p/pygdbmi/pygdbmi-0.11.0.0.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

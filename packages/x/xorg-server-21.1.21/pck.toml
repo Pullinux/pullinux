@@ -1,0 +1,12 @@
+name = "xorg-server"
+version = "21.1.21"
+source = "https://xorg.freedesktop.org/archive/individual/xserver/xorg-server-21.1.21.tar.xz"
+deps = [
+    "mesa 25.3.5",
+    "xorg-fonts 3.0",
+    "libepoxy 1.5.10",
+    "xkeyboard-config 2.46"
+]
+extras = [
+    "https://www.linuxfromscratch.org/glfs/view/dev/download/xorg-server/xorg-server-tearfree_backport-3.patch"
+]

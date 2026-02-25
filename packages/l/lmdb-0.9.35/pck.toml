@@ -1,0 +1,9 @@
+name = "lmdb"
+version = "0.9.35"
+source = "https://git.openldap.org/openldap/openldap/-/archive/LMDB_0.9.35/LMDB_0.9.35.tar.bz2"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

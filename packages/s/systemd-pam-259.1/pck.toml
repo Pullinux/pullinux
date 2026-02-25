@@ -1,0 +1,9 @@
+name = "systemd-pam"
+version = "259.1"
+source = "https://github.com/systemd/systemd/archive/v259.1/systemd-259.1.tar.gz"
+deps = [
+    "linux-pam 1.7.2"
+]
+extras = [
+    
+]

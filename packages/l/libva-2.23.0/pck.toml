@@ -1,0 +1,11 @@
+name = "libva"
+version = "2.23.0"
+source = "https://github.com/intel/libva/archive/2.23.0/libva-2.23.0.tar.gz"
+deps = [
+    "libgbm 1.0.4",
+    "libglvnd 1.7.0",
+    "wayland-protocols 1.47"
+]
+extras = [
+    
+]

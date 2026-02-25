@@ -1,0 +1,10 @@
+name = "wpa_supplicant"
+version = "2.11"
+source = "https://w1.fi/releases/wpa_supplicant-2.11.tar.gz"
+deps = [
+    "libnl 3.12.0",
+    "base-dev 3.0"
+]
+extras = [
+    
+]

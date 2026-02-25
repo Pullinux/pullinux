@@ -1,0 +1,9 @@
+name = "iptables"
+version = "1.8.12"
+source = "https://www.netfilter.org/projects/iptables/files/iptables-1.8.12.tar.xz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

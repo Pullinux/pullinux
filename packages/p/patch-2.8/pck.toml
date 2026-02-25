@@ -1,0 +1,9 @@
+name = "patch"
+version = "2.8"
+source = "https://ftpmirror.gnu.org/patch/patch-2.8.tar.xz"
+deps = [
+    "make 4.4.1"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "inetutils"
+version = "2.7"
+source = "https://ftpmirror.gnu.org/inetutils/inetutils-2.7.tar.gz"
+deps = [
+    "expat 2.7.4"
+]
+extras = [
+    
+]

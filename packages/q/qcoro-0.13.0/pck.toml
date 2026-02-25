@@ -1,0 +1,9 @@
+name = "qcoro"
+version = "0.13.0"
+source = "https://github.com/danvratil/qcoro/archive/v0.13.0/qcoro-0.13.0.tar.gz"
+deps = [
+    "qt 6.10.2"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+./configure --prefix=/usr        \
+            --sysconfdir=/etc    \
+            --localstatedir=/var \
+            --disable-static 
+
+make
+make DESTDIR=$PCKDIR install

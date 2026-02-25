@@ -1,0 +1,10 @@
+name = "oxygen-icons"
+version = "6.1.0"
+source = "https://download.kde.org/stable/oxygen-icons/oxygen-icons-6.1.0.tar.xz"
+deps = [
+    "extra-cmake-modules 6.23.0",
+    "qt 6.10.2"
+]
+extras = [
+    
+]

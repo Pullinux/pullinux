@@ -1,0 +1,10 @@
+name = "doxygen"
+version = "1.16.1"
+source = "https://doxygen.nl/files/doxygen-1.16.1.src.tar.gz"
+deps = [
+    "git 2.53.0",
+    "qt 6.10.2"
+]
+extras = [
+    
+]

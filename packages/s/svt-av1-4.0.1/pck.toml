@@ -1,0 +1,9 @@
+name = "svt-av1"
+version = "4.0.1"
+source = "https://gitlab.com/AOMediaCodec/SVT-AV1/-/archive/v4.0.1/SVT-AV1-v4.0.1.tar.gz"
+deps = [
+    "nasm 3.01"
+]
+extras = [
+    
+]

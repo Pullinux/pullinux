@@ -1,0 +1,9 @@
+name = "make-ca"
+version = "1.16.1"
+source = "https://github.com/lfs-book/make-ca/archive/v1.16.1/make-ca-1.16.1.tar.gz"
+deps = [
+    "p11-kit 0.26.2"
+]
+extras = [
+    
+]

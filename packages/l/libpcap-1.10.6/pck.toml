@@ -1,0 +1,9 @@
+name = "libpcap"
+version = "1.10.6"
+source = "https://www.tcpdump.org/release/libpcap-1.10.6.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

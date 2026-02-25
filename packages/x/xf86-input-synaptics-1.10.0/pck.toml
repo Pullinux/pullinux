@@ -1,0 +1,9 @@
+name = "xf86-input-synaptics"
+version = "1.10.0"
+source = "https://xorg.freedesktop.org/archive/individual/driver/xf86-input-synaptics-1.10.0.tar.xz"
+deps = [
+    "xorg-server 21.1.21"
+]
+extras = [
+    
+]

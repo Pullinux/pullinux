@@ -1,0 +1,11 @@
+name = "xwayland"
+version = "24.1.9"
+source = "https://xorg.freedesktop.org/archive/individual/xserver/xwayland-24.1.9.tar.xz"
+deps = [
+    "mesa 25.3.5",
+    "xorg-server 21.1.21",
+    "xorg-apps 3.0"
+]
+extras = [
+    
+]

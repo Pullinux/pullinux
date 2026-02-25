@@ -1,0 +1,9 @@
+name = "file"
+version = "5.46"
+source = "https://astron.com/pub/file/file-5.46.tar.gz"
+deps = [
+    "zstd 1.5.7"
+]
+extras = [
+    
+]

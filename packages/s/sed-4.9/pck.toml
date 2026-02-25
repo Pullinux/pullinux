@@ -1,0 +1,9 @@
+name = "sed"
+version = "4.9"
+source = "https://ftpmirror.gnu.org/sed/sed-4.9.tar.xz"
+deps = [
+    "ncurses 6.6"
+]
+extras = [
+    
+]

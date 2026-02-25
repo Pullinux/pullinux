@@ -1,0 +1,9 @@
+name = "libuv"
+version = "1.52.0"
+source = "https://dist.libuv.org/dist/v1.52.0/libuv-v1.52.0.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

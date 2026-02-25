@@ -1,0 +1,9 @@
+name = "libaom"
+version = "3.13.1"
+source = "https://storage.googleapis.com/aom-releases/libaom-3.13.1.tar.gz"
+deps = [
+    "nasm 3.01"
+]
+extras = [
+    "https://www.linuxfromscratch.org/patches/blfs/svn/libaom-3.13.1-nasm3-1.patch"
+]

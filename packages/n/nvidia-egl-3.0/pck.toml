@@ -1,0 +1,13 @@
+name = "nvidia-egl"
+version = "3.0"
+source = "none"
+deps = [
+    "libgbm 1.0.4",
+    "libglvnd 1.7.0",
+    "wayland-protocols 1.47",
+    "xorg-libs 3.0",
+    "hwdata 0.404"
+]
+extras = [
+    
+]

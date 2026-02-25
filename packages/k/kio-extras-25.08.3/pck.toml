@@ -1,0 +1,14 @@
+name = "kio-extras"
+version = "25.08.3"
+source = "https://download.kde.org/stable/release-service/25.08.3/src/kio-extras-25.08.3.tar.xz"
+deps = [
+    "kde-framework 6.23.0",
+    "libkexiv2 25.08.3",
+    "kdsoap-ws-discovery-client 0.4.0",
+    "libproxy 0.5.12",
+    "plasma-activities-stats 6.5.2",
+    "qcoro 0.13.0"
+]
+extras = [
+    
+]

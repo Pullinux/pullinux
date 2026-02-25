@@ -1,0 +1,9 @@
+name = "flit-core"
+version = "3.12.0"
+source = "https://pypi.org/packages/source/f/flit-core/flit_core-3.12.0.tar.gz"
+deps = [
+    "python 3.14.3"
+]
+extras = [
+    
+]

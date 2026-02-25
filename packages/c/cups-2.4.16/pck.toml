@@ -1,0 +1,11 @@
+name = "cups"
+version = "2.4.16"
+source = "https://github.com/OpenPrinting/cups/releases/download/v2.4.16/cups-2.4.16-source.tar.gz"
+deps = [
+    "colord 1.4.8",
+    "libusb 1.0.29",
+    "xdg-utils 1.2.1"
+]
+extras = [
+    
+]

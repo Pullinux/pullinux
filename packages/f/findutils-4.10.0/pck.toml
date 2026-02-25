@@ -1,0 +1,9 @@
+name = "findutils"
+version = "4.10.0"
+source = "https://ftpmirror.gnu.org/findutils/findutils-4.10.0.tar.xz"
+deps = [
+    "gawk 5.3.2"
+]
+extras = [
+    
+]

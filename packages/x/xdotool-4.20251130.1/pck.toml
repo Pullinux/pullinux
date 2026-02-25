@@ -1,0 +1,9 @@
+name = "xdotool"
+version = "4.20251130.1"
+source = "https://github.com/jordansissel/xdotool/releases/download/v4.20251130.1/xdotool-4.20251130.1.tar.gz"
+deps = [
+    "xorg-libs 3.0"
+]
+extras = [
+    
+]

@@ -1,0 +1,10 @@
+name = "cargo-c"
+version = "0.10.20"
+source = "https://github.com/lu-zero/cargo-c/archive/v0.10.20/cargo-c-0.10.20.tar.gz"
+deps = [
+    "libssh2 1.11.1",
+    "base-dev 3.0"
+]
+extras = [
+    
+]

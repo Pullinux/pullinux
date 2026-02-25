@@ -1,0 +1,12 @@
+name = "nvidia-vaapi-driver"
+version = "0.0.14"
+source = "https://github.com/elFarto/nvidia-vaapi-driver/archive/v0.0.14/nvidia-vaapi-driver-0.0.14.tar.gz"
+deps = [
+    "libdrm 2.4.131",
+    "libva 2.23.0",
+    "nv-codec-headers 13.0.19.0",
+    "nvidia-egl 3.0"
+]
+extras = [
+    
+]

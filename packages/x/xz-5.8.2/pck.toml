@@ -1,0 +1,9 @@
+name = "xz"
+version = "5.8.2"
+source = "https://github.com//tukaani-project/xz/releases/download/v5.8.2/xz-5.8.2.tar.xz"
+deps = [
+    "bzip2 1.0.8"
+]
+extras = [
+    
+]

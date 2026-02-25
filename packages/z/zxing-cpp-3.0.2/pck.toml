@@ -1,0 +1,9 @@
+name = "zxing-cpp"
+version = "3.0.2"
+source = "https://github.com/zxing-cpp/zxing-cpp/releases/download/v3.0.2/zxing-cpp-3.0.2.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

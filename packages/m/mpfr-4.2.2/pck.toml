@@ -1,0 +1,9 @@
+name = "mpfr"
+version = "4.2.2"
+source = "https://ftpmirror.gnu.org/mpfr/mpfr-4.2.2.tar.xz"
+deps = [
+    "gmp 6.3.0"
+]
+extras = [
+    
+]

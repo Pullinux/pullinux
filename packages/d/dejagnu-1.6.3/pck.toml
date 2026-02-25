@@ -1,0 +1,9 @@
+name = "dejagnu"
+version = "1.6.3"
+source = "https://ftpmirror.gnu.org/dejagnu/dejagnu-1.6.3.tar.gz"
+deps = [
+    "expect 5.45.4"
+]
+extras = [
+    
+]

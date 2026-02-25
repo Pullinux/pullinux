@@ -1,0 +1,9 @@
+name = "intltool"
+version = "0.51.0"
+source = "https://launchpad.net/intltool/trunk/0.51.0/+download/intltool-0.51.0.tar.gz"
+deps = [
+    "xml-parser 2.47"
+]
+extras = [
+    
+]

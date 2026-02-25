@@ -1,0 +1,11 @@
+name = "upower"
+version = "1.91.1"
+source = "https://gitlab.freedesktop.org/upower/upower/-/archive/v1.91.1/upower-v1.91.1.tar.bz2"
+deps = [
+    "libgudev 238",
+    "libusb 1.0.29",
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

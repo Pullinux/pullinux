@@ -1,0 +1,9 @@
+name = "ncurses"
+version = "6.6"
+source = "https://invisible-mirror.net/archives/ncurses/ncurses-6.6.tar.gz"
+deps = [
+    "gcc 15.2.0"
+]
+extras = [
+    
+]

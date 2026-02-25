@@ -1,0 +1,9 @@
+name = "llvm"
+version = "21.1.8"
+source = "none"
+deps = [
+    "cmake 4.2.3"
+]
+extras = [
+    
+]

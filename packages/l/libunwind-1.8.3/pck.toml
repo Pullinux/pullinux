@@ -1,0 +1,9 @@
+name = "libunwind"
+version = "1.8.3"
+source = "https://github.com/libunwind/libunwind/releases/download/v1.8.3/libunwind-1.8.3.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

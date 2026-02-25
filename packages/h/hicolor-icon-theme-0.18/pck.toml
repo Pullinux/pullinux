@@ -1,0 +1,9 @@
+name = "hicolor-icon-theme"
+version = "0.18"
+source = "https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.18.tar.xz"
+deps = [
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

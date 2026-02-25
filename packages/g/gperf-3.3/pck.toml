@@ -1,0 +1,9 @@
+name = "gperf"
+version = "3.3"
+source = "https://ftpmirror.gnu.org/gperf/gperf-3.3.tar.gz"
+deps = [
+    "gdbm 1.26"
+]
+extras = [
+    
+]

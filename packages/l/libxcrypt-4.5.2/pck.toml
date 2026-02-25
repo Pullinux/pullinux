@@ -1,0 +1,9 @@
+name = "libxcrypt"
+version = "4.5.2"
+source = "https://github.com/besser82/libxcrypt/releases/download/v4.5.2/libxcrypt-4.5.2.tar.xz"
+deps = [
+    "libcap 2.77"
+]
+extras = [
+    
+]

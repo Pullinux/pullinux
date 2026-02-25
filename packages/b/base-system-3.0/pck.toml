@@ -1,0 +1,13 @@
+name = "base-system"
+version = "3.0"
+source = "none"
+deps = [
+    "base-config 3.0",
+    "wget 1.25.0",
+    "curl 8.18.0",
+    "shadow-pam 4.19.3",
+    "systemd-pam 259.1"
+]
+extras = [
+    
+]

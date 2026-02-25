@@ -1,0 +1,10 @@
+name = "libass"
+version = "0.17.4"
+source = "https://github.com/libass/libass/releases/download/0.17.4/libass-0.17.4.tar.xz"
+deps = [
+    "nasm 3.01",
+    "fribidi 1.0.16"
+]
+extras = [
+    
+]

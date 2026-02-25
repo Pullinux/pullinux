@@ -1,0 +1,9 @@
+name = "base-config"
+version = "3.0"
+source = "none"
+deps = [
+    "linux-kernel 6.18.10"
+]
+extras = [
+    
+]

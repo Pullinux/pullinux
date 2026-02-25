@@ -1,0 +1,9 @@
+name = "unrar"
+version = "7.2.4"
+source = "https://www.rarlab.com/rar/unrarsrc-7.2.4.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

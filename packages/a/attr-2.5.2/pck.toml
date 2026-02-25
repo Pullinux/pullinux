@@ -1,0 +1,9 @@
+name = "attr"
+version = "2.5.2"
+source = "https://download.savannah.gnu.org/releases/attr/attr-2.5.2.tar.gz"
+deps = [
+    "isl 0.27"
+]
+extras = [
+    
+]

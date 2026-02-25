@@ -1,0 +1,10 @@
+name = "polkit-qt-1"
+version = "0.200.0"
+source = "https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.200.0.tar.xz"
+deps = [
+    "base-xorg 3.0",
+    "qt 6.10.2"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "desktop-file-utils"
+version = "0.28"
+source = "https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.28.tar.xz"
+deps = [
+    "shared-mime-info 2.4"
+]
+extras = [
+    
+]

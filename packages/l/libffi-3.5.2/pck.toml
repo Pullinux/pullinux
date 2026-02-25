@@ -1,0 +1,9 @@
+name = "libffi"
+version = "3.5.2"
+source = "https://github.com/libffi/libffi/releases/download/v3.5.2/libffi-3.5.2.tar.gz"
+deps = [
+    "libelf 0.194"
+]
+extras = [
+    
+]

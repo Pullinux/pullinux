@@ -1,0 +1,10 @@
+name = "libkexiv2"
+version = "25.08.3"
+source = "https://download.kde.org/stable/release-service/25.08.3/src/libkexiv2-25.08.3.tar.xz"
+deps = [
+    "kde-framework 6.23.0",
+    "exiv2 0.28.7"
+]
+extras = [
+    
+]

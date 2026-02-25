@@ -1,0 +1,10 @@
+name = "freetype-nohb"
+version = "2.14.1"
+source = "https://downloads.sourceforge.net/freetype/freetype-2.14.1.tar.xz"
+deps = [
+    "libpng 1.6.55",
+    "which 2.23"
+]
+extras = [
+    
+]

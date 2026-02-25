@@ -1,0 +1,30 @@
+name = "kde-framework"
+version = "6.23.0"
+source = "none"
+deps = [
+    "breeze-icons 6.23.0",
+    "docbook-xsl-nons 1.79.2",
+    "libcanberra-nogtk 0.30",
+    "libgcrypt 1.12.0",
+    "libical 3.0.20",
+    "libsecret 0.21.7",
+    "libxslt 1.1.45",
+    "lmdb 0.9.35",
+    "qca 2.3.10",
+    "libqrencode 4.1.1",
+    "plasma-wayland-protocols 1.19.0",
+    "aspell 0.60.8.2",
+    "avahi 0.8",
+    "modem-manager 1.24.2",
+    "network-manager 1.56.0",
+    "polkit-qt-1 0.200.0",
+    "kde-preconfig 3.0",
+    "zxing-cpp 3.0.2",
+    "phonon-backend-vlc 0.12.0",
+    "python-modules 3.0",
+    "noto-fonts 3.0",
+    "perl-uri 5.34"
+]
+extras = [
+    
+]

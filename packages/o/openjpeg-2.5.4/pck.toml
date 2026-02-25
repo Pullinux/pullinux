@@ -1,0 +1,9 @@
+name = "openjpeg"
+version = "2.5.4"
+source = "https://github.com/uclouvain/openjpeg/archive/v2.5.4/openjpeg-2.5.4.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

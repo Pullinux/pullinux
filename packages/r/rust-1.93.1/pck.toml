@@ -1,0 +1,11 @@
+name = "rust"
+version = "1.93.1"
+source = "https://static.rust-lang.org/dist/rustc-1.93.1-src.tar.xz"
+deps = [
+    "cmake 4.2.3",
+    "curl 8.18.0",
+    "llvm 21.1.8"
+]
+extras = [
+    
+]

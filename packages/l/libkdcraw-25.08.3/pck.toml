@@ -1,0 +1,10 @@
+name = "libkdcraw"
+version = "25.08.3"
+source = "https://download.kde.org/stable/release-service/25.08.3/src/libkdcraw-25.08.3.tar.xz"
+deps = [
+    "kde-framework 6.23.0",
+    "libraw 0.22.0"
+]
+extras = [
+    
+]

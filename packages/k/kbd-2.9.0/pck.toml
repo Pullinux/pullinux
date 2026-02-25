@@ -1,0 +1,9 @@
+name = "kbd"
+version = "2.9.0"
+source = "https://www.kernel.org/pub/linux/utils/kbd/kbd-2.9.0.tar.xz"
+deps = [
+    "iproute2 6.18.0"
+]
+extras = [
+    "https://www.linuxfromscratch.org/patches/lfs/development/kbd-2.9.0-backspace-1.patch"
+]

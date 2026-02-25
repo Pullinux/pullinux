@@ -1,0 +1,16 @@
+name = "gtk3"
+version = "3.24.51"
+source = "https://download.gnome.org/sources/gtk/3.24/gtk-3.24.51.tar.xz"
+deps = [
+    "at-spi2-core 2.58.3",
+    "gdk-pixbuf noglycin-2.44.5",
+    "libepoxy 1.5.10",
+    "pango 1.57.0",
+    "iso-codes 4.20.1",
+    "libxkbcommon 1.13.1",
+    "libxslt 1.1.45",
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

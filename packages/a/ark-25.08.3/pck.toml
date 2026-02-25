@@ -1,0 +1,14 @@
+name = "ark"
+version = "25.08.3"
+source = "https://download.kde.org/stable/release-service/25.08.3/src/ark-25.08.3.tar.xz"
+deps = [
+    "kde-framework 6.23.0",
+    "libarchive 3.8.5",
+    "7zip 26.0",
+    "cpio 2.15",
+    "unrar 7.2.4",
+    "zip 3.0"
+]
+extras = [
+    
+]

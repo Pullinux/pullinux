@@ -1,0 +1,9 @@
+name = "flac"
+version = "1.5.0"
+source = "https://github.com/xiph/flac/releases/download/1.5.0/flac-1.5.0.tar.xz"
+deps = [
+    "libogg 1.3.6"
+]
+extras = [
+    
+]

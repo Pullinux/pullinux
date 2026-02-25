@@ -1,0 +1,9 @@
+name = "pixman"
+version = "0.46.4"
+source = "https://www.cairographics.org/releases/pixman-0.46.4.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

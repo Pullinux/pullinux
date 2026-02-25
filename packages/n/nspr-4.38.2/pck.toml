@@ -1,0 +1,9 @@
+name = "nspr"
+version = "4.38.2"
+source = "https://archive.mozilla.org/pub/nspr/releases/v4.38.2/src/nspr-4.38.2.tar.gz"
+deps = [
+    "base-config 3.0"
+]
+extras = [
+    
+]

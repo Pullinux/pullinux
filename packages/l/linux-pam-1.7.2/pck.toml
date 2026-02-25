@@ -1,0 +1,10 @@
+name = "linux-pam"
+version = "1.7.2"
+source = "https://github.com/linux-pam/linux-pam/releases/download/v1.7.2/Linux-PAM-1.7.2.tar.xz"
+deps = [
+    "wget 1.25.0",
+    "curl 8.18.0"
+]
+extras = [
+    
+]

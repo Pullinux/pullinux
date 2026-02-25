@@ -1,0 +1,9 @@
+name = "lm-sensors-3-6"
+version = "2"
+source = "https://github.com/hramrach/lm-sensors/archive/V3-6-2/lm-sensors-3-6-2.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

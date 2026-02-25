@@ -1,0 +1,9 @@
+name = "duktape"
+version = "2.7.0"
+source = "https://duktape.org/duktape-2.7.0.tar.xz"
+deps = [
+    "base-system 3.0"
+]
+extras = [
+    
+]

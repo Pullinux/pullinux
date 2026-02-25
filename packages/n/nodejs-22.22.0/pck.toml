@@ -1,0 +1,13 @@
+name = "nodejs"
+version = "22.22.0"
+source = "https://nodejs.org/dist/v22.22.0/node-v22.22.0.tar.xz"
+deps = [
+    "base-dev 3.0",
+    "brotli 1.2.0",
+    "c-ares 1.34.6",
+    "libuv 1.52.0",
+    "nghttp2 1.68.0"
+]
+extras = [
+    "https://www.linuxfromscratch.org/patches/blfs/svn/node-v22.22.0-python_build_fix-1.patch"
+]

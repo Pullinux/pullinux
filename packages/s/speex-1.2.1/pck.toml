@@ -1,0 +1,9 @@
+name = "speex"
+version = "1.2.1"
+source = "https://downloads.xiph.org/releases/speex/speex-1.2.1.tar.gz"
+deps = [
+    "libogg 1.3.6"
+]
+extras = [
+    
+]

@@ -1,0 +1,10 @@
+name = "wget"
+version = "1.25.0"
+source = "https://ftpmirror.gnu.org/gnu/wget/wget-1.25.0.tar.gz"
+deps = [
+    "make-ca 1.16.1",
+    "libpsl 0.21.5"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "dri"
+version = "25.3.5"
+source = "https://mesa.freedesktop.org/archive/mesa-25.3.5.tar.xz"
+deps = [
+    "wayland-protocols 1.47"
+]
+extras = [
+    
+]

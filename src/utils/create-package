@@ -1,0 +1,130 @@
+#!/usr/bin/env python3
+
+import argparse
+import os
+import re
+from pathlib import Path
+
+DEFAULT_PATH = "/usr/share/pullinux/packages"
+BASE_DIR = Path(os.environ.get("PLX_PCK_PATH", DEFAULT_PATH)).expanduser()
+TEMPLATE_DIR = BASE_DIR / "templates"
+EDITOR = os.environ.get("EDITOR", "vi")
+
+def get_latest_version(pkg_name):
+    first_char = pkg_name[0].lower()
+    pkg_root = BASE_DIR / first_char
+
+    pattern = f"{pkg_name}-*"
+    matches = list(pkg_root.glob(pattern))
+
+    if not matches:
+        print(f"NOT FOUND: {pkg_name}")
+        raise f"Failed to find latest version {pkg_name}"
+
+    versions = [m.name.replace(f"{pkg_name}-", "") for m in matches]
+    versions.sort(key=lambda s: [int(u) for u in re.findall(r'\d+', s)])
+    return versions[-1]
+
+def parse_source_url(url):
+    """
+    Handles standard: https://site.org/bash-5.12.tar.gz
+    Handles GitLab:  https://gitlab.../-/archive/0.30/power-profiles-daemon-0.30.txz
+    """
+    # 1. Get just the filename (e.g., power-profiles-daemon-0.30.txz)
+    filename = url.split('/')[-1]
+    
+    # 2. Strip common extensions (tar.gz, tar.xz, txz, zip, etc.)
+    # This regex looks for a dash followed by numbers/dots, then the extension
+    # Pattern: (name)-(version).(extension)
+    match = re.search(r'^(.+?)-(\d[\d\.]*[a-z]?)\.(?:tar\.gz|tar\.xz|txz|zip|tar\.bz2)$', filename)
+    
+    if match:
+        name = match.group(1)
+        version = match.group(2)
+        return name, version
+        
+    return None, None
+
+def create_scaffold(name, version, source, deps, has_installer, template_name):
+    first_char = name[0].lower()
+    pkg_dir = BASE_DIR / first_char / f"{name}-{version}"
+
+    if pkg_dir.exists():
+        print(f"Package already exists: {pck_dir}")
+        exit(1)
+
+    print(f"Creating Pullinux Package: {name}-{version} in {pkg_dir}")
+    pkg_dir.mkdir(parents=True, exist_ok=True)
+
+    pck_file = pkg_dir / "pck.toml"
+
+    
+    formatted_deps = [f'    "{d} {get_latest_version(d)}"' for d in deps]
+
+    if formatted_deps:
+        deps_str = "[\n" + ",\n".join(formatted_deps) + "\n]"
+    else:
+        deps_str = "[]"
+
+    content = f'name = "{name}"\nversion = "{version}"\nsource = "{source}"\n'
+    content += f'deps = {deps_str}\n'
+    content += f'extras = [\n    \n]'
+
+    pck_file.write_text(content)
+
+    template_content = ""
+
+    if template_name:
+        template_path = TEMPLATE_DIR / template_name
+
+        if template_path.exists():
+            template_content = template_path.read_text()
+        else:
+            print(f"Warning: Template not found {template_name}")
+    
+    build_sh = pkg_dir / "build.sh"
+    build_sh.write_text(template_content)
+    build_sh.chmod(0o755)
+
+    if has_installer:
+        install_dir = pkg_dir / ".install"
+        install_dir.mkdir(exist_ok=True)
+        (install_dir / "install.sh").write_text("")
+
+    os.system(f"{EDITOR} {build_sh}")
+
+    
+def main():
+    parser = argparse.ArgumentParser(description="Pullinux Package Creator")
+    parser.add_argument("name", nargs="?", help="Package name")
+    parser.add_argument("version", nargs="?", help="Package version")
+    parser.add_argument("source", nargs="?", help="Source URL")
+    parser.add_argument("deps", nargs="*", help="Dependencies (space separated)")
+    parser.add_argument("-i", "--installer", action="store_true", help="Create .install/install.sh")
+    parser.add_argument("-s", "--source-parse", help="Parse name/version from this URL")
+    parser.add_argument("-t", "--template", help="Template name")
+
+    args = parser.parse_intermixed_args()
+
+    if args.source_parse:
+        name, version = parse_source_url(args.source_parse)
+        source = args.source_parse
+
+        actual_deps = []
+        if args.name: actual_deps.append(args.name)
+        if args.version: actual_deps.append(args.version)
+        if args.source: actual_deps.append(args.source)
+        actual_deps.extend(args.deps)
+
+        if name and version:
+            create_scaffold(name, version, source, actual_deps, args.installer, args.template)
+        else:
+            print("Error: Could not parse name/version from URL")
+    elif args.name and args.version and args.source:
+        create_scaffold(args.name, args.version, args.source, args.deps, args.installer, args.template)
+    else:
+        parser.print_help()
+
+if __name__ == "__main__":
+    main()
+

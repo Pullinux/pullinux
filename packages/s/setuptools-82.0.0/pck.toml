@@ -1,0 +1,9 @@
+name = "setuptools"
+version = "82.0.0"
+source = "https://pypi.org/packages/source/s/setuptools/setuptools-82.0.0.tar.gz"
+deps = [
+    "wheel 0.46.3"
+]
+extras = [
+    
+]

@@ -1,0 +1,10 @@
+name = "plasma-activities"
+version = "6.5.2"
+source = "https://download.kde.org/stable/plasma/6.5.2/plasma-activities-6.5.2.tar.xz"
+deps = [
+    "libkexiv2 25.08.3",
+    "kde-framework 6.23.0"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "certifi"
+version = "2026.1.4"
+source = "https://files.pythonhosted.org/packages/source/c/certifi/certifi-2026.1.4.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

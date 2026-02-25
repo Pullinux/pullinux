@@ -1,0 +1,9 @@
+name = "linux-kernel"
+version = "6.18.10"
+source = "https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.18.10.tar.xz"
+deps = [
+    "plx-sys-config 3.0"
+]
+extras = [
+    
+]

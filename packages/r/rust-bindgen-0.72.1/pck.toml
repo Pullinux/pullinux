@@ -1,0 +1,10 @@
+name = "rust-bindgen"
+version = "0.72.1"
+source = "https://github.com/rust-lang/rust-bindgen/archive/refs/tags/v0.72.1/rust-bindgen-0.72.1.tar.gz"
+deps = [
+    "rust 1.93.1",
+    "llvm 21.1.8"
+]
+extras = [
+    
+]

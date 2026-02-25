@@ -1,0 +1,9 @@
+name = "packaging"
+version = "26.0"
+source = "https://files.pythonhosted.org/packages/source/p/packaging/packaging-26.0.tar.gz"
+deps = [
+    "flit-core 3.12.0"
+]
+extras = [
+    
+]

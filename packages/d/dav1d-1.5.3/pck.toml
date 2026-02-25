@@ -1,0 +1,9 @@
+name = "dav1d"
+version = "1.5.3"
+source = "https://code.videolan.org/videolan/dav1d/-/archive/1.5.3/dav1d-1.5.3.tar.gz"
+deps = [
+    "nasm 3.01"
+]
+extras = [
+    
+]

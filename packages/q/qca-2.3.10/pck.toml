@@ -1,0 +1,9 @@
+name = "qca"
+version = "2.3.10"
+source = "https://download.kde.org/stable/qca/2.3.10/qca-2.3.10.tar.xz"
+deps = [
+    "qt 6.10.2"
+]
+extras = [
+    
+]

@@ -1,0 +1,10 @@
+name = "cmake"
+version = "4.2.3"
+source = "https://cmake.org/files/v4.2/cmake-4.2.3.tar.gz"
+deps = [
+    "curl 8.18.0",
+    "base-system 3.0"
+]
+extras = [
+    
+]

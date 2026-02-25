@@ -1,0 +1,13 @@
+name = "modem-manager"
+version = "1.24.2"
+source = "https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/archive/1.24.2/ModemManager-1.24.2.tar.gz"
+deps = [
+    "libgudev 238",
+    "libmbim 1.34.0",
+    "libqmi 1.38.0",
+    "vala 0.56.18",
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

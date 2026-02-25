@@ -1,0 +1,203 @@
+#!/usr/bin/env python3
+import os
+import re
+import shutil
+import datetime
+import subprocess
+import tomllib
+from pathlib import Path
+
+# --- Configuration ---
+PLX = Path(os.environ.get("PLX", "/mnt/plx"))
+PCK_PATH = Path(os.environ.get("PLX_PCK_PATH", "/usr/share/pullinux/packages"))
+BIN_DIR = PCK_PATH / "bin"
+# Database path inside the chroot mount
+PLX_VAR_LIB = PLX / "var/lib/pullinux/packages"
+
+def get_latest_version(pkg_name):
+    """Finds the highest version number available in the package recipes."""
+    first_char = pkg_name[0].lower()
+    pkg_root = PCK_PATH / first_char
+    if not pkg_root.exists():
+        return None
+    
+    pattern = f"{pkg_name}-*"
+    matches = list(pkg_root.glob(pattern))
+    if not matches:
+        return None
+    
+    # Natural sort for versions (e.g., 2.11 > 2.2)
+    versions = [m.name.replace(f"{pkg_name}-", "") for m in matches]
+    versions.sort(key=lambda s: [int(u) if u.isdigit() else u for u in re.split(r'(\d+)', s)])
+    return versions[-1]
+
+def is_installed(name, version):
+    """Checks the Pullinux DB to see if this specific version is already there."""
+    db_entry = PLX_VAR_LIB / f"{name}-{version}.toml"
+    return db_entry.exists()
+
+def get_manifest(txz_path):
+    """Returns a list of all files and directories in the package archive."""
+    res = subprocess.run(["tar", "-tf", str(txz_path)], capture_output=True, text=True)
+    if res.returncode == 0:
+        # Strip leading dots/slashes to keep paths relative to root
+        return [line.strip().lstrip('./') for line in res.stdout.split('\n') if line.strip()]
+    return []
+
+def record_install(name, version, recipe_path, txz_path):
+    """Writes a version-specific receipt including a file manifest for uninstallation."""
+    PLX_VAR_LIB.mkdir(parents=True, exist_ok=True)
+    db_entry = PLX_VAR_LIB / f"{name}-{version}.toml"
+    
+    manifest = get_manifest(txz_path)
+    # Format the manifest as a pretty-printed TOML array
+    manifest_str = "[\n" + ",\n".join([f'    "{f}"' for f in manifest]) + ",\n]"
+    
+    content = (
+        f'name = "{name}"\n'
+        f'version = "{version}"\n'
+        f'install_date = "{datetime.datetime.now().isoformat()}"\n'
+        f'recipe_source = "{recipe_path}"\n'
+        f'manifest = {manifest_str}\n'
+    )
+    db_entry.write_text(content)
+
+def install_package(name, version=None, auto_yes=False):
+    # 1. Resolve Name and Version
+    if not version:
+        version = get_latest_version(name)
+        if not version:
+            print(f"[!] Error: Recipe for '{name}' not found.")
+            exit(1)
+
+    # 2. Check Database (Prevents Infinite Loops and Redundant Work)
+    if is_installed(name, version):
+        return
+
+    # 3. Load Recipe and Resolve Dependencies
+    recipe_dir = PCK_PATH / name[0].lower() / f"{name}-{version}"
+    recipe_file = recipe_dir / "pck.toml"
+    
+    if not recipe_file.exists():
+        print(f"[!] Error: pck.toml missing for {name}-{version}")
+        exit(1)
+
+    with open(recipe_file, "rb") as f:
+        #print(f"Loading recipe file {recipe_file}")
+        recipe_data = tomllib.load(f)
+
+    # RECURSIVE DEPENDENCY RESOLUTION
+    deps = recipe_data.get("deps", [])
+    if deps:
+        print(f"[*] Resolving dependencies for {name}-{version}...")
+        for dep_str in deps:
+            # Splits "iana-etc 20260202" into ["iana-etc", "20260202"]
+            dep_parts = dep_str.split()
+            if len(dep_parts) == 2:
+                d_name, d_ver = dep_parts
+                # Recursive Call
+                install_package(d_name, d_ver, auto_yes)
+            else:
+                print(f"[!] Warning: Invalid dependency format '{dep_str}' in {name} recipe.")
+                exit(1)
+
+    # 4. Handle Missing Binaries (Bridge to build-package)
+    txz_name = f"{name}-{version}-plx-3.0.txz"
+    txz_path = BIN_DIR / txz_name
+
+    if not txz_path.exists():
+        print(f"[*] Binary {txz_name} not found.")
+        choice = 'y' if auto_yes else input(f"    Would you like to build {name}-{version} now? (y/N): ").lower()
+        
+        if choice == 'y':
+            print(f"[*] Executing build-package {name} {version}...")
+            # Using ./ assuming build-package is in the same directory
+            build_res = subprocess.run(["./build-package", name, version])
+            if build_res.returncode != 0:
+                print(f"[!] Error: Build failed for {name}. Aborting installation.")
+                exit(1)
+        else:
+            print(f"[*] Cannot install {name} without binary. Aborting.")
+            exit(1)
+
+    # 5. Staging and Extraction inside Chroot
+    plx_tmp = PLX / "tmp"
+    plx_tmp.mkdir(parents=True, exist_ok=True)
+    staged_txz = plx_tmp / txz_name
+    
+    print(f"[*] Staging {txz_name} for internal extraction...")
+    shutil.copy2(txz_path, staged_txz)
+
+    print(f"[*] Extracting {name}-{version} inside chroot namespace...")
+    # -x: extract, -h: follow symlinks, -f: file
+    extract_script = f"tar -xhf /tmp/{txz_name} -C /"
+    
+    chroot_extract_cmd = [
+        "chroot", str(PLX), "/usr/bin/env", "-i",
+        "HOME=/root", "TERM=xterm",
+        "/bin/bash", "-c", extract_script
+    ]
+
+    try:
+        subprocess.run(chroot_extract_cmd, check=True)
+    except subprocess.CalledProcessError:
+        print(f"[!] Error: Extraction failed inside chroot environment.")
+        if staged_txz.exists(): os.remove(staged_txz)
+        exit(1)
+    finally:
+        if staged_txz.exists():
+            os.remove(staged_txz)
+
+    # 6. Run Post-Install Script (.install/install.sh)
+    install_script_abs = PLX / ".install/install.sh"
+    if install_script_abs.exists():
+        print(f"[*] Running post-install hook for {name}...")
+        
+        chroot_hook_cmd = [
+            "chroot", str(PLX), "/usr/bin/env", "-i",
+            "HOME=/root", "TERM=xterm",
+            "/bin/bash", "-e", "-c", "cd /.install && bash -e /.install/install.sh"
+        ]
+        
+        try:
+            subprocess.run(chroot_hook_cmd, check=True)
+        except subprocess.CalledProcessError:
+            print(f"[!] Warning: Post-install script returned an error.")
+            print("INSTALL FAILED")
+            exit(1)
+        
+        # Cleanup metadata
+        shutil.rmtree(PLX / ".install", ignore_errors=True)
+
+        
+    try:
+        chroot_hook_cmd = [
+            "chroot", str(PLX), "/usr/bin/env", "-i",
+            "HOME=/root", "TERM=xterm",
+            "/bin/bash", "-e", "-c", "ldconfig"
+        ]
+
+        subprocess.run(chroot_hook_cmd, check=True)
+    except subprocess.CalledProcessError:
+        print(f"[!] Warning: ldconfig run error...")
+        exit(1)
+    
+    # 7. Record the successful installation
+    record_install(name, version, str(recipe_dir), txz_path)
+    print(f"[+] {name}-{version} installed successfully.")
+
+# --- Main Entry Point ---
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="Pullinux Package Installer")
+    parser.add_argument("name", help="Package name")
+    parser.add_argument("-v", "--version", help="Specific version")
+    parser.add_argument("-y", "--yes", action="store_true", help="Auto-build if binary is missing")
+    
+    args = parser.parse_args()
+    
+    try:
+        install_package(args.name, args.version, args.yes)
+    except KeyboardInterrupt:
+        print("\n[!] Installation interrupted by user.")
+        exit(1)

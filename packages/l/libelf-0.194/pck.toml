@@ -1,0 +1,9 @@
+name = "libelf"
+version = "0.194"
+source = "https://sourceware.org/ftp/elfutils/0.194/elfutils-0.194.tar.bz2"
+deps = [
+    "openssl 3.6.1"
+]
+extras = [
+    
+]

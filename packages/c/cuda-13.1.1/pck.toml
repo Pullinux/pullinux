@@ -1,0 +1,10 @@
+name = "cuda"
+version = "13.1.1"
+source = "none"
+deps = [
+    "nvidia-driver 590.48.01",
+    "glu 9.0.3"
+]
+extras = [
+    
+]

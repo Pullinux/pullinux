@@ -1,0 +1,9 @@
+name = "libseccomp"
+version = "2.6.0"
+source = "https://github.com/seccomp/libseccomp/releases/download/v2.6.0/libseccomp-2.6.0.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

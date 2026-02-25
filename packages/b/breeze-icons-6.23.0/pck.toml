@@ -1,0 +1,10 @@
+name = "breeze-icons"
+version = "6.23.0"
+source = "https://download.kde.org/stable/frameworks/6.23/breeze-icons-6.23.0.tar.xz"
+deps = [
+    "extra-cmake-modules 6.23.0",
+    "qt 6.10.2"
+]
+extras = [
+    
+]

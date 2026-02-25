@@ -1,0 +1,10 @@
+name = "sentry-sdk"
+version = "2.53.0"
+source = "https://github.com/getsentry/sentry-python/releases/download/2.53.0/sentry_sdk-2.53.0.tar.gz"
+deps = [
+    "certifi 2026.1.4",
+    "python-modules 3.0"
+]
+extras = [
+    
+]

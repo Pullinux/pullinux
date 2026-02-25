@@ -1,0 +1,11 @@
+name = "libproxy"
+version = "0.5.12"
+source = "https://github.com/libproxy/libproxy/archive/0.5.12/libproxy-0.5.12.tar.gz"
+deps = [
+    "base-dev 3.0",
+    "gsettings-desktop-schemas 49.1",
+    "vala 0.56.18"
+]
+extras = [
+    
+]

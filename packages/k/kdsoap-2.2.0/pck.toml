@@ -1,0 +1,9 @@
+name = "kdsoap"
+version = "2.2.0"
+source = "https://github.com/KDAB/KDSoap/releases/download/kdsoap-2.2.0/kdsoap-2.2.0.tar.gz"
+deps = [
+    "qt 6.10.2"
+]
+extras = [
+    
+]

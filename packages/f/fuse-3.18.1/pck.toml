@@ -1,0 +1,9 @@
+name = "fuse"
+version = "3.18.1"
+source = "https://github.com/libfuse/libfuse/releases/download/fuse-3.18.1/fuse-3.18.1.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

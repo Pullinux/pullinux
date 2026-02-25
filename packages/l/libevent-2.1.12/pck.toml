@@ -1,0 +1,9 @@
+name = "libevent"
+version = "2.1.12"
+source = "https://github.com/libevent/libevent/releases/download/release-2.1.12-stable/libevent-2.1.12-stable.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "make"
+version = "4.4.1"
+source = "https://ftpmirror.gnu.org/make/make-4.4.1.tar.gz"
+deps = [
+    "libpipeline 1.5.8"
+]
+extras = [
+    
+]

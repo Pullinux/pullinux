@@ -1,0 +1,9 @@
+name = "six"
+version = "1.17.0"
+source = "https://files.pythonhosted.org/packages/source/s/six/six-1.17.0.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

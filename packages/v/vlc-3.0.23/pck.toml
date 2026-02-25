@@ -1,0 +1,15 @@
+name = "vlc"
+version = "3.0.23"
+source = "https://download.videolan.org/vlc/3.0.23/vlc-3.0.23.tar.xz"
+deps = [
+    "base-xorg 3.0",
+    "ffmpeg 8.0.1",
+    "a52dec 0.8.0",
+    "libgcrypt 1.12.0",
+    "libmad 0.15.1b",
+    "lua 5.4.8",
+    "qt 6.10.2"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "m4"
+version = "1.4.21"
+source = "https://ftpmirror.gnu.org/m4/m4-1.4.21.tar.xz"
+deps = [
+    "pcre2 10.47"
+]
+extras = [
+    
+]

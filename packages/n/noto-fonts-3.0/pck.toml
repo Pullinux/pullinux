@@ -1,0 +1,9 @@
+name = "noto-fonts"
+version = "3.0"
+source = "none"
+deps = [
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

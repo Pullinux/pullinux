@@ -1,0 +1,11 @@
+name = "kdsoap-ws-discovery-client"
+version = "0.4.0"
+source = "https://download.kde.org/stable/kdsoap-ws-discovery-client/kdsoap-ws-discovery-client-0.4.0.tar.xz"
+deps = [
+    "doxygen 1.16.1",
+    "extra-cmake-modules 6.23.0",
+    "kdsoap 2.2.0"
+]
+extras = [
+    
+]

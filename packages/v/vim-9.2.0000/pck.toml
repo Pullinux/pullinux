@@ -1,0 +1,9 @@
+name = "vim"
+version = "9.2.0000"
+source = "https://github.com/vim/vim/archive/v9.2.0000/vim-9.2.0000.tar.gz"
+deps = [
+    "texinfo 7.2"
+]
+extras = [
+    
+]

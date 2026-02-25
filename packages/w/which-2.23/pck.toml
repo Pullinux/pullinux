@@ -1,0 +1,9 @@
+name = "which"
+version = "2.23"
+source = "https://ftpmirror.gnu.org/gnu/which/which-2.23.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

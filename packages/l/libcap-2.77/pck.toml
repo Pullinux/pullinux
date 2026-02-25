@@ -1,0 +1,9 @@
+name = "libcap"
+version = "2.77"
+source = "https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.77.tar.xz"
+deps = [
+    "acl 2.3.2"
+]
+extras = [
+    
+]

@@ -1,0 +1,10 @@
+name = "wireplumber"
+version = "0.5.13"
+source = "https://gitlab.freedesktop.org/pipewire/wireplumber/-/archive/0.5.13/wireplumber-0.5.13.tar.bz2"
+deps = [
+    "pipewire 1.6.0",
+    "lua 5.4.8"
+]
+extras = [
+    
+]

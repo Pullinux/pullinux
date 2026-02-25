@@ -1,0 +1,9 @@
+name = "dejavu-fonts"
+version = "2.37"
+source = "https://sourceforge.net/projects/dejavu/files/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2/download"
+deps = [
+    "xorg-fonts 3.0"
+]
+extras = [
+    
+]

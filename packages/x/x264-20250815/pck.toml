@@ -1,0 +1,9 @@
+name = "x264"
+version = "20250815"
+source = "https://anduin.linuxfromscratch.org/BLFS/x264/x264-20250815.tar.xz"
+deps = [
+    "nasm 3.01"
+]
+extras = [
+    
+]

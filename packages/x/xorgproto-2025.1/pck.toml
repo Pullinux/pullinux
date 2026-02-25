@@ -1,0 +1,9 @@
+name = "xorgproto"
+version = "2025.1"
+source = "https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2025.1.tar.xz"
+deps = [
+    "util-macros 1.20.2"
+]
+extras = [
+    
+]

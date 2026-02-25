@@ -1,0 +1,11 @@
+name = "sdl3"
+version = "3.4.0"
+source = "https://www.libsdl.org/release/SDL3-3.4.0.tar.gz"
+deps = [
+    "libusb 1.0.29",
+    "libxkbcommon 1.13.1",
+    "wireplumber 0.5.13"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "coreutils"
+version = "9.10"
+source = "https://ftpmirror.gnu.org/coreutils/coreutils-9.10.tar.xz"
+deps = [
+    "kmod 34.2"
+]
+extras = [
+    "https://www.linuxfromscratch.org/patches/lfs/development/coreutils-9.10-i18n-1.patch"
+]

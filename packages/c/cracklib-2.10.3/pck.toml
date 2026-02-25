@@ -1,0 +1,9 @@
+name = "cracklib"
+version = "2.10.3"
+source = "https://github.com/cracklib/cracklib/releases/download/v2.10.3/cracklib-2.10.3.tar.xz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

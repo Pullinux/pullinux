@@ -1,0 +1,9 @@
+name = "opencl-headers"
+version = "2025.07.22"
+source = "none"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

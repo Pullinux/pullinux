@@ -1,0 +1,9 @@
+name = "dolphin-plugins"
+version = "25.08.3"
+source = "https://download.kde.org/stable/release-service/25.08.3/src/dolphin-plugins-25.08.3.tar.xz"
+deps = [
+    "dolphin 25.08.3"
+]
+extras = [
+    
+]

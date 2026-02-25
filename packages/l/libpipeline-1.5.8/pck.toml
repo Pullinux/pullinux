@@ -1,0 +1,9 @@
+name = "libpipeline"
+version = "1.5.8"
+source = "https://download.savannah.gnu.org/releases/libpipeline/libpipeline-1.5.8.tar.gz"
+deps = [
+    "kbd 2.9.0"
+]
+extras = [
+    
+]

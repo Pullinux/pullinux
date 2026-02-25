@@ -1,0 +1,9 @@
+name = "pcre2"
+version = "10.47"
+source = "https://github.com/PCRE2Project/pcre2/releases/download/pcre2-10.47/pcre2-10.47.tar.bz2"
+deps = [
+    "readline 8.3"
+]
+extras = [
+    
+]

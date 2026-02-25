@@ -1,0 +1,9 @@
+name = "cython"
+version = "3.2.4"
+source = "https://github.com/cython/cython/releases/download/3.2.4/cython-3.2.4.tar.gz"
+deps = [
+    "mako 1.3.10"
+]
+extras = [
+    
+]

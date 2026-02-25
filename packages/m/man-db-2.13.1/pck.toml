@@ -1,0 +1,9 @@
+name = "man-db"
+version = "2.13.1"
+source = "https://download.savannah.gnu.org/releases/man-db/man-db-2.13.1.tar.xz"
+deps = [
+    "dbus 1.16.2"
+]
+extras = [
+    
+]

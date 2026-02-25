@@ -1,0 +1,9 @@
+name = "libgudev"
+version = "238"
+source = "https://download.gnome.org/sources/libgudev/238/libgudev-238.tar.xz"
+deps = [
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

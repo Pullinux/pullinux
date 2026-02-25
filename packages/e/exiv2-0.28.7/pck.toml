@@ -1,0 +1,11 @@
+name = "exiv2"
+version = "0.28.7"
+source = "https://github.com/Exiv2/exiv2/archive/v0.28.7/exiv2-0.28.7.tar.gz"
+deps = [
+    "brotli 1.2.0",
+    "inih 62",
+    "base-dev 3.0"
+]
+extras = [
+    
+]

@@ -1,0 +1,10 @@
+name = "bluez"
+version = "5.86"
+source = "https://www.kernel.org/pub/linux/bluetooth/bluez-5.86.tar.xz"
+deps = [
+    "libical 3.0.20",
+    "docutils 0.22.4"
+]
+extras = [
+    
+]

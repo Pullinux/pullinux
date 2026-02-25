@@ -1,0 +1,9 @@
+name = "inih"
+version = "62"
+source = "https://github.com/benhoyt/inih/archive/r62/inih-r62.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+mkdir -p build
+cd       build
+
+meson setup --prefix=/usr ..    \
+            --buildtype=release \
+            -D manpages=false
+            
+
+ninja
+DESTDIR=$PCKDIR ninja install
+
+#32 bit
+
+rm -rf *
+
+PKG_CONFIG_PATH="/usr/lib32/pkgconfig" \
+CC="gcc -m32 -march=i686"              \
+CXX="g++ -m32 -march=i686"             \
+meson setup --prefix=/usr ..           \
+            --libdir=/usr/lib32        \
+            --buildtype=release        \
+            -D manpages=false
+
+ninja
+
+mkdir -p $PCKDIR/usr/lib32
+
+DESTDIR=$PWD/DESTDIR ninja install
+cp -Rv DESTDIR/usr/lib32/* $PCKDIR/usr/lib32
+rm -rf DESTDIR

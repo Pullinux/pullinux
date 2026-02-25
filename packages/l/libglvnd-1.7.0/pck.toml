@@ -1,0 +1,10 @@
+name = "libglvnd"
+version = "1.7.0"
+source = "https://gitlab.freedesktop.org/glvnd/libglvnd/-/archive/v1.7.0/libglvnd-v1.7.0.tar.gz"
+deps = [
+    "wayland-protocols 1.47",
+    "xorg-libs 3.0"
+]
+extras = [
+    
+]

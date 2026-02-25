@@ -1,0 +1,9 @@
+name = "libxcb"
+version = "1.17.0"
+source = "https://xorg.freedesktop.org/archive/individual/lib/libxcb-1.17.0.tar.xz"
+deps = [
+    "xcb-proto 1.17.0"
+]
+extras = [
+    
+]

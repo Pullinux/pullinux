@@ -1,0 +1,9 @@
+name = "aspell"
+version = "0.60.8.2"
+source = "https://ftpmirror.gnu.org/aspell/aspell-0.60.8.2.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    "https://ftpmirror.gnu.org/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2"
+]

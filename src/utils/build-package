@@ -1,0 +1,153 @@
+#!/usr/bin/env python3
+import os
+import re
+import shutil
+import tarfile
+import tomllib
+import subprocess
+from pathlib import Path
+import multiprocessing
+
+# Config
+PLX = Path(os.environ.get("PLX", "/mnt/plx"))
+PCK_PATH = Path(os.environ.get("PLX_PCK_PATH", "/usr/share/pullinux/packages"))
+BUILD_ROOT = PLX / "tmp/build"
+SOURCE_CACHE = PLX / "sources"
+PCK_OUTPUT_DIR = PCK_PATH / "bin" # Where the .txz files live
+
+def get_latest_version(pkg_name):
+    first_char = pkg_name[0].lower()
+    pkg_root = PCK_PATH / first_char
+    pattern = f"{pkg_name}-*"
+    if not pkg_root.exists(): return None
+    matches = list(pkg_root.glob(pattern))
+    if not matches: return None
+    versions = [m.name.replace(f"{pkg_name}-", "") for m in matches]
+    versions.sort(key=lambda s: [int(u) if u.isdigit() else u for u in re.split(r'(\d+)', s)])
+    return versions[-1]
+
+def build_package(name, version=None):
+    if not version:
+        version = get_latest_version(name)
+        if not version: 
+            print(f"Error: Package {name} not found."); return
+
+    pkg_recipe_dir = PCK_PATH / name[0].lower() / f"{name}-{version}"
+    with open(pkg_recipe_dir / "pck.toml", "rb") as f:
+        recipe = tomllib.load(f)
+
+    # Clean and Setup Build & Pkg directories
+    pkg_stage_dir = PLX / "tmp/pkg"  # This is $PCKDIR inside chroot
+    for d in [BUILD_ROOT, pkg_stage_dir]:
+        if d.exists(): shutil.rmtree(d)
+        d.mkdir(parents=True)
+    
+    install_dir = pkg_recipe_dir / ".install"
+
+    if install_dir.exists():
+        print("Copying installer...")
+        shutil.copytree(install_dir, PLX / "tmp/pkg/.install")
+    else:
+        print(f"No installer: {install_dir}")
+
+    # 1. Copy Recipe
+    print(f"[*] Copying recipe to {BUILD_ROOT}")
+    for item in pkg_recipe_dir.iterdir():
+        if item.is_dir(): shutil.copytree(item, BUILD_ROOT / item.name)
+        else: shutil.copy2(item, BUILD_ROOT / item.name)
+
+    top_dir = ""
+
+    # 2. Extract Source
+    source_extract_dir = BUILD_ROOT / "source"
+    source_extract_dir.mkdir()
+    
+    if recipe['source'] != "none":
+        source_filename = recipe['source'].split('/')[-1]
+        source_tar = SOURCE_CACHE / source_filename
+        
+        if not source_tar.exists():
+            print(f"[*] Downloading {source_tar}...")
+            subprocess.run(["wget", recipe['source'], "-P", str(SOURCE_CACHE)], check=True)
+
+        if not source_tar.exists():
+            print("FAILED TO DOWNLOAD SOURCE")
+            exit(1)
+            
+        print(f"[*] Extracting {source_filename}...")
+        subprocess.run(["tar", "-xf", str(source_tar), "-C", str(source_extract_dir)], check=True)
+
+        with tarfile.open(source_tar) as tar:
+            top_dir = tar.getnames()[0].split('/')[0]
+    
+    working_dir_in_chroot = ""
+
+    if top_dir == "":
+        working_dir_in_chroot = f"/tmp/build/source"
+    else:
+        working_dir_in_chroot = f"/tmp/build/source/{top_dir}"
+
+    # 3. Extras
+    for extra_url in recipe.get('extras', []):
+        extra_filename = extra_url.split('/')[-1]
+        extra_path = SOURCE_CACHE / extra_filename
+
+        if not extra_path.exists():
+            print(f"[*] Downloading {extra_url}...")
+            subprocess.run(["wget", extra_url, "-P", str(SOURCE_CACHE)], check=True)
+
+        if not extra_path.exists():
+            print("FAILED TO DOWNLOAD SOURCE")
+            exit(1)
+
+        shutil.copy2(extra_path, source_extract_dir)
+
+    # 4. Chroot Execution
+    print(f"[*] Starting build for {name}-{version}...")
+    # chroot_script = f"set -e; cd {working_dir_in_chroot} && cp /tmp/build/build.sh . && ./build.sh"
+    
+    cores = multiprocessing.cpu_count()
+
+    chroot_script = (
+        f"export MAKEFLAGS=-j$(nproc); "
+        f"cd {working_dir_in_chroot} && "
+        f"/bin/bash -e /tmp/build/build.sh"
+    )
+
+    chroot_cmd = [
+        "chroot", str(PLX), "/usr/bin/env", "-i",
+        "HOME=/root", "TERM=xterm-256color", "PCKDIR=/tmp/pkg",
+        "PATH=/usr/bin:/usr/sbin",
+        "/bin/bash", "--login", "-c", chroot_script
+    ]
+
+    try:
+        subprocess.run(chroot_cmd, check=True)
+    except subprocess.CalledProcessError:
+        print(f"\n[!] Build FAILED. Check /tmp/build in {PLX} for details."); exit(1)
+
+    # 5. Packaging (.txz creation)
+    PCK_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    package_filename = f"{name}-{version}-plx-3.0.txz"
+    package_full_path = PCK_OUTPUT_DIR / package_filename
+
+    print(f"[*] Packaging {name} into {package_filename}...")
+    
+    # We run tar from the host, but we CD into the pkg_stage_dir first
+    # so the tar file doesn't contain the full /mnt/plx/tmp/pkg path.
+    # '.' ensures the tar starts at the root of the package.
+    tar_cmd = [
+        "tar", "-cJpf", str(package_full_path), "-C", str(pkg_stage_dir), "."
+    ]
+    
+    try:
+        subprocess.run(tar_cmd, check=True)
+        print(f"\n[+] SUCCESS: Package created at {package_full_path}")
+    except subprocess.CalledProcessError:
+        print(f"[!] Error creating the .txz archive."); exit(1)
+
+if __name__ == "__main__":
+    import sys
+    if len(sys.argv) < 2:
+        print("Usage: build-package <name> [version]"); sys.exit(1)
+    build_package(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else None)

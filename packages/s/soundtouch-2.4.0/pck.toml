@@ -1,0 +1,9 @@
+name = "soundtouch"
+version = "2.4.0"
+source = "https://www.surina.net/soundtouch/soundtouch-2.4.0.tar.gz"
+deps = [
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

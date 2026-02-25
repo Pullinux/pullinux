@@ -1,0 +1,11 @@
+name = "libwacom"
+version = "2.18.0"
+source = "https://github.com/linuxwacom/libwacom/releases/download/libwacom-2.18.0/libwacom-2.18.0.tar.xz"
+deps = [
+    "libevdev 1.13.6",
+    "libgudev 238",
+    "libxml2 2.15.1"
+]
+extras = [
+    
+]

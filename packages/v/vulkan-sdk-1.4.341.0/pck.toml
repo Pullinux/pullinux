@@ -1,0 +1,10 @@
+name = "vulkan-sdk"
+version = "1.4.341.0"
+source = "none"
+deps = [
+    "wayland-protocols 1.47",
+    "xorg-libs 3.0"
+]
+extras = [
+    
+]

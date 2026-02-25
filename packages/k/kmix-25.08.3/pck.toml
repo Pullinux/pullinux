@@ -1,0 +1,9 @@
+name = "kmix"
+version = "25.08.3"
+source = "https://download.kde.org/stable/release-service/25.08.3/src/kmix-25.08.3.tar.xz"
+deps = [
+    "kde-framework 6.23.0"
+]
+extras = [
+    
+]

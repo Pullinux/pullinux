@@ -1,0 +1,11 @@
+name = "accountsservice"
+version = "23.13.9"
+source = "https://www.freedesktop.org/software/accountsservice/accountsservice-23.13.9.tar.xz"
+deps = [
+    "polkit 127",
+    "vala 0.56.18",
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

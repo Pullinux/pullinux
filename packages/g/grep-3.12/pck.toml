@@ -1,0 +1,9 @@
+name = "grep"
+version = "3.12"
+source = "https://ftpmirror.gnu.org/grep/grep-3.12.tar.xz"
+deps = [
+    "bison 3.8.2"
+]
+extras = [
+    
+]

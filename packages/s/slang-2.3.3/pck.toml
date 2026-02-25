@@ -1,0 +1,9 @@
+name = "slang"
+version = "2.3.3"
+source = "https://www.jedsoft.org/releases/slang/slang-2.3.3.tar.bz2"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "libtiff"
+version = "4.7.1"
+source = "https://download.osgeo.org/libtiff/tiff-4.7.1.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

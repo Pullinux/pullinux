@@ -1,0 +1,10 @@
+name = "libcanberra-nogtk"
+version = "0.30"
+source = "https://0pointer.de/lennart/projects/libcanberra/libcanberra-0.30.tar.xz"
+deps = [
+    "gstreamer 1.28.0",
+    "base-xorg 3.0"
+]
+extras = [
+    "https://www.linuxfromscratch.org/patches/blfs/svn/libcanberra-0.30-wayland-1.patch"
+]

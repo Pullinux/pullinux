@@ -1,0 +1,9 @@
+name = "luit"
+version = "20250912"
+source = "https://invisible-mirror.net/archives/luit/luit-20250912.tgz"
+deps = [
+    "xorg-apps 3.0"
+]
+extras = [
+    
+]

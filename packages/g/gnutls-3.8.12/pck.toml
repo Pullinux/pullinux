@@ -1,0 +1,9 @@
+name = "gnutls"
+version = "3.8.12"
+source = "https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.12.tar.xz"
+deps = [
+    "nettle 3.10.1"
+]
+extras = [
+    
+]

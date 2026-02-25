@@ -1,0 +1,10 @@
+name = "graphviz"
+version = "14.1.2"
+source = "https://gitlab.com/graphviz/graphviz/-/archive/14.1.2/graphviz-14.1.2.tar.bz2"
+deps = [
+    "pango 1.57.0",
+    "cairo 1.18.4"
+]
+extras = [
+    
+]

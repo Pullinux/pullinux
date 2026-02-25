@@ -1,0 +1,9 @@
+name = "vala"
+version = "0.56.18"
+source = "https://download.gnome.org/sources/vala/0.56/vala-0.56.18.tar.xz"
+deps = [
+    "graphviz 14.1.2"
+]
+extras = [
+    "https://www.linuxfromscratch.org/patches/blfs/svn/vala-0.56.18-graphviz_13_fix-1.patch"
+]

@@ -1,0 +1,9 @@
+name = "libXau"
+version = "1.0.12"
+source = "https://xorg.freedesktop.org/archive/individual/lib/libXau-1.0.12.tar.xz"
+deps = [
+    "xorgproto 2025.1"
+]
+extras = [
+    
+]

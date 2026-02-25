@@ -1,0 +1,10 @@
+name = "python-modules"
+version = "3.0"
+source = "none"
+deps = [
+    "base-xorg 3.0",
+    "doxygen 1.16.1"
+]
+extras = [
+    
+]

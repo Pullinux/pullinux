@@ -1,0 +1,9 @@
+name = "glslc"
+version = "2026.1"
+source = "https://github.com/google/shaderc/archive/v2026.1/shaderc-2026.1.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

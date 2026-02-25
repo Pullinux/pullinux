@@ -1,0 +1,9 @@
+name = "cpio"
+version = "2.15"
+source = "https://ftpmirror.gnu.org/cpio/cpio-2.15.tar.bz2"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

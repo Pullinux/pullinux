@@ -1,0 +1,9 @@
+name = "xinit"
+version = "1.4.4"
+source = "https://xorg.freedesktop.org/archive/individual/app/xinit-1.4.4.tar.xz"
+deps = [
+    "xorg-server 21.1.21"
+]
+extras = [
+    
+]

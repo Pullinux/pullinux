@@ -1,0 +1,9 @@
+name = "expect"
+version = "5.45.4"
+source = "https://prdownloads.sourceforge.net/expect/expect5.45.4.tar.gz"
+deps = [
+    "tcl 8.6.17"
+]
+extras = [
+    "https://www.linuxfromscratch.org/patches/lfs/development/expect-5.45.4-gcc15-1.patch"
+]

@@ -1,0 +1,9 @@
+name = "libsass"
+version = "3.6.6"
+source = "https://github.com/sass/libsass/archive/3.6.6/libsass-3.6.6.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

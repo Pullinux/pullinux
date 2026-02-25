@@ -1,0 +1,9 @@
+name = "plasma-activities-stats"
+version = "6.5.2"
+source = "https://download.kde.org/stable/plasma/6.5.2/plasma-activities-stats-6.5.2.tar.xz"
+deps = [
+    "plasma-activities 6.5.2"
+]
+extras = [
+    
+]

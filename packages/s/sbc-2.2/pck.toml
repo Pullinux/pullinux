@@ -1,0 +1,9 @@
+name = "sbc"
+version = "2.2"
+source = "https://www.kernel.org/pub/linux/bluetooth/sbc-2.2.tar.xz"
+deps = [
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

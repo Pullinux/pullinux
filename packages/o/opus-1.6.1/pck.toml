@@ -1,0 +1,9 @@
+name = "opus"
+version = "1.6.1"
+source = "https://downloads.xiph.org/releases/opus/opus-1.6.1.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

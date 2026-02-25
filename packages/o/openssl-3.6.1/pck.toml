@@ -1,0 +1,9 @@
+name = "openssl"
+version = "3.6.1"
+source = "https://github.com/openssl/openssl/releases/download/openssl-3.6.1/openssl-3.6.1.tar.gz"
+deps = [
+    "automake 1.18.1"
+]
+extras = [
+    
+]

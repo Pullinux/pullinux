@@ -1,0 +1,9 @@
+name = "ninja"
+version = "1.13.2"
+source = "https://github.com/ninja-build/ninja/archive/v1.13.2/ninja-1.13.2.tar.gz"
+deps = [
+    "setuptools 82.0.0"
+]
+extras = [
+    
+]

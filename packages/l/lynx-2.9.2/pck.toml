@@ -1,0 +1,9 @@
+name = "lynx"
+version = "2.9.2"
+source = "https://invisible-mirror.net/archives/lynx/tarballs/lynx2.9.2.tar.bz2"
+deps = [
+    "brotli 1.2.0"
+]
+extras = [
+    
+]

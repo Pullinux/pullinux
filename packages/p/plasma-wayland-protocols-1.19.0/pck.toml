@@ -1,0 +1,10 @@
+name = "plasma-wayland-protocols"
+version = "1.19.0"
+source = "https://download.kde.org/stable/plasma-wayland-protocols/plasma-wayland-protocols-1.19.0.tar.xz"
+deps = [
+    "extra-cmake-modules 6.23.0",
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

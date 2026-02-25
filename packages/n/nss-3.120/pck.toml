@@ -1,0 +1,9 @@
+name = "nss"
+version = "3.120"
+source = "https://archive.mozilla.org/pub/security/nss/releases/NSS_3_120_RTM/src/nss-3.120.tar.gz"
+deps = [
+    "nspr 4.38.2"
+]
+extras = [
+    "https://www.linuxfromscratch.org/glfs/view/dev/download/nss/nss-standalone-1.patch"
+]

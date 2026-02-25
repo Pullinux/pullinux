@@ -1,0 +1,10 @@
+name = "sassc"
+version = "3.6.2"
+source = "https://github.com/sass/sassc/archive/3.6.2/sassc-3.6.2.tar.gz"
+deps = [
+    "libsass 3.6.6",
+    "base-dev 3.0"
+]
+extras = [
+    
+]

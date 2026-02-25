@@ -1,0 +1,10 @@
+name = "shared-mime-info"
+version = "2.4"
+source = "https://gitlab.freedesktop.org/xdg/shared-mime-info/-/archive/2.4/shared-mime-info-2.4.tar.gz"
+deps = [
+    "libxml2 2.15.1",
+    "glib 2.86.4"
+]
+extras = [
+    
+]

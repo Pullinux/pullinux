@@ -1,0 +1,9 @@
+name = "autoconf"
+version = "2.72"
+source = "https://ftpmirror.gnu.org/autoconf/autoconf-2.72.tar.xz"
+deps = [
+    "intltool 0.51.0"
+]
+extras = [
+    
+]

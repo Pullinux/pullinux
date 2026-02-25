@@ -1,0 +1,9 @@
+name = "gavl"
+version = "1.4.0"
+source = "https://downloads.sourceforge.net/gmerlin/gavl-1.4.0.tar.gz"
+deps = [
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

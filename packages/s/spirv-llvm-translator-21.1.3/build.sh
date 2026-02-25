@@ -1,0 +1,36 @@
+#!/bin/bash
+
+mkdir -p build
+cd       build
+
+cmake -D CMAKE_INSTALL_PREFIX=/usr                   \
+      -D CMAKE_BUILD_TYPE=Release                    \
+      -D CMAKE_SKIP_INSTALL_RPATH=ON                 \
+      -D BUILD_SHARED_LIBS=ON                        \
+      -D LLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=/usr \
+      -G Ninja ..
+            
+ninja
+DESTDIR=$PCKDIR ninja install
+
+#32 bit
+
+rm -rf *
+
+CC="gcc -m32" CXX="g++ -m32"                         \
+PKG_CONFIG_PATH=/usr/lib32/pkgconfig                 \
+cmake -D CMAKE_INSTALL_PREFIX=/usr                   \
+      -D CMAKE_INSTALL_LIBDIR=lib32                  \
+      -D CMAKE_BUILD_TYPE=Release                    \
+      -D CMAKE_SKIP_INSTALL_RPATH=ON                 \
+      -D BUILD_SHARED_LIBS=ON                        \
+      -D LLVM_EXTERNAL_SPIRV_HEADERS_SOURCE_DIR=/usr \
+      -G Ninja ..
+
+ninja
+
+mkdir -p $PCKDIR/usr/lib32
+
+DESTDIR=$PWD/DESTDIR ninja install
+cp -Rv DESTDIR/usr/lib32/* $PCKDIR/usr/lib32
+rm -rf DESTDIR

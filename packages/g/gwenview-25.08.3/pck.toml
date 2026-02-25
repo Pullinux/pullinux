@@ -1,0 +1,13 @@
+name = "gwenview"
+version = "25.08.3"
+source = "https://download.kde.org/stable/release-service/25.08.3/src/gwenview-25.08.3.tar.xz"
+deps = [
+    "exiv2 0.28.7",
+    "kimageannotator 0.7.2",
+    "kde-framework 6.23.0",
+    "lcms 2.18",
+    "libkdcraw 25.08.3"
+]
+extras = [
+    
+]

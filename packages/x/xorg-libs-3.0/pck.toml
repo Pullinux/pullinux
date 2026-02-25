@@ -1,0 +1,10 @@
+name = "xorg-libs"
+version = "3.0"
+source = "none"
+deps = [
+    "fontconfig 2.17.1",
+    "libxcb 1.17.0"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "git"
+version = "2.53.0"
+source = "https://www.kernel.org/pub/software/scm/git/git-2.53.0.tar.xz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

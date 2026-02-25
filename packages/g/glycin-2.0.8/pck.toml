@@ -1,0 +1,16 @@
+name = "glycin"
+version = "2.0.8"
+source = "https://download.gnome.org/sources/glycin/2.0/glycin-2.0.8.tar.xz"
+deps = [
+    "bubblewrap 0.11.0",
+    "lcms 2.18",
+    "libseccomp 2.6.0",
+    "libheif 1.21.2",
+    "libjxl 0.11.2",
+    "librsvg 2.61.4",
+    "vala 0.56.18"
+]
+extras = [
+    "https://www.linuxfromscratch.org/patches/blfs/svn/glycin-2.0.8-xorg_prefix-1.patch",
+    "https://www.linuxfromscratch.org/patches/blfs/svn/glycin-2.0.8-xbm_xpm-1.patch"
+]
