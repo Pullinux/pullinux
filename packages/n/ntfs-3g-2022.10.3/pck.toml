@@ -1,0 +1,9 @@
+name = "ntfs-3g"
+version = "2022.10.3"
+source = "https://github.com/tuxera/ntfs-3g/archive/2022.10.3/ntfs-3g-2022.10.3.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "test-app"
+version = "1.0"
+source = "none"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

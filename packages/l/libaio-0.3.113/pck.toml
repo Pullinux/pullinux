@@ -1,0 +1,9 @@
+name = "libaio"
+version = "0.3.113"
+source = "https://pagure.io/libaio/archive/libaio-0.3.113/libaio-0.3.113.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

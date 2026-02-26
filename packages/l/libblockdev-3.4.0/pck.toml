@@ -1,0 +1,14 @@
+name = "libblockdev"
+version = "3.4.0"
+source = "https://github.com/storaged-project/libblockdev/releases/download/3.4.0/libblockdev-3.4.0.tar.gz"
+deps = [
+    "cryptsetup 2.8.4",
+    "keyutils 1.6.3",
+    "libatasmart 0.19",
+    "libbytesize 2.12",
+    "libnvme 1.16.1",
+    "lvm2 2.03.38"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "libbytesize"
+version = "2.12"
+source = "https://github.com/storaged-project/libbytesize/releases/download/2.12/libbytesize-2.12.tar.gz"
+deps = [
+    "pygments 2.19.2"
+]
+extras = [
+    
+]

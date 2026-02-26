@@ -1,0 +1,9 @@
+name = "keyutils"
+version = "1.6.3"
+source = "https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git/snapshot/keyutils-1.6.3.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

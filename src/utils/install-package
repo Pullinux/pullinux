@@ -13,6 +13,7 @@ PCK_PATH = Path(os.environ.get("PLX_PCK_PATH", "/usr/share/pullinux/packages"))
 BIN_DIR = PCK_PATH / "bin"
 # Database path inside the chroot mount
 PLX_VAR_LIB = PLX / "var/lib/pullinux/packages"
+local_build = False
 
 def get_latest_version(pkg_name):
     """Finds the highest version number available in the package recipes."""
@@ -112,7 +113,12 @@ def install_package(name, version=None, auto_yes=False):
         if choice == 'y':
             print(f"[*] Executing build-package {name} {version}...")
             # Using ./ assuming build-package is in the same directory
-            build_res = subprocess.run(["./build-package", name, version])
+            
+            if local_build:
+                build_res = subprocess.run(["./build-package", name, version, "--local"])
+            else:
+                build_res = subprocess.run(["./build-package", name, version])
+
             if build_res.returncode != 0:
                 print(f"[!] Error: Build failed for {name}. Aborting installation.")
                 exit(1)
@@ -132,11 +138,19 @@ def install_package(name, version=None, auto_yes=False):
     # -x: extract, -h: follow symlinks, -f: file
     extract_script = f"tar -xhf /tmp/{txz_name} -C /"
     
-    chroot_extract_cmd = [
-        "chroot", str(PLX), "/usr/bin/env", "-i",
-        "HOME=/root", "TERM=xterm",
-        "/bin/bash", "-c", extract_script
-    ]
+    if local_build:
+        print("Running locally")
+
+        chroot_extract_cmd = [
+            "sudo",
+            "/bin/bash", "-c", extract_script
+        ]
+    else:
+        chroot_extract_cmd = [
+            "chroot", str(PLX), "/usr/bin/env", "-i",
+            "HOME=/root", "TERM=xterm",
+            "/bin/bash", "-c", extract_script
+        ]
 
     try:
         subprocess.run(chroot_extract_cmd, check=True)
@@ -159,6 +173,14 @@ def install_package(name, version=None, auto_yes=False):
             "/bin/bash", "-e", "-c", "cd /.install && bash -e /.install/install.sh"
         ]
         
+        if local_build:
+            print("Running install locally")
+
+            chroot_hook_cmd = [
+                "sudo",
+                "/bin/bash", "-e", "-c", "cd /.install && bash -e /.install/install.sh"
+            ]
+
         try:
             subprocess.run(chroot_hook_cmd, check=True)
         except subprocess.CalledProcessError:
@@ -177,6 +199,12 @@ def install_package(name, version=None, auto_yes=False):
             "/bin/bash", "-e", "-c", "ldconfig"
         ]
 
+        if local_build:
+            chroot_hook_cmd = [
+                "sudo",
+                "/sbin/ldconfig"
+            ]
+
         subprocess.run(chroot_hook_cmd, check=True)
     except subprocess.CalledProcessError:
         print(f"[!] Warning: ldconfig run error...")
@@ -193,9 +221,15 @@ if __name__ == "__main__":
     parser.add_argument("name", help="Package name")
     parser.add_argument("-v", "--version", help="Specific version")
     parser.add_argument("-y", "--yes", action="store_true", help="Auto-build if binary is missing")
-    
+    parser.add_argument("--local", action="store_true", help="Use local packages directory")
+
     args = parser.parse_args()
     
+    if args.local:
+        local_build = True
+        PLX = Path("/")
+        PLX_VAR_LIB = PLX / "var/lib/pullinux/packages"
+
     try:
         install_package(args.name, args.version, args.yes)
     except KeyboardInterrupt:

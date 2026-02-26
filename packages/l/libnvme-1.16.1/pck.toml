@@ -1,0 +1,9 @@
+name = "libnvme"
+version = "1.16.1"
+source = "https://github.com/linux-nvme/libnvme/archive/v1.16.1/libnvme-1.16.1.tar.gz"
+deps = [
+    "keyutils 1.6.3"
+]
+extras = [
+    
+]

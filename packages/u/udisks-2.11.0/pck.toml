@@ -1,0 +1,12 @@
+name = "udisks"
+version = "2.11.0"
+source = "https://github.com/storaged-project/udisks/releases/download/udisks-2.11.0/udisks-2.11.0.tar.bz2"
+deps = [
+    "libatasmart 0.19",
+    "libblockdev 3.4.0",
+    "libgudev 238",
+    "polkit 127"
+]
+extras = [
+    
+]

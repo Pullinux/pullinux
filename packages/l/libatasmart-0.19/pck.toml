@@ -1,0 +1,9 @@
+name = "libatasmart"
+version = "0.19"
+source = "https://0pointer.de/public/libatasmart-0.19.tar.xz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

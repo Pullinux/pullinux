@@ -1,0 +1,15 @@
+#!/bin/bash
+
+./configure --prefix=/usr      \
+            --sysconfdir=/etc  \
+            --with-python3     \
+            --without-escrow   \
+            --without-gtk-doc  \
+            --without-lvm      \
+            --without-lvm_dbus \
+            --without-nvdimm   \
+            --without-tools    \
+            --without-smartmontools
+
+make
+make DESTDIR=$PCKDIR install

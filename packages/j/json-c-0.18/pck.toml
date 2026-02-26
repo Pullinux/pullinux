@@ -1,0 +1,9 @@
+name = "json-c"
+version = "0.18"
+source = "https://s3.amazonaws.com/json-c_releases/releases/json-c-0.18.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

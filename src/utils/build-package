@@ -7,6 +7,7 @@ import tomllib
 import subprocess
 from pathlib import Path
 import multiprocessing
+import argparse
 
 # Config
 PLX = Path(os.environ.get("PLX", "/mnt/plx"))
@@ -14,6 +15,7 @@ PCK_PATH = Path(os.environ.get("PLX_PCK_PATH", "/usr/share/pullinux/packages"))
 BUILD_ROOT = PLX / "tmp/build"
 SOURCE_CACHE = PLX / "sources"
 PCK_OUTPUT_DIR = PCK_PATH / "bin" # Where the .txz files live
+local_build = False
 
 def get_latest_version(pkg_name):
     first_char = pkg_name[0].lower()
@@ -102,30 +104,53 @@ def build_package(name, version=None):
 
         shutil.copy2(extra_path, source_extract_dir)
 
-    # 4. Chroot Execution
-    print(f"[*] Starting build for {name}-{version}...")
-    print(f"Running in {working_dir_in_chroot}")
-    # chroot_script = f"set -e; cd {working_dir_in_chroot} && cp /tmp/build/build.sh . && ./build.sh"
-    
-    cores = multiprocessing.cpu_count()
+    if local_build:
+        print("Local build")
+        print(f"[*] Starting build for {name}-{version}...")
+        print(f"Running in {working_dir_in_chroot}")
 
-    chroot_script = (
-        f"export MAKEFLAGS=-j$(nproc); "
-        f"cd {working_dir_in_chroot} && "
-        f"/bin/bash -e /tmp/build/build.sh"
-    )
+        cores = multiprocessing.cpu_count()
 
-    chroot_cmd = [
-        "chroot", str(PLX), "/usr/bin/env", "-i",
-        "HOME=/root", "TERM=xterm-256color", "PCKDIR=/tmp/pkg",
-        "PATH=/usr/bin:/usr/sbin",
-        "/bin/bash", "--login", "-c", chroot_script
-    ]
+        chroot_script = (
+            f"export MAKEFLAGS=-j$(nproc); export PCKDIR=/tmp/pkg; "
+            f"cd {working_dir_in_chroot} && "
+            f"/bin/bash -e /tmp/build/build.sh"
+        )
 
-    try:
-        subprocess.run(chroot_cmd, check=True)
-    except subprocess.CalledProcessError:
-        print(f"\n[!] Build FAILED. Check /tmp/build in {PLX} for details."); exit(1)
+        chroot_cmd = [
+            "sudo", "/bin/bash", "--login", "-c", chroot_script
+        ]
+
+        try:
+            subprocess.run(chroot_cmd, check=True)
+        except subprocess.CalledProcessError:
+            print(f"\n[!] Build FAILED. Check /tmp/build in {PLX} for details."); exit(1)
+
+    else:
+        # 4. Chroot Execution
+        print(f"[*] Starting build for {name}-{version}...")
+        print(f"Running in {working_dir_in_chroot}")
+        # chroot_script = f"set -e; cd {working_dir_in_chroot} && cp /tmp/build/build.sh . && ./build.sh"
+        
+        cores = multiprocessing.cpu_count()
+
+        chroot_script = (
+            f"export MAKEFLAGS=-j$(nproc); "
+            f"cd {working_dir_in_chroot} && "
+            f"/bin/bash -e /tmp/build/build.sh"
+        )
+
+        chroot_cmd = [
+            "chroot", str(PLX), "/usr/bin/env", "-i",
+            "HOME=/root", "TERM=xterm-256color", "PCKDIR=/tmp/pkg",
+            "PATH=/usr/bin:/usr/sbin",
+            "/bin/bash", "--login", "-c", chroot_script
+        ]
+
+        try:
+            subprocess.run(chroot_cmd, check=True)
+        except subprocess.CalledProcessError:
+            print(f"\n[!] Build FAILED. Check /tmp/build in {PLX} for details."); exit(1)
 
     # 5. Packaging (.txz creation)
     PCK_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -148,7 +173,18 @@ def build_package(name, version=None):
         print(f"[!] Error creating the .txz archive."); exit(1)
 
 if __name__ == "__main__":
-    import sys
-    if len(sys.argv) < 2:
-        print("Usage: build-package <name> [version]"); sys.exit(1)
-    build_package(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else None)
+    parser = argparse.ArgumentParser(description="Build a package for Pullinux")
+    parser.add_argument("name", help="Name of the package")
+    parser.add_argument("version", nargs="?", help="Version of the package")
+    parser.add_argument("--local", action="store_true", help="Use local packages directory")
+    args = parser.parse_args()
+
+    if args.local:
+        local_build = True
+        PLX = Path("/")
+        BUILD_ROOT = PLX / "tmp/build"
+        SOURCE_CACHE = PLX / "sources"
+        PCK_OUTPUT_DIR = PCK_PATH / "bin"
+
+    build_package(args.name, args.version)
+
