@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+import os
+import tomllib
+import subprocess
+from pathlib import Path
+
+PLX = Path("/")
+PLX_VAR_LIB = PLX / "var/lib/pullinux/packages"
+
+INST_SCRIPT_PATH = Path("/usr/bin")
+
+# Local build means that it won't install in a chroot environment.
+local_build = False
+
+def is_dir_empty(path):
+    with os.scandir(path) as it:
+        return not any(it) # Returns right away if something found...
+
+def get_installed_version(name):
+    matches = list(PLX_VAR_LIB.glob(f"{name}-*.toml"))
+    if not matches:
+        return none
+    
+    with open(matches[0], "rb") as f:
+        data = tomllib.load(f)
+        return data.get("version")
+
+def upgrade_package(name, new_version, dest):
+    old_version = get_installed_version(name)
+    
+    if not old_version:
+        print(f"UPGRADE:> {name} is not currently installed. Proceeding with fresh install...")
+
+        if dest:
+            install_res = subprocess.run([str(INST_SCRIPT_PATH / "install-package"), name, "-v", new_version, "--dest", dest])
+        else:
+            install_res = subprocess.run([str(INST_SCRIPT_PATH / "install-package"), name, "-v", new_version])
+
+        return
+
+    if old_version == new_version:
+        print(f"UPGRADE:> {name}-{new_version} is already up to date.")
+        return
+
+    print(f"UPGRADE:> Upgrading {name}: {old_version} -> {new_version}")
+
+    # Load the OLD manifest before we overwrite it
+    old_db_path = PLX_VAR_LIB / f"{name}-{old_version}.toml"
+    with open(old_db_path, "rb") as f:
+        old_data = tomllib.load(f)
+        old_manifest = set(old_data.get("manifest", []))
+
+    # Run the install script for the NEW version
+    if dest:
+        install_res = subprocess.run([str(INST_SCRIPT_PATH / "install-package"), name, "-v", new_version, "--dest", dest])
+    else:
+        install_res = subprocess.run([str(INST_SCRIPT_PATH / "install-package"), name, "-v", new_version])
+    
+    if install_res.returncode != 0:
+        print(f"UPGRADE:> ERROR: Installation of new version {new_version} failed. Aborting upgrade.")
+        return
+
+    # Read the NEW manifest
+    new_db_path = PLX_VAR_LIB / f"{name}-{new_version}.toml"
+    with open(new_db_path, "rb") as f:
+        new_data = tomllib.load(f)
+        new_manifest = set(new_data.get("manifest", []))
+
+    # Find and remove orphaned files
+    # Orphans = Files in the old version that are NOT in the new version
+    orphans = old_manifest - new_manifest
+    
+    if orphans:
+        print(f"UPGRADE:> Cleaning up {len(orphans)} orphaned files...")
+        # Sort by length descending to handle files before directories
+        sorted_orphans = sorted(list(orphans), key=len, reverse=True)
+        
+        for item in sorted_orphans:
+            if not item: 
+                continue
+            
+            full_path = PLX / item
+            
+            if full_path.is_file():
+                print(f"UPGRADE:>    - Unlink File: {full_path}")
+                full_path.unlink(missing_ok=True)
+            elif full_path.exists() and full_path.is_dir() and is_dir_empty(full_path):
+                try:
+                    if full_path.is_symlink():
+                        print(f"UPGRADE:>    - Unlink Dir: {full_path}")
+                        full_path.unlink()
+                    else:
+                        print(f"UPGRADE:>    - RMDIR: {full_path}")
+                        os.rmdir(full_path)
+                except OSError:
+                    pass
+
+
+    old_db_path.unlink()
+    print(f"UPGRADE:> Upgrade of {name} to {new_version} complete.")
+
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="Pullinux Package Upgrader")
+    parser.add_argument("name", help="Package name")
+    parser.add_argument("version", help="New version to install")
+    parser.add_argument("-d", "--dest", help="Destination of where to build in a chroot environment")
+
+    args = parser.parse_args()
+
+    if args.dest:
+        local_build = False
+        PLX = Path(args.dest)
+        PLX_VAR_LIB = PLX / "var/lib/pullinux/packages"
+        INST_SCRIPT_PATH = Path("./")
+
+        if not (PLX / "dev/tty").exists():
+            print(f"UNINSTALL:> ERROR: First you must mount virtual environment in {PLX}")
+            exit(1)
+
+    upgrade_package(args.name, args.version, args.dest)
