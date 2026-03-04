@@ -2,7 +2,6 @@ name = "base-kde"
 version = "3.0"
 source = "none"
 deps = [
-    "sddm 0.21.0",
     "ark 25.08.3",
     "dolphin-plugins 25.08.3",
     "kdenlive 25.08.3",
@@ -13,8 +12,9 @@ deps = [
     "gwenview 25.08.3",
     "kirigami-addons 1.10.0",
     "pulseaudio-qt 1.7.0",
-    "kde-plasma 6.5.2",
-    "firefox 140.8.0"
+    "kde-plasma 6.6.1",
+    "firefox 140.8.0",
+    "plasma-login-manager 6.6.1"
 ]
 extras = [
     

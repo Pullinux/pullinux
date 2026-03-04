@@ -1,0 +1,26 @@
+name = "base-xfce4"
+version = "3.0"
+source = "none"
+deps = [
+    "garcon 4.20.0",
+    "exo 4.20.0",
+    "xfce4-dev-tools 4.20.0",
+    "xfce4-panel 4.20.6",
+    "thunar-volman 4.20.0",
+    "tumbler 4.20.1",
+    "xfce4-appfinder 4.20.0",
+    "xfce4-power-manager 4.20.0",
+    "xfce4-settings 4.20.3",
+    "xfdesktop 4.20.1",
+    "xfwm4 4.20.0",
+    "xfce4-session 4.20.3",
+    "xfce4-terminal 1.1.5",
+    "ristretto 0.13.4",
+    "xfce4-notifyd 0.9.7",
+    "xfce4-pulseaudio-plugin 0.5.1",
+    "lightdm 1.32.0",
+    "lightdm-gtk-greeter 2.0.9"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "qtkeychain"
+version = "0.15.0"
+source = "https://github.com/frankosterfeld/qtkeychain/archive/0.15.0/qtkeychain-0.15.0.tar.gz"
+deps = [
+    "qt 6.10.2"
+]
+extras = [
+    
+]

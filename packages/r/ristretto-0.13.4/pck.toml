@@ -1,0 +1,11 @@
+name = "ristretto"
+version = "0.13.4"
+source = "https://archive.xfce.org/src/apps/ristretto/0.13/ristretto-0.13.4.tar.xz"
+deps = [
+    "libexif 0.6.25",
+    "libxfce4ui 4.20.2",
+    "tumbler 4.20.1"
+]
+extras = [
+    
+]

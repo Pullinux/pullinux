@@ -1,0 +1,14 @@
+name = "xfce4-pulseaudio-plugin"
+version = "0.5.1"
+source = "https://archive.xfce.org/src/panel-plugins/xfce4-pulseaudio-plugin/0.5/xfce4-pulseaudio-plugin-0.5.1.tar.xz"
+deps = [
+    "libnotify 0.8.8",
+    "xfce4-panel 4.20.6",
+    "keybinder 3.0-0.3.2",
+    "libcanberra 0.30",
+    "libxfce4windowing 4.20.5",
+    "pavucontrol 6.2"
+]
+extras = [
+    
+]

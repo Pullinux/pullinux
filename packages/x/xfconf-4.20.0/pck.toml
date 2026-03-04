@@ -1,0 +1,9 @@
+name = "xfconf"
+version = "4.20.0"
+source = "https://archive.xfce.org/src/xfce/xfconf/4.20/xfconf-4.20.0.tar.bz2"
+deps = [
+    "libxfce4util 4.20.1"
+]
+extras = [
+    
+]

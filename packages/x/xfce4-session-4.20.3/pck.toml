@@ -1,0 +1,15 @@
+name = "xfce4-session"
+version = "4.20.3"
+source = "https://archive.xfce.org/src/xfce/xfce4-session/4.20/xfce4-session-4.20.3.tar.bz2"
+deps = [
+    "libwnck 43.3",
+    "libxfce4windowing 4.20.5",
+    "libxfce4ui 4.20.2",
+    "desktop-file-utils 0.28",
+    "shared-mime-info 2.4",
+    "xfdesktop 4.20.1",
+    "polkit-gnome 0.105"
+]
+extras = [
+    
+]

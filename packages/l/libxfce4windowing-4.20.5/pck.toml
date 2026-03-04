@@ -1,0 +1,12 @@
+name = "libxfce4windowing"
+version = "4.20.5"
+source = "https://archive.xfce.org/src/xfce/libxfce4windowing/4.20/libxfce4windowing-4.20.5.tar.bz2"
+deps = [
+    "gtk3 3.24.51",
+    "libdisplay-info 0.3.0",
+    "xfce4-dev-tools 4.20.0",
+    "libwnck 43.3"
+]
+extras = [
+    
+]

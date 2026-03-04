@@ -34,7 +34,7 @@ install -vdm755 $PCKDIR/usr/share/nvidia
 install -vDm755 ../install-NVIDIA-2 $PCKDIR/usr/sbin/nvidia-install
 install -vDm644 ../manifest-NVIDIA-2 $PCKDIR/usr/share/nvidia/manifest
 
-$PCKDIR/usr/sbin/nvidia-install
+#$PCKDIR/usr/sbin/nvidia-install
 
 mkdir -p $PCKDIR/usr/lib
 mkdir -p $PCKDIR/usr/lib32
@@ -42,7 +42,7 @@ mkdir -p $PCKDIR/usr/bin
 mkdir -p $PCKDIR/usr/share
 mkdir -p $PCKDIR/etc
 
-$PCKDIR/usr/sbin/nvidia-install --destdir=$PCKDIR
+$PCKDIR/usr/sbin/nvidia-install --destdir=$PCKDIR --prefix=/usr --ex-run-dir=$(pwd)
 
 mkdir -pv $PCKDIR/usr/lib/systemd/system               \
           $PCKDIR/usr/lib/systemd/system-sleep         \

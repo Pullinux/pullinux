@@ -1,0 +1,9 @@
+name = "lxde-icon-theme"
+version = "0.5.1"
+source = "https://downloads.sourceforge.net/lxde/lxde-icon-theme-0.5.1.tar.xz"
+deps = [
+    "gtk3 3.24.51"
+]
+extras = [
+    
+]

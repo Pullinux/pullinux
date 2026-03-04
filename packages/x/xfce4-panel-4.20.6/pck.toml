@@ -1,0 +1,13 @@
+name = "xfce4-panel"
+version = "4.20.6"
+source = "https://archive.xfce.org/src/xfce/xfce4-panel/4.20/xfce4-panel-4.20.6.tar.bz2"
+deps = [
+    "cairo 1.18.4",
+    "exo 4.20.0",
+    "garcon 4.20.0",
+    "libwnck 43.3",
+    "libxfce4windowing 4.20.5"
+]
+extras = [
+    
+]

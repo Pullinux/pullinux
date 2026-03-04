@@ -4,7 +4,7 @@ source = "https://gstreamer.freedesktop.org/src/gst-plugins-good/gst-plugins-goo
 deps = [
     "gst-plugins-base 1.28.0",
     "cairo 1.18.4",
-    "gdk-pixbuf noglycin-2.44.5",
+    "gdk-pixbuf 2.44.5",
     "lame 3.100",
     "libsoup 3.6.6",
     "libvpx 1.16.0",

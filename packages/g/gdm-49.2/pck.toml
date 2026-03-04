@@ -1,0 +1,11 @@
+name = "gdm"
+version = "49.2"
+source = "https://download.gnome.org/sources/gdm/49/gdm-49.2.tar.xz"
+deps = [
+    "accountsservice 23.13.9",
+    "dconf editor-49.0",
+    "libcanberra 0.30"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "tumbler"
+version = "4.20.1"
+source = "https://archive.xfce.org/src/xfce/tumbler/4.20/tumbler-4.20.1.tar.bz2"
+deps = [
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

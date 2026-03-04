@@ -1,0 +1,10 @@
+name = "gtkmm"
+version = "4.20.0"
+source = "https://download.gnome.org/sources/gtkmm/4.20/gtkmm-4.20.0.tar.xz"
+deps = [
+    "gtk4 4.20.3",
+    "pangomm 2.56.1"
+]
+extras = [
+    
+]

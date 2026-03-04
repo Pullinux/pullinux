@@ -1,0 +1,14 @@
+name = "vte"
+version = "0.82.3"
+source = "https://gitlab.gnome.org/GNOME/vte/-/archive/0.82.3/vte-0.82.3.tar.gz"
+deps = [
+    "libxml2 2.15.1",
+    "fast_float 8.2.3",
+    "fmt 12.1.0",
+    "icu 78.2",
+    "gtk3 3.24.51",
+    "simdutf 8.0.0"
+]
+extras = [
+    
+]

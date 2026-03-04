@@ -1,0 +1,12 @@
+name = "pavucontrol"
+version = "6.2"
+source = "https://www.freedesktop.org/software/pulseaudio/pavucontrol/pavucontrol-6.2.tar.xz"
+deps = [
+    "gtkmm 4.20.0",
+    "json-glib 1.10.8",
+    "libsigc++ 3.6.0",
+    "pulseaudio 17.0"
+]
+extras = [
+    
+]

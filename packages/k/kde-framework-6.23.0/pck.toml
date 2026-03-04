@@ -12,7 +12,7 @@ deps = [
     "lmdb 0.9.35",
     "qca 2.3.10",
     "libqrencode 4.1.1",
-    "plasma-wayland-protocols 1.19.0",
+    "plasma-wayland-protocols 1.20.0",
     "aspell 0.60.8.2",
     "avahi 0.8",
     "modem-manager 1.24.2",

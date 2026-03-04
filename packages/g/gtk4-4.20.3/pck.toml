@@ -2,7 +2,7 @@ name = "gtk4"
 version = "4.20.3"
 source = "https://download.gnome.org/sources/gtk/4.20/gtk-4.20.3.tar.xz"
 deps = [
-    "gdk-pixbuf noglycin-2.44.5",
+    "gdk-pixbuf 2.44.5",
     "graphene 1.10.8",
     "iso-codes 4.20.1",
     "libepoxy 1.5.10",

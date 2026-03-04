@@ -1,0 +1,14 @@
+name = "xfdesktop"
+version = "4.20.1"
+source = "https://archive.xfce.org/src/xfce/xfdesktop/4.20/xfdesktop-4.20.1.tar.bz2"
+deps = [
+    "exo 4.20.0",
+    "libxfce4windowing 4.20.5",
+    "libwnck 43.3",
+    "libnotify 0.8.8",
+    "startup-notification 0.12",
+    "thunar 4.20.7"
+]
+extras = [
+    
+]

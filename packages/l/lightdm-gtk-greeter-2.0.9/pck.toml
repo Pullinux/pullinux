@@ -1,0 +1,9 @@
+name = "lightdm-gtk-greeter"
+version = "2.0.9"
+source = "https://github.com/Xubuntu/lightdm-gtk-greeter/releases/download/lightdm-gtk-greeter-2.0.9/lightdm-gtk-greeter-2.0.9.tar.gz"
+deps = [
+    "lightdm 1.32.0"
+]
+extras = [
+    
+]

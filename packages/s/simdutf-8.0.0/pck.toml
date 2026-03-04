@@ -1,0 +1,9 @@
+name = "simdutf"
+version = "8.0.0"
+source = "https://github.com/simdutf/simdutf/archive/v8.0.0/simdutf-8.0.0.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

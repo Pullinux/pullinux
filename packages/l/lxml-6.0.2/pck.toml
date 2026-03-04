@@ -1,0 +1,9 @@
+name = "lxml"
+version = "6.0.2"
+source = "https://files.pythonhosted.org/packages/source/l/lxml/lxml-6.0.2.tar.gz"
+deps = [
+    "libxslt 1.1.45"
+]
+extras = [
+    
+]

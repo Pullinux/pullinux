@@ -1,0 +1,9 @@
+name = "kquickimageeditor"
+version = "0.6.0"
+source = "https://github.com/KDE/kquickimageeditor/archive/v0.6.0/kquickimageeditor-0.6.0.tar.gz"
+deps = [
+    "kde-framework 6.23.0"
+]
+extras = [
+    
+]

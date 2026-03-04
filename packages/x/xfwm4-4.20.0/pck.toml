@@ -1,0 +1,11 @@
+name = "xfwm4"
+version = "4.20.0"
+source = "https://archive.xfce.org/src/xfce/xfwm4/4.20/xfwm4-4.20.0.tar.bz2"
+deps = [
+    "libwnck 43.3",
+    "libxfce4ui 4.20.2",
+    "startup-notification 0.12"
+]
+extras = [
+    
+]

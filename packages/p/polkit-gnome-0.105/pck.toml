@@ -1,0 +1,11 @@
+name = "polkit-gnome"
+version = "0.105"
+source = "https://download.gnome.org/sources/polkit-gnome/0.105/polkit-gnome-0.105.tar.xz"
+deps = [
+    "accountsservice 23.13.9",
+    "gtk3 3.24.51",
+    "polkit 127"
+]
+extras = [
+    "https://www.linuxfromscratch.org/patches/blfs/svn/polkit-gnome-0.105-consolidated_fixes-1.patch"
+]

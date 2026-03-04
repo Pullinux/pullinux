@@ -4,13 +4,14 @@ useradd  -c "sddm Daemon" \
          -u 64 -g sddm    \
          -s /bin/false sddm || true
 
-install -v -dm755 -o sddm -g sddm /var/lib/sddm
+install -v -dm755 -o sddm -g sddm /var/lib/sddm || true 
 
 /usr/bin/sddm --example-config > /etc/sddm.conf
 
 sed -i 's/qtvirtualkeyboard//' /etc/sddm.conf
 
-systemctl enable sddm
+# one other may already exist...
+systemctl enable sddm || true 
 
 cat > /etc/pam.d/sddm << "EOF" &&
 # Begin /etc/pam.d/sddm

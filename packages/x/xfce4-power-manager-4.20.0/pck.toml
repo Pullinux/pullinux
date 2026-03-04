@@ -1,0 +1,12 @@
+name = "xfce4-power-manager"
+version = "4.20.0"
+source = "https://archive.xfce.org/src/xfce/xfce4-power-manager/4.20/xfce4-power-manager-4.20.0.tar.bz2"
+deps = [
+    "xfce4-panel 4.20.6",
+    "upower 1.91.1",
+    "libnotify 0.8.8",
+    "polkit 127"
+]
+extras = [
+    
+]

@@ -1,0 +1,10 @@
+name = "garcon"
+version = "4.20.0"
+source = "https://archive.xfce.org/src/xfce/garcon/4.20/garcon-4.20.0.tar.bz2"
+deps = [
+    "libxfce4ui 4.20.2",
+    "gtk3 3.24.51"
+]
+extras = [
+    
+]

@@ -1,0 +1,11 @@
+name = "libxfce4ui"
+version = "4.20.2"
+source = "https://archive.xfce.org/src/xfce/libxfce4ui/4.20/libxfce4ui-4.20.2.tar.bz2"
+deps = [
+    "xfconf 4.20.0",
+    "gtk3 3.24.51",
+    "startup-notification 0.12"
+]
+extras = [
+    
+]

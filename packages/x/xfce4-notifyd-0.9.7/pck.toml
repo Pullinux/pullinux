@@ -1,0 +1,13 @@
+name = "xfce4-notifyd"
+version = "0.9.7"
+source = "https://archive.xfce.org/src/apps/xfce4-notifyd/0.9/xfce4-notifyd-0.9.7.tar.bz2"
+deps = [
+    "libnotify 0.8.8",
+    "libxfce4ui 4.20.2",
+    "libcanberra 0.30",
+    "xfce4-dev-tools 4.20.0",
+    "xfce4-panel 4.20.6"
+]
+extras = [
+    
+]

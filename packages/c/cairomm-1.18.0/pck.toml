@@ -1,0 +1,10 @@
+name = "cairomm"
+version = "1.18.0"
+source = "https://www.cairographics.org/releases/cairomm-1.18.0.tar.xz"
+deps = [
+    "libsigc++ 3.6.0",
+    "cairo 1.18.4"
+]
+extras = [
+    
+]

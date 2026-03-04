@@ -1,3 +1,5 @@
+echo "Building in ${KF6_PREFIX:?}"
+
 cat > frameworks-6.23.0.md5 << "EOF"
 7f5e6053833355988580d124cb5c5331  attica-6.23.0.tar.xz
 #b9c562bac371dcf693ceccb431cad782  extra-cmake-modules-6.23.0.tar.xz
@@ -75,6 +77,16 @@ EOF
 
 url=https://download.kde.org/stable/frameworks/6.23/
 wget -r -nH -nd -A '*.xz' -np $url
+
+if [ -d /opt/kf6 ]; then
+  mv -v /opt/kf6 /opt/kf6.old                         
+  install -v -dm755           $KF6_PREFIX/{etc,share} 
+  ln -sfv /etc/dbus-1         $KF6_PREFIX/etc         
+  ln -sfv /usr/share/dbus-1   $KF6_PREFIX/share       
+  ln -sfv /usr/share/polkit-1 $KF6_PREFIX/share       
+  install -v -dm755           $KF6_PREFIX/lib         
+  ln -sfv /usr/lib/systemd    $KF6_PREFIX/lib
+fi
 
 while read -r line; do
 

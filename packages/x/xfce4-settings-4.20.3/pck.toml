@@ -1,0 +1,12 @@
+name = "xfce4-settings"
+version = "4.20.3"
+source = "https://archive.xfce.org/src/xfce/xfce4-settings/4.20/xfce4-settings-4.20.3.tar.bz2"
+deps = [
+    "exo 4.20.0",
+    "garcon 4.20.0",
+    "lxde-icon-theme 0.5.1",
+    "libxklavier 5.4"
+]
+extras = [
+    
+]

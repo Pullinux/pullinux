@@ -1,0 +1,11 @@
+name = "thunar-volman"
+version = "4.20.0"
+source = "https://archive.xfce.org/src/xfce/thunar-volman/4.20/thunar-volman-4.20.0.tar.bz2"
+deps = [
+    "exo 4.20.0",
+    "libgudev 238",
+    "libnotify 0.8.8"
+]
+extras = [
+    
+]

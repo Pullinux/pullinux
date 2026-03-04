@@ -1,0 +1,13 @@
+name = "dconf"
+version = "0.49.0"
+source = "https://download.gnome.org/sources/dconf/0.49/dconf-0.49.0.tar.xz"
+deps = [
+    "gtk3 3.24.51",
+    "libhandy 1.8.3",
+    "libxml2 2.15.1",
+    "libxslt 1.1.45",
+    "vala 0.56.18"
+]
+extras = [
+    
+]
