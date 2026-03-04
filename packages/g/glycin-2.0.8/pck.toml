@@ -8,6 +8,7 @@ deps = [
     "libheif 1.21.2",
     "libjxl 0.11.2",
     "gdk-pixbuf-noglycin 2.44.5",
+    "librsvg 2.61.4",
     "vala 0.56.18"
 ]
 extras = [

@@ -5,7 +5,7 @@ deps = [
     "cairo 1.18.4",
     "cargo-c 0.10.20",
     "pango 1.57.0",
-    "gdk-pixbuf 2.44.5",
+    "gdk-pixbuf-noglycin 2.44.5",
     "vala 0.56.18"
 ]
 extras = [
