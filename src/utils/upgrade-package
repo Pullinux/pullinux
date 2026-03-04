@@ -4,6 +4,10 @@ import tomllib
 import subprocess
 from pathlib import Path
 
+#
+# NOT FULLY TESTED...
+#
+
 PLX = Path("/")
 PLX_VAR_LIB = PLX / "var/lib/pullinux/packages"
 
@@ -32,9 +36,9 @@ def upgrade_package(name, new_version, dest):
         print(f"UPGRADE:> {name} is not currently installed. Proceeding with fresh install...")
 
         if dest:
-            install_res = subprocess.run([str(INST_SCRIPT_PATH / "install-package"), name, "-v", new_version, "--dest", dest])
+            install_res = subprocess.run([str(INST_SCRIPT_PATH / "plx-install"), name, "-v", new_version, "--dest", dest])
         else:
-            install_res = subprocess.run([str(INST_SCRIPT_PATH / "install-package"), name, "-v", new_version])
+            install_res = subprocess.run([str(INST_SCRIPT_PATH / "plx-install"), name, "-v", new_version])
 
         return
 
@@ -52,9 +56,9 @@ def upgrade_package(name, new_version, dest):
 
     # Run the install script for the NEW version
     if dest:
-        install_res = subprocess.run([str(INST_SCRIPT_PATH / "install-package"), name, "-v", new_version, "--dest", dest])
+        install_res = subprocess.run([str(INST_SCRIPT_PATH / "plx-install"), name, "-v", new_version, "--dest", dest])
     else:
-        install_res = subprocess.run([str(INST_SCRIPT_PATH / "install-package"), name, "-v", new_version])
+        install_res = subprocess.run([str(INST_SCRIPT_PATH / "plx-install"), name, "-v", new_version])
     
     if install_res.returncode != 0:
         print(f"UPGRADE:> ERROR: Installation of new version {new_version} failed. Aborting upgrade.")
