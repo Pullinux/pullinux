@@ -43,8 +43,6 @@ cat > /etc/adjtime << "EOF"
 LOCAL
 EOF
 
-systemctl disable systemd-timesyncd
-
 cat > /etc/locale.conf << "EOF"
 LANG=en_US.UTF-8
 EOF
