@@ -3,8 +3,8 @@ systemctl enable plasmalogin
 groupadd -r plasmalogin || true
 useradd -r -g plasmalogin -d /var/lib/plasmalogin -s /sbin/nologin -c "Plasma Login Manager" plasmalogin || true
 
-mkdir -p /usr/lib/plasmalogin
-chown plasmalogin:plasmalogin /usr/lib/plasmalogin
+mkdir -p /var/lib/plasmalogin
+chown plasmalogin:plasmalogin /var/lib/plasmalogin
 
 cat > /etc/pam.d/plasmalogin << "EOF" &&
 # Begin /etc/pam.d/plasmalogin
