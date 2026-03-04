@@ -1,4 +1,3 @@
-cd firefox-140.8.0
 
 patch -Np1 -i ../firefox-140.8.0esr-ffmpeg-8.0.patch
 
