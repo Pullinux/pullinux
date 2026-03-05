@@ -1,0 +1,13 @@
+name = "qemu"
+version = "10.2.1"
+source = "https://download.qemu.org/qemu-10.2.1.tar.xz"
+deps = [
+    "base-xorg 3.0",
+    "pixman 0.46.4",
+    "dtc 1.7.2",
+    "libslirp 4.9.1",
+    "sdl2-compat 2.32.64"
+]
+extras = [
+    
+]

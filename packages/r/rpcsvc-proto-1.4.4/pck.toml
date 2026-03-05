@@ -1,0 +1,9 @@
+name = "rpcsvc-proto"
+version = "1.4.4"
+source = "https://github.com/thkukuk/rpcsvc-proto/releases/download/v1.4.4/rpcsvc-proto-1.4.4.tar.xz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

@@ -1,0 +1,19 @@
+name = "samba"
+version = "4.23.5"
+source = "https://download.samba.org/pub/samba/stable/samba-4.23.5.tar.gz"
+deps = [
+    "libtirpc 1.3.7",
+    "parse-yapp 1.21",
+    "rpcsvc-proto 1.4.4",
+    "fuse 3.18.1",
+    "gpgme 2.0.1",
+    "icu 78.2",
+    "jansson 2.15.0",
+    "lmdb 0.9.35",
+    "krb5 1.22.2",
+    "openldap-client 2.6.12",
+    "gnutls 3.8.12"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "krb5"
+version = "1.22.2"
+source = "https://kerberos.org/dist/krb5/1.22/krb5-1.22.2.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    "https://www.linuxfromscratch.org/patches/blfs/svn/mitkrb-1.22.2-upstream_fix-1.patch"
+]

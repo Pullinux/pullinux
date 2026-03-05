@@ -1,0 +1,9 @@
+name = "openssh"
+version = "10.2.1"
+source = "https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-10.2p1.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

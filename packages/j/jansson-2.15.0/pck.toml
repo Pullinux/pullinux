@@ -1,0 +1,9 @@
+name = "jansson"
+version = "2.15.0"
+source = "https://github.com/akheron/jansson/releases/download/v2.15.0/jansson-2.15.0.tar.bz2"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

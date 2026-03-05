@@ -1,0 +1,9 @@
+name = "dtc"
+version = "1.7.2"
+source = "https://kernel.org/pub/software/utils/dtc/dtc-1.7.2.tar.xz"
+deps = [
+    "base-xorg 3.0"
+]
+extras = [
+    "https://www.linuxfromscratch.org/patches/blfs/svn/dtc-1.7.2-glibc_fixes-1.patch"
+]
