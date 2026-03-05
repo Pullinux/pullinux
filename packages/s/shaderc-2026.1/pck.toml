@@ -1,0 +1,9 @@
+name = "shaderc"
+version = "2026.1"
+source = "https://github.com/google/shaderc/archive/v2026.1/shaderc-2026.1.tar.gz"
+deps = [
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "blender"
+version = "4.5.7"
+source = "https://download.blender.org/release/Blender4.5/blender-4.5.7-linux-x64.tar.xz"
+deps = [
+    "base-xorg 3.0"
+]
+extras = [
+    
+]
