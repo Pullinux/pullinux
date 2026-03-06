@@ -1,0 +1,9 @@
+name = "unifdef"
+version = "2.12"
+source = "https://dotat.at/prog/unifdef/unifdef-2.12.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

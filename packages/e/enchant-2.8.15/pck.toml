@@ -1,0 +1,11 @@
+name = "enchant"
+version = "2.8.15"
+source = "https://github.com/rrthomas/enchant/releases/download/v2.8.15/enchant-2.8.15.tar.gz"
+deps = [
+    "aspell 0.60.8.2",
+    "glib 2.86.4",
+    "vala 0.56.18"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Hytale Launcher
+Comment=Hytale Launcher
+Exec=/usr/bin/hytale-launcher
+Icon=com.hypixel.HytaleLauncher
+Terminal=true
+Type=Application
+Categories=Game;
+StartupWMClass=com.hypixel.HytaleLauncher

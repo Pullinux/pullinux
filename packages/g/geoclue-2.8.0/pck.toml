@@ -1,0 +1,13 @@
+name = "geoclue"
+version = "2.8.0"
+source = "https://gitlab.freedesktop.org/geoclue/geoclue/-/archive/2.8.0/geoclue-2.8.0.tar.bz2"
+deps = [
+    "json-glib 1.10.8",
+    "libsoup 3.6.6",
+    "libnotify 0.8.8",
+    "modem-manager 1.24.2",
+    "vala 0.56.18"
+]
+extras = [
+    
+]

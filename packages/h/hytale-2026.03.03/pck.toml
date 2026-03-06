@@ -1,0 +1,9 @@
+name = "hytale"
+version = "2026.03.03"
+source = "none"
+deps = [
+    "webkitgtk 2.50.5"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "xdg-dbus-proxy"
+version = "0.1.6"
+source = "https://github.com/flatpak/xdg-dbus-proxy/releases/download/0.1.6/xdg-dbus-proxy-0.1.6.tar.xz"
+deps = [
+    "glib 2.86.4"
+]
+extras = [
+    
+]

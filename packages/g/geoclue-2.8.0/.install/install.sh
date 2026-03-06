@@ -1,0 +1,11 @@
+cat > /etc/geoclue/conf.d/90-lfs-google.conf << "EOF"
+# Begin /etc/geoclue/conf.d/90-lfs-google.conf
+
+# This configuration applies for the WiFi source.
+[wifi]
+
+# Set the URL to Google's Geolocation Service.
+url=https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDxKL42zsPjbke5O8_rPVpVrLrJ8aeE9rQ
+
+# End /etc/geoclue/conf.d/90-lfs-google.conf
+EOF
