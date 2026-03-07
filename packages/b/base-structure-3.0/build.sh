@@ -1,0 +1,1 @@
+tar -xf ../plx-3.0-base-structure.txz -C $PCKDIR

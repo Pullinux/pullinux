@@ -9,3 +9,8 @@ extras = [
     "https://www.linuxfromscratch.org/patches/lfs/development/glibc-fhs-1.patch",
     "https://www.iana.org/time-zones/repository/releases/tzdata2025c.tar.gz"
 ]
+runtime_deps = [
+    "base-structure 3.0",
+    "man-pages 6.17",
+    "iana-etc 20260202"
+]

@@ -7,3 +7,16 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "automake 1.18.1",
+    "autoconf 2.72",
+    "bash 5.3",
+    "binutils 2.46.0",
+    "coreutils 9.10",
+    "file 5.46",
+    "gcc 15.2.0",
+    "glibc 2.43",
+    "grep 3.12",
+    "make 4.4.1",
+    "sed 4.9"
+]

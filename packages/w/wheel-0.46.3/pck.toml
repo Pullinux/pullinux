@@ -7,3 +7,6 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "python 3.14.3"
+]

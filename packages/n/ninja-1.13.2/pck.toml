@@ -7,3 +7,7 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "gcc 15.2.0",
+    "glibc 2.43"
+]

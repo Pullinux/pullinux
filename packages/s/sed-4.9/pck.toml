@@ -7,3 +7,8 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "acl 2.3.2",
+    "attr 2.5.2",
+    "glibc 2.43"
+]

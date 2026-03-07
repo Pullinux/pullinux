@@ -7,3 +7,6 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "base-structure 3.0"
+]

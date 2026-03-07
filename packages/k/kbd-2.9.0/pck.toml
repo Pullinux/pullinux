@@ -7,3 +7,8 @@ deps = [
 extras = [
     "https://www.linuxfromscratch.org/patches/lfs/development/kbd-2.9.0-backspace-1.patch"
 ]
+runtime_deps = [
+    "bash 5.3",
+    "coreutils 9.10",
+    "glibc 2.43"
+]

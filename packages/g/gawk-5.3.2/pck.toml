@@ -7,3 +7,8 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "glibc 2.43",
+    "bash 5.3",
+    "mpfr 4.2.2"
+]

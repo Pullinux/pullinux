@@ -7,3 +7,6 @@ deps = [
 extras = [
     "https://www.linuxfromscratch.org/patches/lfs/development/coreutils-9.10-i18n-1.patch"
 ]
+runtime_deps = [
+    "glibc 2.43"
+]

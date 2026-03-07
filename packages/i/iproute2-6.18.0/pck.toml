@@ -7,3 +7,11 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "bash 5.3",
+    "coreutils 9.10",
+    "glibc 2.43",
+    "libcap 2.77",
+    "libelf 0.194",
+    "zlib 1.3.2"
+]

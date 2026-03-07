@@ -7,3 +7,6 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "libunistring 1.4.1"
+]

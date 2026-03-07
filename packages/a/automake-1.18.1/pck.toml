@@ -7,3 +7,12 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "glibc 2.43",
+    "bash 5.3",
+    "coreutils 9.10",
+    "grep 3.12",
+    "m4 1.4.21",
+    "sed 4.9",
+    "texinfo 7.2"
+]

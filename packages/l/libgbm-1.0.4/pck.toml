@@ -7,3 +7,6 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "libdrm 2.4.131"
+]

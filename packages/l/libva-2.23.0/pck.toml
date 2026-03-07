@@ -9,3 +9,6 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "libgbm 1.0.4"
+]

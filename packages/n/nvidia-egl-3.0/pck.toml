@@ -11,3 +11,9 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "wayland-protocols 1.47",
+    "pciutils 3.14.0",
+    "hwdata 0.404",
+    "dri 25.3.5"
+]

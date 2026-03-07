@@ -1,0 +1,7 @@
+name = "base-structure"
+version = "3.0"
+source = "none"
+deps = []
+extras = [
+    
+]
