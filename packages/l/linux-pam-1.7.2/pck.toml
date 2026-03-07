@@ -8,3 +8,6 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "base-config 3.0"
+]

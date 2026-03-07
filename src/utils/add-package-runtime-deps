@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+
+import argparse
+import os
+import re
+from pathlib import Path
+
+DEFAULT_PATH = "/usr/share/pullinux/packages"
+BASE_DIR = Path(os.environ.get("PLX_PCK_PATH", DEFAULT_PATH)).expanduser()
+TEMPLATE_DIR = BASE_DIR / "templates"
+EDITOR = os.environ.get("EDITOR", "vi")
+
+def get_latest_version(pkg_name):
+    first_char = pkg_name[0].lower()
+    pkg_root = BASE_DIR / first_char
+
+    pattern = f"{pkg_name}-*"
+    matches = list(pkg_root.glob(pattern))
+
+    if not matches:
+        print(f"NOT FOUND: {pkg_name}")
+        exit(1)
+
+    versions = [m.name.replace(f"{pkg_name}-", "") for m in matches]
+    versions.sort(key=lambda s: [int(u) for u in re.findall(r'\d+', s)])
+    return versions[-1]
+
+def main():
+    parser = argparse.ArgumentParser(description="Pullinux Package Creator")
+    parser.add_argument("name", nargs="?", help="Package name")
+    parser.add_argument("deps", nargs="*", help="Dependencies (space separated)")
+
+    args = parser.parse_intermixed_args()
+
+    if args:
+        name = args.name
+        version = get_latest_version(args.name)
+
+        first_char = name[0].lower()
+        pkg_dir = BASE_DIR / first_char / f"{name}-{version}"
+        pck_file = pkg_dir / "pck.toml"
+
+        formatted_deps = [f'    "{d} {get_latest_version(d)}"' for d in args.deps]
+
+        if formatted_deps:
+            deps_str = "[\n" + ",\n".join(formatted_deps) + "\n]"
+        else:
+            deps_str = "[]"
+        
+        content = pck_file.read_text()
+
+        content += f'\nruntime_deps = {deps_str}\n'
+
+        pck_file.write_text(content)
+
+        os.system(f"{EDITOR} {pck_file}")
+
+        print("DONE")
+    else:
+        parser.print_help()
+
+if __name__ == "__main__":
+    main()
+

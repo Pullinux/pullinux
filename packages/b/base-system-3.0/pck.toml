@@ -11,3 +11,10 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "curl 8.18.0",
+    "wget 1.25.0",
+    "shadow-pam 4.19.3",
+    "systemd-pam 259.1",
+    "base-config 3.0"
+]

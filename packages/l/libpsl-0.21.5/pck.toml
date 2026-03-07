@@ -7,3 +7,7 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "libidn2 2.3.8",
+    "libunistring 1.4.1"
+]

@@ -8,3 +8,6 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "nvidia-driver 590.48.01"
+]

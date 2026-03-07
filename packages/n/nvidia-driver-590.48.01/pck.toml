@@ -7,3 +7,7 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "nvidia-vaapi-driver 0.0.14",
+    "nvidia-egl 3.0"
+]

@@ -375,10 +375,3 @@ export XORG_PREFIX XORG_CONFIG
 EOF
 
 chmod 644 /etc/profile.d/xorg.sh
-
-echo "Dumping Personalities:"
-
-x86_64-pc-linux-gnu-pkg-config --dump-personality
-
-i686-pc-linux-gnu-pkg-config --dump-personality
-

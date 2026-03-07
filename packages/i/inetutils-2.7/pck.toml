@@ -7,3 +7,8 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "glibc 2.43",
+    "ncurses 6.6",
+    "readline 8.3"
+]

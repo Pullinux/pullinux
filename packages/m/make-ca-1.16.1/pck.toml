@@ -7,3 +7,7 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "p11-kit 0.26.2",
+    "libtasn1 4.21.0"
+]

@@ -7,3 +7,8 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "gdbm 1.26",
+    "glibc 2.43",
+    "libxcrypt 4.5.2"
+]

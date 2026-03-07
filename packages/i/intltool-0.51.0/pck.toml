@@ -7,3 +7,12 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "autoconf 2.72",
+    "automake 1.18.1",
+    "bash 5.3",
+    "glibc 2.43",
+    "grep 3.12",
+    "perl mime-base32-1.303",
+    "sed 4.9"
+]

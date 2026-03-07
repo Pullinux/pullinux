@@ -7,3 +7,7 @@ deps = [
 extras = [
     "https://www.linuxfromscratch.org/patches/lfs/development/expect-5.45.4-gcc15-1.patch"
 ]
+runtime_deps = [
+    "glibc 2.43",
+    "tcl 8.6.17"
+]

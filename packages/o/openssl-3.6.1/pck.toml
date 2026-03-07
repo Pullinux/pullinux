@@ -7,3 +7,7 @@ deps = [
 extras = [
     
 ]
+runtime_deps = [
+    "glibc 2.43",
+    "perl mime-base32-1.303"
+]

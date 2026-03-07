@@ -7,3 +7,6 @@ deps = [
 extras = [
     "https://www.linuxfromscratch.org/glfs/view/dev/download/nss/nss-standalone-1.patch"
 ]
+runtime_deps = [
+    "nspr 4.38.2"
+]

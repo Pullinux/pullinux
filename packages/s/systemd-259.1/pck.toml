@@ -7,3 +7,13 @@ deps = [
 extras = [
     "https://anduin.linuxfromscratch.org/LFS/systemd-man-pages-259.1.tar.xz"
 ]
+runtime_deps = [
+    "acl 2.3.2",
+    "glibc 2.43",
+    "libxcrypt 4.5.2",
+    "openssl 3.6.1",
+    "util-linux 2.41.3",
+    "xz 5.8.2",
+    "zlib 1.3.2",
+    "zstd 1.5.7"
+]
