@@ -192,6 +192,18 @@ def install_package(name, version=None, auto_yes=False, dest=None, runtime=None)
         if staged_txz.exists():
             os.remove(staged_txz)
 
+
+    if name == "base-structure":
+        # Special processing, after base-structure added, mount virtual env...
+
+        try:
+            subprocess.run(["/bin/bash", "-c", f"/usr/bin/mount-virt.sh {PLX}"], check=True)
+        except subprocess.CalledProcessError:
+            print(f"INST:> ERROR: Extraction install failed to mount virtual environment.")
+            if staged_txz.exists(): os.remove(staged_txz)
+            exit(1)
+
+
     # Run Post-Install Script (.install/install.sh)
     install_script_abs = PLX / ".install/install.sh"
     if install_script_abs.exists():

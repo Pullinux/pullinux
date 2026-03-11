@@ -15,5 +15,8 @@ cp -r ../../packages $CHRENV/usr/share/pullinux/
 
 echo "Copying scripts..."
 
+chmod u+x mount-virt.sh
+
 cp -r plx-build $CHRENV/usr/bin/
 cp -r plx-install $CHRENV/usr/bin/
+cp -r mount-virt.sh $CHRENV/usr/bin/
