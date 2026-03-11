@@ -9,5 +9,5 @@ extras = [
 ]
 runtime_deps = [
     "glibc 2.43",
-    "gcc 15.2.0"
+    "gcc-libs 15.2.0"
 ]
