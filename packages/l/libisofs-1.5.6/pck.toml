@@ -1,0 +1,7 @@
+name = "libisofs"
+version = "1.5.6"
+source = "https://files.libburnia-project.org/releases/libisofs-1.5.6.tar.gz"
+deps = []
+extras = [
+    
+]

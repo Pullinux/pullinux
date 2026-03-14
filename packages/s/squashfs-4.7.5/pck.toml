@@ -1,0 +1,9 @@
+name = "squashfs"
+version = "4.7.5"
+source = "https://codeload.github.com/plougher/squashfs-tools/tar.gz/refs/tags/4.7.5"
+deps = [
+    "base-config 3.0"
+]
+extras = [
+    
+]

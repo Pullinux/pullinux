@@ -1,0 +1,9 @@
+name = "initramfs"
+version = "3.0"
+source = "none"
+deps = [
+    "base-system 3.0"
+]
+extras = [
+    
+]
