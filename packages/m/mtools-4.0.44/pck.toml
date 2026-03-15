@@ -1,0 +1,9 @@
+name = "mtools"
+version = "4.0.44"
+source = "https://ftp.gnu.org/gnu/mtools/mtools-4.0.44.tar.bz2"
+deps = [
+    "base-config 3.0"
+]
+extras = [
+    
+]

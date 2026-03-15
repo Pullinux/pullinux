@@ -1,0 +1,9 @@
+name = "efivar"
+version = "39"
+source = "https://github.com/rhboot/efivar/archive/39/efivar-39.tar.gz"
+deps = [
+    "base-config 3.0"
+]
+extras = [
+    "https://www.linuxfromscratch.org/patches/blfs/svn/efivar-39-upstream_fixes-1.patch"
+]

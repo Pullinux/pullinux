@@ -121,6 +121,9 @@ def install_package(name, version=None, auto_yes=False, dest=None, runtime=None,
     txz_name = f"{name}-{version}-plx-3.0.txz"
     txz_path = BIN_DIR / txz_name
 
+    if not txz_path.exists() and Path(f"/mnt/packages/{txz_name}").exists():
+        txz_path = Path(f"/mnt/packages/{txz_name}")
+
     if not txz_path.exists():
         print(f"INST:> Binary {txz_name} not found.")
 

@@ -1,0 +1,10 @@
+name = "efibootmgr"
+version = "18"
+source = "https://github.com/rhboot/efibootmgr/archive/18/efibootmgr-18.tar.gz"
+deps = [
+    "efivar 39",
+    "popt 1.19"
+]
+extras = [
+    
+]
