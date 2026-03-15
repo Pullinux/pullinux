@@ -14,7 +14,8 @@ cd /usr/share/pullinux/liveiso
 cat > /usr/share/pullinux/liveiso/init << "EOF"
 #!/bin/sh
 
-set -e
+echo "Staring up..."
+sleep 2
 
 # Setup API filesystems
 mount -t proc proc /proc
@@ -31,6 +32,9 @@ mount /dev/disk/by-label/PLX_LIVE /mnt/iso 2>/dev/null || \
 mount /dev/sr0 /mnt/iso 2>/dev/null || \
 mount /dev/sda /mnt/iso 2>/dev/null || \
 mount /dev/sdb /mnt/iso 2>/dev/null
+
+echo "Looking for mount..."
+sleep 2
 
 found=0
 # Give the kernel 5 seconds to finish hardware discovery
@@ -52,23 +56,31 @@ for i in 1 2 3 4 5; do
         fi
     done
     echo "Not found yet, waiting..."
-    sleep 1
+    sleep 2
 done
+
+echo "Done with search..."
+
+sleep 5
 
 if [ "$found" -ne 1 ]; then
     echo "ERROR: Could not find rootfs.sfs on any device!"
     echo "Available partitions:"
     cat /proc/partitions
+
+    sleep 5
     /bin/sh
 fi
 
 echo "Mounting root filesystem..."
 
+sleep 2
 # Mount the compressed SquashFS
 mount -t squashfs -o loop /mnt/iso/boot/rootfs.sfs /mnt/ro_root
 
 echo "Mounting packages..."
 
+sleep 2
 # Mount the package binaries
 mkdir -p /mnt/packages
 
@@ -112,6 +124,7 @@ mkdir -p /usr/share/pullinux/liveiso/iso/boot/grub/
 echo "Installing base system..."
 
 plx-install base-system -d /usr/share/pullinux/liveiso/rootfs
+plx-install nvidia-driver -d /usr/share/pullinux/liveiso/rootfs
 
 # un-mount virtual envs...
 CHRENV=/usr/share/pullinux/liveiso/rootfs
@@ -181,22 +194,13 @@ set timeout=5
 
 menuentry "Pullinux Live Install" {
     # Load the kernel
-    linux /boot/vmlinuz-6.18.10-plx-3.0 root=/dev/ram0 rw earlyprintk loglevel=7 
-
-    # Load the initramfs
-    initrd /boot/initrd.img-6.18.10
-}
-
-menuentry "Pullinux Live Install (serial console)" {
-    # Load the kernel
-    linux /boot/vmlinuz-6.18.10-plx-3.0 root=/dev/ram0 rw earlyprintk loglevel=7 console=ttyS0,115200
+    linux /boot/vmlinuz-6.18.10-plx-3.0 root=/dev/ram0 rw 
 
     # Load the initramfs
     initrd /boot/initrd.img-6.18.10
 }
 
 EOF
-
 
 echo ""
 echo "Squashing package files..."
