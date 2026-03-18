@@ -1,0 +1,9 @@
+name = "libseat"
+version = "0.9.3"
+source = "none"
+deps = [
+    "base-xorg 3.0"
+]
+extras = [
+    
+]

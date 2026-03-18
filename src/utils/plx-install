@@ -20,6 +20,8 @@ BUILD_SCRIPT_PATH = Path("/usr/bin")
 # Local build means that it won't install in a chroot environment.
 local_build = True
 
+copy_package = False
+
 def get_latest_version(pkg_name):
     # Finds the highest version number available in the package recipes.
     first_char = pkg_name[0].lower()
@@ -155,6 +157,12 @@ def install_package(name, version=None, auto_yes=False, dest=None, runtime=None,
     print(f"INST:> Staging {txz_name} for internal extraction to {staged_txz}...")
     shutil.copy2(txz_path, staged_txz)
 
+    if copy_package:
+        pck_bin = (PLX / "usr/share/pullinux/packages/bin")
+        pck_bin.mkdir(parents=True, exist_ok=True)
+        
+        shutil.copy2(txz_path, pck_bin / txz_name)
+
     print(f"INST:> Extracting {name}-{version} ...")
 
     extract_script = f"tar -xhf /tmp/{txz_name} -C /"
@@ -200,7 +208,7 @@ def install_package(name, version=None, auto_yes=False, dest=None, runtime=None,
         # Special processing, after base-structure added, mount virtual env...
 
         try:
-            subprocess.run(["/bin/bash", "-c", f"/usr/bin/mount-virt.sh {PLX}"], check=True)
+            subprocess.run(["/bin/bash", "-c", f"/usr/share/pullinux/scripts/mount-virt.sh {PLX}"], check=True)
         except subprocess.CalledProcessError:
             print(f"INST:> ERROR: Extraction install failed to mount virtual environment.")
             if staged_txz.exists(): os.remove(staged_txz)
@@ -266,9 +274,14 @@ if __name__ == "__main__":
     parser.add_argument("-y", "--yes", action="store_true", help="Auto-build if binary is missing")
     parser.add_argument("-r", "--runtime", action="store_true", help="Use runtime dependencies only")
     parser.add_argument("-d", "--dest", help="Destination of where to build in a chroot environment")
+    parser.add_argument("-c", "--copy-package", action="store_true", help="Copy the package file")
 
     args = parser.parse_args()
     
+    if args.copy_package:
+        copy_package = True
+
+
     if args.dest:
         local_build = False
         PLX = Path(args.dest)
@@ -290,3 +303,11 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\nINST:> Installation interrupted by user.")
         exit(1)
+
+    if args.dest:
+        try:
+            subprocess.run(["/bin/bash", "-c", f"/usr/share/pullinux/scripts/umount-virt.sh {PLX}"], check=True)
+        except subprocess.CalledProcessError:
+            print(f"INST:> ERROR: Failed to un-mount virtual environment.")
+            if staged_txz.exists(): os.remove(staged_txz)
+            exit(1)

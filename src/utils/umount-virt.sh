@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Unmount $1..."
+
 CHRENV=${1:?}
 
 if [ ! -d "$CHRENV" ]; then
