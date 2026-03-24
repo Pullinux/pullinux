@@ -1,0 +1,9 @@
+name = "gtk-layer-shell"
+version = "0.10.0"
+source = "https://github.com/wmww/gtk-layer-shell/archive/v0.10.0.tar.gz"
+deps = [
+    "gtk3 3.24.51"
+]
+extras = [
+    
+]
