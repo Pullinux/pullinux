@@ -1,0 +1,9 @@
+name = "xcb-util-errors"
+version = "1.0.1"
+source = "https://xcb.freedesktop.org/dist/xcb-util-errors-1.0.1.tar.xz"
+deps = [
+    "xcb-utils 3.0"
+]
+extras = [
+    
+]

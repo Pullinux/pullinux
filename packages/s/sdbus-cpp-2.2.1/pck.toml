@@ -1,0 +1,10 @@
+name = "sdbus-cpp"
+version = "2.2.1"
+source = "https://github.com/Kistler-Group/sdbus-cpp/archive/v2.2.1/sdbus-cpp-2.2.1.tar.gz"
+deps = [
+    "cmake 4.2.3",
+    "dbus xorg-1.16.2"
+]
+extras = [
+    
+]

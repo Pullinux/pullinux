@@ -1,0 +1,9 @@
+name = "libzip"
+version = "1.11.4"
+source = "https://libzip.org/download/libzip-1.11.4.tar.xz"
+deps = [
+    "base-system 3.0"
+]
+extras = [
+    
+]

@@ -1,0 +1,9 @@
+name = "re2"
+version = "2025-11-05"
+source = "https://github.com/google/re2/releases/download/2025-11-05/re2-2025-11-05.tar.gz"
+deps = [
+    "abseil-cpp 20260107.1"
+]
+extras = [
+    
+]

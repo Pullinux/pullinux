@@ -1,0 +1,9 @@
+name = "iniparser"
+version = "4.2.6"
+source = "https://gitlab.com/iniparser/iniparser/-/archive/v4.2.6/iniparser-v4.2.6.tar.gz"
+deps = [
+    "cmake 4.2.3"
+]
+extras = [
+    
+]

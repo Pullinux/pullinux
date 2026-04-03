@@ -1,0 +1,9 @@
+name = "tomlpp"
+version = "3.4.0"
+source = "https://github.com/marzer/tomlplusplus/archive/v3.4.0/tomlplusplus-3.4.0.tar.gz"
+deps = [
+    "cmake 4.2.3"
+]
+extras = [
+    
+]

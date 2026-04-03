@@ -1,0 +1,9 @@
+name = "gtk4-layer-shell"
+version = "1.3.0"
+source = "https://codeload.github.com/wmww/gtk4-layer-shell/tar.gz/refs/tags/v1.3.0"
+deps = [
+    "gtk4 4.20.3"
+]
+extras = [
+    
+]

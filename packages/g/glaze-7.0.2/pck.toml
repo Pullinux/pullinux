@@ -1,0 +1,9 @@
+name = "glaze"
+version = "7.0.2"
+source = "https://github.com/stephenberry/glaze/archive/v7.0.2/glaze-7.0.2.tar.gz"
+deps = [
+    "cmake 4.2.3"
+]
+extras = [
+    
+]

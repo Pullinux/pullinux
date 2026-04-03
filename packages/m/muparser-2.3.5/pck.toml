@@ -1,0 +1,9 @@
+name = "muparser"
+version = "2.3.5"
+source = "https://github.com/beltoforion/muparser/archive/v2.3.5/muparser-2.3.5.tar.gz"
+deps = [
+    "cmake 4.2.3"
+]
+extras = [
+    
+]

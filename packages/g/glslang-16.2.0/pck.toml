@@ -1,0 +1,9 @@
+name = "glslang"
+version = "16.2.0"
+source = "https://github.com/KhronosGroup/glslang/archive/16.2.0/glslang-16.2.0.tar.gz"
+deps = [
+    "vulkan-sdk 1.4.341.0"
+]
+extras = [
+    
+]

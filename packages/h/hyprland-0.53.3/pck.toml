@@ -1,0 +1,25 @@
+name = "hyprland"
+version = "0.53.3"
+source = "https://github.com/hyprwm/Hyprland/archive/v0.53.3/Hyprland-0.53.3.tar.gz"
+deps = [
+    "cairo 1.18.4",
+    "cmake 4.2.3",
+    "libgbm 1.0.4",
+    "glib 2.86.4",
+    "hyprland-libs 0.53.3",
+    "libliftoff 0.5.0",
+    "libxkbcommon 1.13.1",
+    "muparser 2.3.5",
+    "pango 1.57.0",
+    "pixman 0.46.4",
+    "re2 2025-11-05",
+    "seatd 0.9.2",
+    "xorg-libs 3.0",
+    "xcb-utils 3.0",
+    "xcb-util-errors 1.0.1",
+    "glaze 7.0.2",
+    "xwayland 24.1.9"
+]
+extras = [
+    "https://github.com/canihavesomecoffee/udis86/archive/5336633af70f3917760a6d441ff02d93477b0c86/udis86-5336633af70f3917760a6d441ff02d93477b0c86.tar.gz"
+]

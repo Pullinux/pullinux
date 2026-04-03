@@ -1,0 +1,9 @@
+name = "pugixml"
+version = "1.15"
+source = "https://github.com/zeux/pugixml/releases/download/v1.15/pugixml-1.15.tar.gz"
+deps = [
+    "base-dev 3.0"
+]
+extras = [
+    
+]

@@ -1,2 +1,2 @@
-export PLX_PCK_PATH=/home/rpulley/git/pullinux/packages
+export PLX_PCK_PATH=/data2/git/pullinux/packages
 export EDITOR=code

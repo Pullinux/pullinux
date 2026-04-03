@@ -1,0 +1,13 @@
+name = "xdg-desktop-portal-hyprland"
+version = "1.3.11"
+source = "https://github.com/hyprwm/xdg-desktop-portal-hyprland/archive/v1.3.11/xdg-desktop-portal-hyprland-1.3.11.tar.gz"
+deps = [
+    "hyprland-libs 0.53.3",
+    "pipewire 1.6.0",
+    "sdbus-cpp 2.2.1",
+    "xdg-desktop-portal 1.20.3",
+    "inih 62"
+]
+extras = [
+    
+]
