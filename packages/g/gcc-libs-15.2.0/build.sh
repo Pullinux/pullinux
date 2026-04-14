@@ -25,6 +25,7 @@ do
     mv $f $PCKDIR/usr/lib/
 done;
 
-ls -ls $PCKDIR/usr/lib/
+mv ./usr/lib32 $PCKDIR/usr/
 
+ls -ls $PCKDIR/usr/lib/
 

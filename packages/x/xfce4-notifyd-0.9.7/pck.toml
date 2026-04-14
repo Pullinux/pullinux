@@ -6,6 +6,7 @@ deps = [
     "libxfce4ui 4.20.2",
     "libcanberra 0.30",
     "xfce4-dev-tools 4.20.0",
+    "gtk-layer-shell 0.10.0",
     "xfce4-panel 4.20.6"
 ]
 extras = [

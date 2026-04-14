@@ -3,6 +3,8 @@ version = "4.20.1"
 source = "https://archive.xfce.org/src/xfce/libxfce4util/4.20/libxfce4util-4.20.1.tar.bz2"
 deps = [
     "base-xorg 3.0",
+    "gtk4 4.20.0",
+    "gtk3 3.24.51",
     "vala 0.56.18"
 ]
 extras = [

@@ -77,7 +77,7 @@ def record_install(name, version, recipe_path, txz_path):
 
     print(f"INST:> Recorded install manifest: {mf_entry}")
 
-def install_package(name, version=None, auto_yes=False, dest=None, runtime=None, force=False):
+def install_package(name, version=None, auto_yes=False, dest=None, runtime=None, force=False, build=False):
     if not version:
         version = get_latest_version(name)
         if not version:
@@ -115,7 +115,7 @@ def install_package(name, version=None, auto_yes=False, dest=None, runtime=None,
             if len(dep_parts) == 2:
                 d_name, d_ver = dep_parts
                 #print(f"INSTPCK: {d_name} - {d_ver}")
-                install_package(d_name, d_ver, auto_yes, dest, runtime, False)
+                install_package(d_name, d_ver, auto_yes, dest, runtime, False, build)
             else:
                 print(f"INST:> ERROR: Invalid dependency format '{dep_str}' in {name} recipe.")
                 exit(1)
@@ -275,6 +275,7 @@ if __name__ == "__main__":
     parser.add_argument("-r", "--runtime", action="store_true", help="Use runtime dependencies only")
     parser.add_argument("-d", "--dest", help="Destination of where to build in a chroot environment")
     parser.add_argument("-c", "--copy-package", action="store_true", help="Copy the package file")
+    parser.add_argument("-b", "--build", action="store_true", help="Build always")
 
     args = parser.parse_args()
     
@@ -290,7 +291,7 @@ if __name__ == "__main__":
 
         if not PLX_VAR_LIB.exists():
             print("INST:> Installing Base Structure First...")
-            install_package("base-structure", "3.0", args.yes, args.dest, args.runtime, args.force)
+            install_package("base-structure", "3.0", args.yes, args.dest, args.runtime, args.force, args.build)
         else:
             print(f"Structure exists: {PLX_VAR_LIB}")
 
@@ -299,7 +300,7 @@ if __name__ == "__main__":
             exit(1)
 
     try:
-        install_package(args.name, args.version, args.yes, args.dest, args.runtime, args.force)
+        install_package(args.name, args.version, args.yes, args.dest, args.runtime, args.force, args.build)
     except KeyboardInterrupt:
         print("\nINST:> Installation interrupted by user.")
         exit(1)

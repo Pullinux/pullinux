@@ -2,7 +2,7 @@
 
 ./configure --prefix=/usr       \
             --sysconfdir=/etc   \
-            --disable-legacy-sm 
+            --disable-legacy-sm  --enable-wayland
 
 make
 make DESTDIR=$PCKDIR install
