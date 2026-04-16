@@ -4,7 +4,7 @@ source = "https://github.com/AOMediaCodec/libavif/archive/v1.3.0/libavif-1.3.0.t
 deps = [
     "dav1d 1.5.3",
     "svt-av1 4.0.1",
-    "libaom 3.13.1"
+    "libaom 3.13.3"
 ]
 extras = [
     

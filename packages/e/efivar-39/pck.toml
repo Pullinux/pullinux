@@ -5,5 +5,5 @@ deps = [
     "base-config 3.0"
 ]
 extras = [
-    "https://www.linuxfromscratch.org/patches/blfs/svn/efivar-39-upstream_fixes-1.patch"
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/efivar-39-upstream_fixes-1.patch"
 ]

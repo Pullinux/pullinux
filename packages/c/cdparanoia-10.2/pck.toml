@@ -5,6 +5,6 @@ deps = [
     "base-xorg 3.0"
 ]
 extras = [
-    "https://www.linuxfromscratch.org/patches/blfs/svn/cdparanoia-III-10.2-gcc_fixes-1.patch",
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/cdparanoia-III-10.2-gcc_fixes-1.patch",
     "https://raw.githubusercontent.com/rockytriton/pullinux-packages/refs/heads/main/c/cdparanoia-III/0001-Use-DESTDIR-in-install-Makefile-rule.patch"
 ]

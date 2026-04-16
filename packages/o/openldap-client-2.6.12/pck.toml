@@ -6,5 +6,5 @@ deps = [
     "base-dev 3.0"
 ]
 extras = [
-    "https://www.linuxfromscratch.org/patches/blfs/svn/openldap-2.6.12-consolidated-1.patch"
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/openldap-2.6.12-consolidated-1.patch"
 ]

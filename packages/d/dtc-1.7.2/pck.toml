@@ -5,5 +5,5 @@ deps = [
     "base-xorg 3.0"
 ]
 extras = [
-    "https://www.linuxfromscratch.org/patches/blfs/svn/dtc-1.7.2-glibc_fixes-1.patch"
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/dtc-1.7.2-glibc_fixes-1.patch"
 ]

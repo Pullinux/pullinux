@@ -5,5 +5,5 @@ deps = [
     "base-dev 3.0"
 ]
 extras = [
-    "https://www.linuxfromscratch.org/patches/blfs/svn/lua-5.4.8-shared_library-1.patch"
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/lua-5.4.8-shared_library-1.patch"
 ]

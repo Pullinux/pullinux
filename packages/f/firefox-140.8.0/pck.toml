@@ -9,14 +9,14 @@ deps = [
     "nodejs 22.22.0",
     "startup-notification 0.12",
     "dav1d 1.5.3",
-    "libaom 3.13.1",
+    "libaom 3.13.3",
     "libevent 2.1.12",
     "libvpx 1.16.0",
     "libwebp 1.6.0",
     "nasm 3.01"
 ]
 extras = [
-    "https://www.linuxfromscratch.org/patches/blfs/svn/firefox-140.8.0esr-ffmpeg-8.0.patch",
-    "https://www.linuxfromscratch.org/patches/blfs/svn/firefox-140.8.0esr-glibc-2.43.patch",
-    "https://www.linuxfromscratch.org/patches/blfs/svn/firefox-140.8.0esr-python_3.14_fixes-1.patch"
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/firefox-140.8.0esr-ffmpeg-8.0.patch",
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/firefox-140.8.0esr-glibc-2.43.patch",
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/firefox-140.8.0esr-python_3.14_fixes-1.patch"
 ]

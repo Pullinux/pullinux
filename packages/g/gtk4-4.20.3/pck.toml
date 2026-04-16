@@ -10,7 +10,7 @@ deps = [
     "libxkbcommon 1.13.1",
     "pango 1.57.0",
     "pygobject 3.54.5",
-    "gst-plugins-bad 1.28.0",
+    "gst-plugins-bad 1.28.1",
     "glslc 2026.1",
     "hicolor-icon-theme 0.18"
 ]

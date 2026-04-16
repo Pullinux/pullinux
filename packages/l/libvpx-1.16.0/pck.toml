@@ -5,5 +5,5 @@ deps = [
     "nasm 3.01"
 ]
 extras = [
-    "https://www.linuxfromscratch.org/patches/blfs/svn/libvpx-1.16.0-security_fix-1.patch"
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/libvpx-1.16.0-security_fix-1.patch"
 ]

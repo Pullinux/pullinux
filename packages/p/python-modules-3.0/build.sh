@@ -104,7 +104,7 @@ pip3 install --no-index --find-links $PCKDIR/.install/dist --no-user charset-nor
 cd ..
 
 wget https://files.pythonhosted.org/packages/source/r/requests/requests-2.32.5.tar.gz
-wget https://www.linuxfromscratch.org/patches/blfs/svn/requests-use_system_certs-1.patch
+wget https://www.linuxfromscratch.org/patches/blfs/13.0/requests-use_system_certs-1.patch
 
 tar -xf requests-2.32.5.tar.gz
 cd requests-2.32.5

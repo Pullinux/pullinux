@@ -1,8 +1,8 @@
 name = "gst-plugins-base"
-version = "1.28.0"
-source = "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.28.0.tar.xz"
+version = "1.28.1"
+source = "https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.28.1.tar.xz"
 deps = [
-    "gstreamer 1.28.0",
+    "gstreamer 1.28.1",
     "cdparanoia 10.2",
     "iso-codes 4.20.1",
     "libgudev 238",

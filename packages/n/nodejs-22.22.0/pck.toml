@@ -9,5 +9,5 @@ deps = [
     "nghttp2 1.68.0"
 ]
 extras = [
-    "https://www.linuxfromscratch.org/patches/blfs/svn/node-v22.22.0-python_build_fix-1.patch"
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/node-v22.22.0-python_build_fix-1.patch"
 ]

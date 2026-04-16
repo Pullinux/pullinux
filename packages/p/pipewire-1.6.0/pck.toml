@@ -3,8 +3,8 @@ version = "1.6.0"
 source = "https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/1.6.0/pipewire-1.6.0.tar.bz2"
 deps = [
     "bluez 5.86",
-    "gstreamer 1.28.0",
-    "gst-plugins-base 1.28.0",
+    "gstreamer 1.28.1",
+    "gst-plugins-base 1.28.1",
     "sbc 2.2",
     "v4l-utils 1.32.0",
     "base-xorg 3.0"

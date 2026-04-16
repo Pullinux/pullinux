@@ -3,7 +3,7 @@ version = "2.50.5"
 source = "https://webkitgtk.org/releases/webkitgtk-2.50.5.tar.xz"
 deps = [
     "cairo 1.18.4",
-    "gst-plugins-bad 1.28.0",
+    "gst-plugins-bad 1.28.1",
     "gtk3 3.24.51",
     "gtk4 4.20.3",
     "icu 78.2",

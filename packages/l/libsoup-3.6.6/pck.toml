@@ -7,5 +7,5 @@ deps = [
     "vala 0.56.18"
 ]
 extras = [
-    "https://www.linuxfromscratch.org/patches/blfs/svn/libsoup-3.6.6-upstream_fixes-1.patch"
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/libsoup-3.6.6-upstream_fixes-1.patch"
 ]

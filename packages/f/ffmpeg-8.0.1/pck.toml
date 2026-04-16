@@ -3,7 +3,7 @@ version = "8.0.1"
 source = "https://ffmpeg.org/releases/ffmpeg-8.0.1.tar.xz"
 deps = [
     "dav1d 1.5.3",
-    "libaom 3.13.1",
+    "libaom 3.13.3",
     "libass 0.17.4",
     "fdk-aac 2.0.3",
     "lame 3.100",
@@ -15,5 +15,5 @@ deps = [
     "nasm 3.01"
 ]
 extras = [
-    "https://www.linuxfromscratch.org/patches/blfs/svn/ffmpeg-8.0.1-chromium_method-1.patch"
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/ffmpeg-8.0.1-chromium_method-1.patch"
 ]

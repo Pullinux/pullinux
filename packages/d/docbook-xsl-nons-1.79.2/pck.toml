@@ -5,5 +5,5 @@ deps = [
     "docbook-xml 4.5"
 ]
 extras = [
-    "https://www.linuxfromscratch.org/patches/blfs/svn/docbook-xsl-nons-1.79.2-stack_fix-1.patch"
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/docbook-xsl-nons-1.79.2-stack_fix-1.patch"
 ]

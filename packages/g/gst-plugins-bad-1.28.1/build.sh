@@ -1,7 +1,5 @@
 #!/bin/bash
 
-patch -Np1 -i ../gst-plugins-bad-1.28.0-zxing_cpp_3-1.patch
-
 mkdir -p build
 cd       build
 

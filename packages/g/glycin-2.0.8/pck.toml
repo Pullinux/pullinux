@@ -12,6 +12,6 @@ deps = [
     "vala 0.56.18"
 ]
 extras = [
-    "https://www.linuxfromscratch.org/patches/blfs/svn/glycin-2.0.8-xorg_prefix-1.patch",
-    "https://www.linuxfromscratch.org/patches/blfs/svn/glycin-2.0.8-xbm_xpm-1.patch"
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/glycin-2.0.8-xorg_prefix-1.patch",
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/glycin-2.0.8-xbm_xpm-1.patch"
 ]

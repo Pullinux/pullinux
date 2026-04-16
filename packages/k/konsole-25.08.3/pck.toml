@@ -5,5 +5,5 @@ deps = [
     "kde-framework 6.23.0"
 ]
 extras = [
-    "https://www.linuxfromscratch.org/patches/blfs/svn/konsole-adjust_scrollbar-1.patch"
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/konsole-adjust_scrollbar-1.patch"
 ]

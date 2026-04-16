@@ -7,5 +7,5 @@ deps = [
     "polkit 127"
 ]
 extras = [
-    "https://www.linuxfromscratch.org/patches/blfs/svn/polkit-gnome-0.105-consolidated_fixes-1.patch"
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/polkit-gnome-0.105-consolidated_fixes-1.patch"
 ]

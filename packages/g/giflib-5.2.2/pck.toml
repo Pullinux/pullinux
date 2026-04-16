@@ -5,6 +5,6 @@ deps = [
     "base-dev 3.0"
 ]
 extras = [
-    "https://www.linuxfromscratch.org/patches/blfs/svn/giflib-5.2.2-upstream_fixes-1.patch",
-    "https://www.linuxfromscratch.org/patches/blfs/svn/giflib-5.2.2-security_fixes-1.patch"
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/giflib-5.2.2-upstream_fixes-1.patch",
+    "https://www.linuxfromscratch.org/patches/blfs/13.0/giflib-5.2.2-security_fixes-1.patch"
 ]

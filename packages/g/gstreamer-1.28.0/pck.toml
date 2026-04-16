@@ -1,9 +1,0 @@
-name = "gstreamer"
-version = "1.28.0"
-source = "https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-1.28.0.tar.xz"
-deps = [
-    "base-xorg 3.0"
-]
-extras = [
-    
-]

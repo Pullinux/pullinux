@@ -113,3 +113,4 @@ mkdir -p $PCKDIR/usr/share/bash-completion/completions
 mv -v $PCKDIR/etc/bash_completion.d/cargo \
       $PCKDIR/usr/share/bash-completion/completions
 
+ln -sfv /opt/rustc-1.93.1 $PCKDIR/opt/rustc
