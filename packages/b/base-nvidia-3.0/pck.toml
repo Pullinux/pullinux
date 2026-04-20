@@ -2,7 +2,21 @@ name = "base-nvidia"
 version = "3.0"
 source = "none"
 deps = [
-    "base-system 3.0"
+    "base-system 3.0",
+    "libglvnd 1.7.0",
+    "libdrm 2.4.131",
+    "libgbm 1.0.4",
+    "libva 2.23.0",
+    "dri 25.3.5",
+    "hwdata 0.404",
+    "pciutils 3.14.0",
+    "wayland 1.24.0",
+    "wayland-protocols 1.47",
+    "nvidia-egl 3.0",
+    "nv-codec-headers 13.0.19.0",
+    "nvidia-vaapi-driver 0.0.14",
+    "nvidia-driver 590.48.01",
+    "cuda 13.1.1"
 ]
 extras = [
     

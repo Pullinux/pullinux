@@ -14,12 +14,10 @@ DESTDIR=$PCKDIR ninja install
 
 rm -rf *
 
-CC="gcc -m32" CXX="g++ -m32"         \
-PKG_CONFIG_PATH=/usr/lib32/pkgconfig \
 meson setup --prefix=/usr            \
-            --libdir=/usr/lib32      \
             --buildtype=release      \
-            ..
+            --cross-file=lib32       \
+            .. 
 
 ninja
 

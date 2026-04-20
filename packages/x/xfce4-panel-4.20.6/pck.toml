@@ -6,6 +6,7 @@ deps = [
     "exo 4.20.0",
     "garcon 4.20.0",
     "libwnck 43.3",
+    "gtk-layer-shell 0.10.0",
     "libxfce4windowing 4.20.5"
 ]
 extras = [
