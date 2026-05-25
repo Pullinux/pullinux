@@ -12,14 +12,14 @@ def get_latest_version(pkg_name):
     first_char = pkg_name[0].lower()
     pkg_root = BASE_DIR / first_char
 
-    pattern = f"{pkg_name}-*"
+    pattern = f"{pkg_name}_*"
     matches = list(pkg_root.glob(pattern))
 
     if not matches:
         print(f"NOT FOUND: {pkg_name}")
         exit(1)
 
-    versions = [m.name.replace(f"{pkg_name}-", "") for m in matches]
+    versions = [m.name.replace(f"{pkg_name}_", "") for m in matches]
     versions.sort(key=lambda s: [int(u) for u in re.findall(r'\d+', s)])
     return versions[-1]
 

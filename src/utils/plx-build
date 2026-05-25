@@ -8,6 +8,7 @@ import subprocess
 from pathlib import Path
 import multiprocessing
 import argparse
+import time
 
 PLX = Path("/")
 PCK_PATH = Path(os.environ.get("PLX_PCK_PATH", "/usr/share/pullinux/packages"))
@@ -25,13 +26,13 @@ def get_latest_version(pkg_name):
     if not pkg_root.exists():
         return None
     
-    pattern = f"{pkg_name}-*"
+    pattern = f"{pkg_name}_*"
     matches = list(pkg_root.glob(pattern))
     if not matches:
         return None
     
     # Natural sort for versions (e.g., 2.11 > 2.2)
-    versions = [m.name.replace(f"{pkg_name}-", "") for m in matches]
+    versions = [m.name.replace(f"{pkg_name}_", "") for m in matches]
     versions.sort(key=lambda s: [int(u) if u.isdigit() else u for u in re.split(r'(\d+)', s)])
     return versions[-1]
 
@@ -47,7 +48,7 @@ def get_first_child_dir(parent_path):
         return None
 
 
-def get_source_file(url):
+def get_source_file(url, retry=0):
     source_filename = url.split('/')[-1]
     source_file = SOURCE_CACHE / source_filename
 
@@ -62,7 +63,14 @@ def get_source_file(url):
 
     if not source_file.exists():
         print(f"BUILD:> ERROR: FAILED TO DOWNLOAD REQUIRED FILE: {url}")
-        exit(1)
+
+        if retry < 10:
+            time.sleep(10)
+            printf("retrying failed download...")
+            get_source_file(url, retry + 1)
+        else:
+            exit(1)
+
 
 def build_package(name, version=None):
     if not version:
@@ -71,7 +79,7 @@ def build_package(name, version=None):
             print(f"BUILD:> ERROR: Package {name} not found."); 
             exit(1)
 
-    pkg_dir = PCK_PATH / name[0].lower() / f"{name}-{version}"
+    pkg_dir = PCK_PATH / name[0].lower() / f"{name}_{version}"
     with open(pkg_dir / "pck.toml", "rb") as f:
         recipe = tomllib.load(f)
 
@@ -122,7 +130,7 @@ def build_package(name, version=None):
         shutil.copy2(extra_path, source_extract_dir)
 
     
-    print(f"BUILD:> Starting build for {name}-{version}...")
+    print(f"BUILD:> Starting build for {name}_{version}...")
     print(f"BUILD:> Running in {working_dir}")
 
     cores = multiprocessing.cpu_count()

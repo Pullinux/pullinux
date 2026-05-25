@@ -125,10 +125,12 @@ EOF
 
 ln -sfv /dev/null /etc/systemd/system/tmp.mount
 
-cat > /etc/fstab << "EOF"
+uuid=$(findmnt -nvo UUID /)
+
+cat > /etc/fstab << EOF
 # Begin /etc/fstab
 
-UUID=23bd80cb-e5ba-41d7-8732-213a00d953ac     /mnt/lfs        ext4    defaults      1     1
+UUID=$uuid     /        ext4    defaults      1     1
 
 # End /etc/fstab
 EOF

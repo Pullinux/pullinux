@@ -30,14 +30,14 @@ def get_latest_version(pkg_name):
         print(f"No version {pkg_root}")
         return None
     
-    pattern = f"{pkg_name}-*"
+    pattern = f"{pkg_name}_*"
     matches = list(pkg_root.glob(pattern))
     if not matches:
         print(f"No version matches {pkg_root}")
         return None
     
     # Natural sort for versions (e.g., 2.11 > 2.2)
-    versions = [m.name.replace(f"{pkg_name}-", "") for m in matches]
+    versions = [m.name.replace(f"{pkg_name}_", "") for m in matches]
     versions.sort(key=lambda s: [int(u) if u.isdigit() else u for u in re.split(r'(\d+)', s)])
     return versions[-1]
 
@@ -87,7 +87,7 @@ def install_package(name, version=None, auto_yes=False, dest=None, runtime=None,
     if not force and is_installed(name, version):
         return
 
-    recipe_dir = PCK_PATH / name[0].lower() / f"{name}-{version}"
+    recipe_dir = PCK_PATH / name[0].lower() / f"{name}_{version}"
     recipe_file = recipe_dir / "pck.toml"
     
     if not recipe_file.exists():
