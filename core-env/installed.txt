@@ -100,3 +100,11 @@ curl
 wget
 pam
 shadowpam
+systemdpam
+duktape
+glib
+shared_mime_info
+desktop_file_utils
+polkit
+cmake
+llvm
