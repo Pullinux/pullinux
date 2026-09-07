@@ -153,6 +153,8 @@ def build_package(name, version=None):
         print(f"\nBUILD:> ERROR: Build FAILED. Check {PLX}/tmp/build for details."); 
         exit(1)
 
+    create_packages(recipe, version)
+
     # Packaging (.txz creation)
     PCK_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     package_filename = f"{name}-{version}-plx-3.0.txz"
@@ -173,6 +175,64 @@ def build_package(name, version=None):
     except subprocess.CalledProcessError:
         print(f"BUILD:> ERROR: Error creating the .txz archive."); 
         exit(1)
+
+def create_packages(recipe, version=None):
+    name = recipe['name']
+    pkg_stage_dir = PLX / "tmp/pkg"  # This is $PCKDIR
+
+    # Packaging (.txz creation)
+    PCK_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    package_filename = f"{name}-{version}-plx-3.0.txz"
+    package_full_path = PCK_OUTPUT_DIR / package_filename
+
+    if 'subpackages' in recipe:
+        for sub in recipe['subpackages']:
+            subname = sub['name']
+
+            print(f"BUILD:> Packaging sub-package: {subname} - {pkg_stage_dir}")
+
+            subpckdirname = f"subpck-{subname}"
+            subpckdir = pkg_stage_dir / subpckdirname
+            subpckdir.mkdir(parents=True, exist_ok=False)
+
+            for path in sub['paths']:
+                p = path.lstrip('/')
+                srcpath = pkg_stage_dir / p
+
+                dstpath = subpckdir / p
+
+                print(f"BUILD:> Moving {path} to {name}-{subname} package... {srcpath} to {dstpath} ({pkg_stage_dir}, {subpckdir}, {p})")
+
+                if not srcpath.exists():
+                    print(f"BUILD:> Source path doesn't exist: {srcpath}")
+                    exit(1)
+
+                # do move here...
+                dstpath.parent.mkdir(parents=True, exist_ok=False)
+                shutil.move(str(srcpath), str(dstpath))
+
+            # do package sub-pck here...
+            subpck_filename = f"{name}-{subname}-{version}-plx-3.0.txz"
+            subpck_full_path = PCK_OUTPUT_DIR / subpck_filename
+
+            print(f"Building package: {subpck_full_path}")
+
+            # We run tar from the host, but we CD into the pkg_stage_dir first
+            # so the tar file doesn't contain the full /mnt/plx/tmp/pkg path.
+            # '.' ensures the tar starts at the root of the package.
+            tar_cmd = [
+                "tar", "-cJpf", str(subpck_full_path), "-C", str(subpckdir), "."
+            ]
+            
+            try:
+                subprocess.run(tar_cmd, check=True)
+                print(f"\nBUILD:> SUCCESS: Package created at {package_full_path}")
+            except subprocess.CalledProcessError:
+                print(f"BUILD:> ERROR: Error creating the .txz archive."); 
+                exit(1)
+                
+            # do cleanup sub-pck dir here...
+            shutil.rmtree(subpckdir)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Build a package for Pullinux")

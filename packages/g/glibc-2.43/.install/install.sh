@@ -1,24 +1,6 @@
 
 echo "Installing GLIBC..."
 
-cat > /etc/nsswitch.conf << "EOF"
-# Begin /etc/nsswitch.conf
-
-passwd: files systemd
-group: files systemd
-shadow: files systemd
-
-hosts: mymachines resolve [!UNAVAIL=return] files myhostname dns
-networks: files
-
-protocols: files
-services: files
-ethers: files
-rpc: files
-
-# End /etc/nsswitch.conf
-EOF
-
 tar -xf tzdata2025c.tar.gz
 
 ZONEINFO=/usr/share/zoneinfo
@@ -37,17 +19,7 @@ unset ZONEINFO tz
 
 ln -sfv /usr/share/zoneinfo/America/Chicago /etc/localtime
 
-cat > /etc/ld.so.conf << "EOF"
-# Begin /etc/ld.so.conf
-/usr/local/lib
-/opt/lib
-/usr/lib32
 
-include /etc/ld.so.conf.d/*.conf
-
-EOF
-
-mkdir -pv /etc/ld.so.conf.d
 
 localedef -i C -f UTF-8 C.UTF-8
 localedef -i en_US -f ISO-8859-1 en_US

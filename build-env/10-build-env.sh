@@ -1,9 +1,13 @@
-bash -e
+set -e
+
+echo "starting..."
 
 touch /var/log/{btmp,lastlog,faillog,wtmp}
 chgrp -v utmp /var/log/lastlog
 chmod -v 664  /var/log/lastlog
 chmod -v 600  /var/log/btmp
+
+echo "more..."
 
 cd /sources
 tar -xf gettext-1.0.tar.xz
@@ -31,28 +35,54 @@ make install
 cd /sources
 rm -rf bison-3.8.2
 
-tar -xf perl-5.42.0.tar.xz
-cd perl-5.42.0
+tar -xf perl-5.44.0.tar.xz
+cd perl-5.44.0
 
 sh Configure -des                                         \
              -D prefix=/usr                               \
              -D vendorprefix=/usr                         \
              -D useshrplib                                \
-             -D privlib=/usr/lib/perl5/5.42/core_perl     \
-             -D archlib=/usr/lib/perl5/5.42/core_perl     \
-             -D sitelib=/usr/lib/perl5/5.42/site_perl     \
-             -D sitearch=/usr/lib/perl5/5.42/site_perl    \
-             -D vendorlib=/usr/lib/perl5/5.42/vendor_perl \
-             -D vendorarch=/usr/lib/perl5/5.42/vendor_perl
+             -D privlib=/usr/lib/perl5/5.44/core_perl     \
+             -D archlib=/usr/lib/perl5/5.44/core_perl     \
+             -D sitelib=/usr/lib/perl5/5.44/site_perl     \
+             -D sitearch=/usr/lib/perl5/5.44/site_perl    \
+             -D vendorlib=/usr/lib/perl5/5.44/vendor_perl \
+             -D vendorarch=/usr/lib/perl5/5.44/vendor_perl
 
 make 
 make install
 
 cd /sources
-rm -rf perl-5.42.0
+rm -rf perl-5.44.0
 
-tar -xf Python-3.14.3.tar.xz
-cd Python-3.14.3
+#zlib...
+
+tar -xf zlib-1.3.2.tar.gz
+cd zlib-1.3.2
+
+./configure --prefix=/usr
+make
+make install
+rm -fv /usr/lib/libz.a
+
+cd /sources
+rm -rf zlib-1.3.2
+
+tar -xf mpdecimal-4.0.1.tar.gz
+cd mpdecimal-4.0.1
+
+./configure --prefix=/usr    \
+            --disable-static \
+            --docdir=/usr/share/doc/mpdecimal-4.0.1
+make
+make install
+
+cd /sources
+rm -rf mpdecimal-4.0.1
+
+
+tar -xf Python-3.14.7.tar.xz
+cd Python-3.14.7
 
 ./configure --prefix=/usr       \
             --enable-shared     \
@@ -63,10 +93,10 @@ make
 make install
 
 cd /sources
-rm -rf Python-3.14.3
+rm -rf Python-3.14.7
 
-tar -xf texinfo-7.2.tar.xz
-cd texinfo-7.2
+tar -xf texinfo-7.3.tar.xz
+cd texinfo-7.3
 
 ./configure --prefix=/usr
 
@@ -75,10 +105,10 @@ make
 make install
 
 cd /sources
-rm -rf texinfo-7.2
+rm -rf texinfo-7.3
 
-tar -xf util-linux-2.41.3.tar.xz
-cd util-linux-2.41.3
+tar -xf util-linux-2.42.2.tar.xz
+cd util-linux-2.42.2
 
 mkdir -pv /var/lib/hwclock
 
@@ -95,7 +125,7 @@ mkdir -pv /var/lib/hwclock
             --disable-liblastlog2 \
             --without-python      \
             ADJTIME_PATH=/var/lib/hwclock/adjtime \
-            --docdir=/usr/share/doc/util-linux-2.41.3
+            --docdir=/usr/share/doc/util-linux-2.42.2
 
 make
 
@@ -123,7 +153,7 @@ cp -Rv DESTDIR/usr/lib32/* /usr/lib32
 rm -rf DESTDIR
 
 cd /sources
-rm -rf util-linux-2.41.3
+rm -rf util-linux-2.42.2
 
 rm -rf /usr/share/{info,man,doc}/*
 find /usr/{lib,libexec} -name \*.la -delete

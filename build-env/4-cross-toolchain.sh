@@ -2,10 +2,8 @@ set -e
 
 cd ${LFS:?}/sources
 
-wget https://sourceware.org/pub/binutils/releases/binutils-2.46.0.tar.xz
-
-tar -xf binutils-2.46.0.tar.xz
-cd binutils-2.46.0
+tar -xf binutils-2.47.tar.xz
+cd binutils-2.47
 
 mkdir -v build
 cd       build
@@ -23,25 +21,17 @@ make
 make install
 
 cd ${LFS:?}/sources
-rm -rf binutils-2.46.0
+rm -rf binutils-2.47
 
-wget https://ftpmirror.gnu.org/gcc/gcc-15.2.0/gcc-15.2.0.tar.xz
-
-wget https://ftpmirror.gnu.org/mpfr/mpfr-4.2.2.tar.xz
-
-wget https://ftpmirror.gnu.org/mpc/mpc-1.3.1.tar.gz
-
-wget https://ftpmirror.gnu.org/gmp/gmp-6.3.0.tar.xz
-
-tar -xf gcc-15.2.0.tar.xz
-cd gcc-15.2.0
+tar -xf gcc-16.2.0.tar.xz
+cd gcc-16.2.0
 
 tar -xf ../mpfr-4.2.2.tar.xz
 mv -v mpfr-4.2.2 mpfr
 tar -xf ../gmp-6.3.0.tar.xz
 mv -v gmp-6.3.0 gmp
-tar -xf ../mpc-1.3.1.tar.gz
-mv -v mpc-1.3.1 mpc
+tar -xf ../mpc-1.4.1.tar.xz
+mv -v mpc-1.4.1 mpc
 
 sed -e '/m64=/s/lib64/lib/' \
     -e '/m32=/s/m32=.*/m32=..\/lib32$(call if_multiarch,:i386-linux-gnu)/' \
@@ -53,48 +43,46 @@ sed '/STACK_REALIGN_DEFAULT/s/0/(!TARGET_64BIT \&\& TARGET_SSE)/' \
 mkdir -v build
 cd       build
 
-mlist=m64,m32
-../configure                    \
-    --target=$LFS_TGT           \
-    --prefix=$LFS/tools         \
-    --with-glibc-version=2.43   \
-    --with-sysroot=$LFS         \
-    --with-newlib               \
-    --without-headers           \
-    --enable-default-pie        \
-    --enable-default-ssp        \
-    --enable-initfini-array     \
-    --disable-nls               \
-    --disable-shared            \
-    --enable-multilib           \
-    --with-multilib-list=$mlist \
-    --disable-decimal-float     \
-    --disable-threads           \
-    --disable-libatomic         \
-    --disable-libgomp           \
-    --disable-libquadmath       \
-    --disable-libssp            \
-    --disable-libvtv            \
-    --disable-libstdcxx         \
+../configure                     \
+    --target=$LFS_TGT            \
+    --prefix=$LFS/tools          \
+    --with-glibc-version=2.44    \
+    --with-sysroot=$LFS          \
+    --with-newlib                \
+    --without-headers            \
+    --enable-default-pie         \
+    --enable-default-ssp         \
+    --disable-fixincludes        \
+    --enable-initfini-array      \
+    --disable-nls                \
+    --disable-shared             \
+    --enable-multilib            \
+    --with-multilib-list=m64,m32 \
+    --disable-decimal-float      \
+    --disable-threads            \
+    --disable-libatomic          \
+    --disable-libgomp            \
+    --disable-libquadmath        \
+    --disable-libssp             \
+    --disable-libvtv             \
+    --disable-libstdcxx          \
     --enable-languages=c,c++
 
 make
 make install
 
-cd ..
-cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
-  `dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/include/limits.h
+cat ../gcc/{limitx,glimits,limity}.h  > \
+  $($LFS_TGT-gcc -print-file-name=include)/limits.h
 
+cd ..
 
 cd ${LFS:?}/sources
 
-rm -rf gcc-15.2.0
+rm -rf gcc-16.2.0
 
-wget https://www.kernel.org/pub/linux/kernel/v6.x/linux-6.18.10.tar.xz
+tar -xf linux-7.1.8.tar.xz
 
-tar -xf linux-6.18.10.tar.xz
-
-cd linux-6.18.10
+cd linux-7.1.8
 
 make mrproper
 
@@ -104,24 +92,25 @@ cp -rv usr/include $LFS/usr
 
 cd ${LFS:?}/sources
 
-rm -rf linux-6.18.10
+rm -rf linux-7.1.8
 
-wget https://ftpmirror.gnu.org/glibc/glibc-2.43.tar.xz
-wget https://www.linuxfromscratch.org/patches/lfs/development/glibc-fhs-1.patch
+tar -xf glibc-2.44.tar.xz
 
-tar -xf glibc-2.43.tar.xz
-
-cd glibc-2.43
+cd glibc-2.44
 
 ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64
 ln -sfv ../lib/ld-linux-x86-64.so.2 $LFS/lib64/ld-lsb-x86-64.so.3
 
 patch -Np1 -i ../glibc-fhs-1.patch
 
+patch -Np1 -i ../glibc-2.44-upstream_fixes-1.patch
+
 mkdir -v build
 cd       build
 
 echo "rootsbindir=/usr/sbin" > configparms
+
+echo "config1" >> ${LFS:?}/sources/stat.txt
 
 ../configure                             \
       --prefix=/usr                      \
@@ -129,16 +118,21 @@ echo "rootsbindir=/usr/sbin" > configparms
       --build=$(../scripts/config.guess) \
       --disable-nscd                     \
       libc_cv_slibdir=/usr/lib           \
-      --enable-kernel=5.4
+      --enable-kernel=5.10
     
+echo "make1" >> ${LFS:?}/sources/stat.txt
 make
+echo "inst1" >> ${LFS:?}/sources/stat.txt
 make DESTDIR=$LFS install
 
+echo "sed" >> ${LFS:?}/sources/stat.txt
 sed '/RTLDLIST=/s@/usr@@g' -i $LFS/usr/bin/ldd
 
+echo "clean" >> ${LFS:?}/sources/stat.txt
 make clean
 find .. -name "*.a" -delete
 
+echo "config2" >> ${LFS:?}/sources/stat.txt
 CC="$LFS_TGT-gcc -m32"                   \
 CXX="$LFS_TGT-g++ -m32"                  \
 ../configure                             \
@@ -150,22 +144,30 @@ CXX="$LFS_TGT-g++ -m32"                  \
       --libdir=/usr/lib32                \
       --libexecdir=/usr/lib32            \
       libc_cv_slibdir=/usr/lib32         \
-      --enable-kernel=5.4
+      --enable-kernel=5.10
 
+echo "make2" >> ${LFS:?}/sources/stat.txt
 make
 
+echo "inst2" >> ${LFS:?}/sources/stat.txt
 make DESTDIR=$PWD/DESTDIR install
+
+echo "finish2" >> ${LFS:?}/sources/stat.txt
 cp -a DESTDIR/usr/lib32 $LFS/usr/
 install -vm644 DESTDIR/usr/include/gnu/{lib-names,stubs}-32.h \
                $LFS/usr/include/gnu/
+
+
+echo "ln2" >> ${LFS:?}/sources/stat.txt
 ln -svf ../lib32/ld-linux.so.2 $LFS/lib/ld-linux.so.2
 
+echo "done" >> ${LFS:?}/sources/stat.txt
 cd ${LFS:?}/sources
 
-rm -rf glibc-2.43
+rm -rf glibc-2.44
 
-tar -xf gcc-15.2.0.tar.xz
-cd gcc-15.2.0
+tar -xf gcc-16.2.0.tar.xz
+cd gcc-16.2.0
 
 mkdir -v build
 cd       build
@@ -173,11 +175,12 @@ cd       build
 ../libstdc++-v3/configure           \
     --host=$LFS_TGT                 \
     --build=$(../config.guess)      \
+    CXX=$LFS_TGT-gcc           \
     --prefix=/usr                   \
     --enable-multilib               \
     --disable-nls                   \
     --disable-libstdcxx-pch         \
-    --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/15.2.0
+    --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/16.2.0
 
 make
 

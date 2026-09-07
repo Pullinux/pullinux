@@ -1,11 +1,14 @@
 
 cd ${LFS:?}/sources
 
-wget https://ftpmirror.gnu.org/m4/m4-1.4.21.tar.xz
-
 tar -xf m4-1.4.21.tar.xz
 
 cd m4-1.4.21
+
+cat > $LFS/usr/share/config.site << EOF
+ac_cv_func_posix_spawn_file_actions_addchdir=yes
+ac_cv_func_posix_spawn_file_actions_addfchdir=yes
+EOF
 
 ./configure --prefix=/usr   \
             --host=$LFS_TGT \
@@ -19,8 +22,6 @@ make DESTDIR=$LFS install
 cd ${LFS:?}/sources
 
 rm -rf m4-1.4.21
-
-wget https://invisible-mirror.net/archives/ncurses/ncurses-6.6.tar.gz
 
 tar -xf ncurses-6.6.tar.gz
 
@@ -80,7 +81,6 @@ cd ${LFS:?}/sources
 
 rm -rf ncurses-6.6
 
-wget https://ftpmirror.gnu.org/bash/bash-5.3.tar.gz
 tar -xf bash-5.3.tar.gz
 cd bash-5.3
 
@@ -99,9 +99,8 @@ cd ${LFS:?}/sources
 
 rm -rf bash-5.3
 
-wget https://ftpmirror.gnu.org/coreutils/coreutils-9.10.tar.xz
-tar -xf coreutils-9.10.tar.xz
-cd coreutils-9.10
+tar -xf coreutils-9.11.tar.xz
+cd coreutils-9.11
 
 ./configure --prefix=/usr                     \
             --host=$LFS_TGT                   \
@@ -120,15 +119,14 @@ sed -i 's/"1"/"8"/'                    $LFS/usr/share/man/man8/chroot.8
 
 cd ${LFS:?}/sources
 
-rm -rf coreutils-9.10
+rm -rf coreutils-9.11
 
-wget https://ftpmirror.gnu.org/diffutils/diffutils-3.12.tar.xz
 tar -xf diffutils-3.12.tar.xz
 cd diffutils-3.12
 
 ./configure --prefix=/usr   \
             --host=$LFS_TGT \
-            gl_cv_func_strcasecmp_works=y \
+            gl_cv_func_strcasecmp_works=yes \
             --build=$(./build-aux/config.guess)
 
 make
@@ -139,9 +137,8 @@ cd ${LFS:?}/sources
 
 rm -rf diffutils-3.12
 
-wget https://astron.com/pub/file/file-5.46.tar.gz
-tar -xf file-5.46.tar.gz
-cd file-5.46
+tar -xf file-5.48.tar.gz
+cd file-5.48
 
 mkdir build
 pushd build
@@ -162,5 +159,5 @@ rm -v $LFS/usr/lib/libmagic.la
 
 cd ${LFS:?}/sources
 
-rm -rf file-5.46
+rm -rf file-5.48
 

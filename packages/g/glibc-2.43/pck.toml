@@ -14,3 +14,19 @@ runtime_deps = [
     "man-pages 6.17",
     "iana-etc 20260202"
 ]
+[[subpackages]]
+name = "docs"
+requires_parent = true
+parent_requires = false
+paths = [
+    "/usr/share/info"
+]
+
+[[subpackages]]
+name = "dev"
+requires_parent = true
+parent_requires = false
+paths = [
+    "/usr/include"
+]
+
